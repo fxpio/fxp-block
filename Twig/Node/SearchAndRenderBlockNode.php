@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BlockBundle\Twig\Node;
+namespace Sonatra\Component\Block\Twig\Node;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
@@ -22,7 +22,7 @@ class SearchAndRenderBlockNode extends \Twig_Node_Expression_Function
     public function compile(\Twig_Compiler $compiler)
     {
         $compiler->addDebugInfo($this);
-        $compiler->raw('$this->env->getExtension(\'Sonatra\Bundle\BlockBundle\Twig\Extension\BlockExtension\')->renderer->searchAndRenderBlock(');
+        $compiler->raw('$this->env->getExtension(\'Sonatra\Component\Block\Twig\Extension\BlockExtension\')->renderer->searchAndRenderBlock(');
 
         preg_match('/_([^_]+)$/', $this->getAttribute('name'), $matches);
 

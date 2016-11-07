@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BlockBundle\Doctrine\Block;
+namespace Sonatra\Component\Block\Doctrine\Block;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
-use Sonatra\Bundle\BlockBundle\Block\AbstractExtension;
+use Sonatra\Component\Block\AbstractExtension;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>

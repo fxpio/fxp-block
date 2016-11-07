@@ -1,9 +1,9 @@
 {
-    "name": "sonatra/block-bundle",
-    "type": "symfony-bundle",
+    "name": "sonatra/block",
+    "type": "library",
     "description": "Provides tools for defining UI blocks, rendering and mapping response data to related models",
     "keywords": ["block", "user interface", "ui"],
-    "homepage": "https://github.com/sonatra/SonatraBlockBundle",
+    "homepage": "https://github.com/sonatra/sonatra-block",
     "license": "MIT",
     "authors": [
         {
@@ -13,21 +13,25 @@
     ],
     "require": {
         "php": ">=5.5.0",
-        "symfony/framework-bundle": "~3.0",
-        "symfony/twig-bundle": "~3.0",
-        "symfony/form": "~3.0",
-        "symfony/validator": "~3.0",
-        "symfony/doctrine-bridge": "~3.0"
+        "symfony/options-resolver": "~3.0",
+        "symfony/event-dispatcher": "~3.0",
+        "symfony/form": "~3.0"
     },
     "require-dev": {
-        "doctrine/orm": "~2.5"
+        "symfony/dependency-injection": "~3.0",
+        "symfony/translation": "~3.0",
+        "symfony/templating": "~3.0",
+        "symfony/http-kernel": "~3.0",
+        "symfony/validator": "~3.0",
+        "symfony/doctrine-bridge": "~3.0",
+        "doctrine/orm": "~2.5",
+        "twig/twig": "~1.27"
     },
     "suggest": {
-        "doctrine/orm": "For doctrine block type",
-        "sonatra/bootstrap-bundle": "The twitter bootstrap DSL twig tag"
+        "doctrine/orm": "For doctrine block type"
     },
     "autoload": {
-        "psr-4": { "Sonatra\\Bundle\\BlockBundle\\": "" },
+        "psr-4": { "Sonatra\\Component\\Block\\": "" },
         "exclude-from-classmap": [
             "/Tests/"
         ]

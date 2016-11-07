@@ -9,26 +9,26 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BlockBundle\Doctrine\Block;
+namespace Sonatra\Component\Block\Doctrine\Block;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\Mapping\MappingException;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Doctrine\ORM\Mapping\MappingException as LegacyMappingException;
-use Sonatra\Bundle\BlockBundle\Block\BlockTypeGuesserInterface;
-use Sonatra\Bundle\BlockBundle\Block\Extension\Core\Type\CheckboxType;
-use Sonatra\Bundle\BlockBundle\Block\Extension\Core\Type\CollectionType;
-use Sonatra\Bundle\BlockBundle\Block\Extension\Core\Type\DateTimeType;
-use Sonatra\Bundle\BlockBundle\Block\Extension\Core\Type\DateType;
-use Sonatra\Bundle\BlockBundle\Block\Extension\Core\Type\IntegerType;
-use Sonatra\Bundle\BlockBundle\Block\Extension\Core\Type\NumberType;
-use Sonatra\Bundle\BlockBundle\Block\Extension\Core\Type\TextareaType;
-use Sonatra\Bundle\BlockBundle\Block\Extension\Core\Type\TextType;
-use Sonatra\Bundle\BlockBundle\Block\Extension\Core\Type\TimeType;
-use Sonatra\Bundle\BlockBundle\Block\Guess\Guess;
-use Sonatra\Bundle\BlockBundle\Block\Guess\TypeGuess;
-use Sonatra\Bundle\BlockBundle\Doctrine\Block\Type\EntityType;
+use Sonatra\Component\Block\BlockTypeGuesserInterface;
+use Sonatra\Component\Block\Extension\Core\Type\CheckboxType;
+use Sonatra\Component\Block\Extension\Core\Type\CollectionType;
+use Sonatra\Component\Block\Extension\Core\Type\DateTimeType;
+use Sonatra\Component\Block\Extension\Core\Type\DateType;
+use Sonatra\Component\Block\Extension\Core\Type\IntegerType;
+use Sonatra\Component\Block\Extension\Core\Type\NumberType;
+use Sonatra\Component\Block\Extension\Core\Type\TextareaType;
+use Sonatra\Component\Block\Extension\Core\Type\TextType;
+use Sonatra\Component\Block\Extension\Core\Type\TimeType;
+use Sonatra\Component\Block\Guess\Guess;
+use Sonatra\Component\Block\Guess\TypeGuess;
+use Sonatra\Component\Block\Doctrine\Block\Type\EntityType;
 
 class DoctrineOrmTypeGuesser implements BlockTypeGuesserInterface
 {

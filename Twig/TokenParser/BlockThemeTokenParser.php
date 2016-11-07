@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BlockBundle\Twig\TokenParser;
+namespace Sonatra\Component\Block\Twig\TokenParser;
 
-use Sonatra\Bundle\BlockBundle\Twig\Node\BlockThemeNode;
+use Sonatra\Component\Block\Twig\Node\BlockThemeNode;
 
 /**
  * Token Parser for the 'block_theme' tag.

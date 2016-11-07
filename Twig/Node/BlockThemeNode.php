@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BlockBundle\Twig\Node;
+namespace Sonatra\Component\Block\Twig\Node;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
@@ -38,7 +38,7 @@ class BlockThemeNode extends \Twig_Node
     {
         $compiler
             ->addDebugInfo($this)
-            ->write('$this->env->getExtension(\'Sonatra\Bundle\BlockBundle\Twig\Extension\BlockExtension\')->renderer->setTheme(')
+            ->write('$this->env->getExtension(\'Sonatra\Component\Block\Twig\Extension\BlockExtension\')->renderer->setTheme(')
             ->subcompile($this->getNode('block'))
             ->raw(', ')
             ->subcompile($this->getNode('resources'))

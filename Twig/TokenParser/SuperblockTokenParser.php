@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BlockBundle\Twig\TokenParser;
+namespace Sonatra\Component\Block\Twig\TokenParser;
 
-use Sonatra\Bundle\BlockBundle\Twig\Node\Superblock;
-use Sonatra\Bundle\BlockBundle\Twig\Node\SuperblockReference;
-use Sonatra\Bundle\BlockBundle\Twig\Node\SuperblockClosure;
+use Sonatra\Component\Block\Twig\Node\Superblock;
+use Sonatra\Component\Block\Twig\Node\SuperblockReference;
+use Sonatra\Component\Block\Twig\Node\SuperblockClosure;
 
 /**
  * Token Parser for the 'sblock' tag.

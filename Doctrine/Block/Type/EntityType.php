@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BlockBundle\Doctrine\Block\Type;
+namespace Sonatra\Component\Block\Doctrine\Block\Type;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\QueryBuilder;
-use Sonatra\Bundle\BlockBundle\Block\Exception\UnexpectedTypeException;
+use Sonatra\Component\Block\Exception\UnexpectedTypeException;
 use Symfony\Bridge\Doctrine\Form\ChoiceList\ORMQueryBuilderLoader;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;

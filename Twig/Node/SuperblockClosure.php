@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BlockBundle\Twig\Node;
+namespace Sonatra\Component\Block\Twig\Node;
 
-use Sonatra\Bundle\BlockBundle\Block\Util\BlockUtil;
+use Sonatra\Component\Block\Util\BlockUtil;
 
 /**
  * Represents a sblock closure node.

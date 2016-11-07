@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BlockBundle\Twig\Block;
+namespace Sonatra\Component\Block\Twig\Block;
 
-use Sonatra\Bundle\BlockBundle\Block\BlockRenderer;
+use Sonatra\Component\Block\BlockRenderer;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>

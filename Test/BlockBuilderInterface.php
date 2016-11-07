@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BlockBundle\Test;
+namespace Sonatra\Component\Block\Test;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-interface BlockBuilderInterface extends \Iterator, \Sonatra\Bundle\BlockBundle\Block\BlockBuilderInterface
+interface BlockBuilderInterface extends \Iterator, \Sonatra\Component\Block\BlockBuilderInterface
 {
 }

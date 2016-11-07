@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BlockBundle\Doctrine\Block\DataTransformer;
+namespace Sonatra\Component\Block\Doctrine\Block\DataTransformer;
 
-use Sonatra\Bundle\BlockBundle\Block\Exception\UnexpectedTypeException;
-use Sonatra\Bundle\BlockBundle\Block\DataTransformerInterface;
+use Sonatra\Component\Block\Exception\UnexpectedTypeException;
+use Sonatra\Component\Block\DataTransformerInterface;
 use Doctrine\Common\Collections\Collection;
 
 /**

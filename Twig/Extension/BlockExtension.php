@@ -9,17 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BlockBundle\Twig\Extension;
+namespace Sonatra\Component\Block\Twig\Extension;
 
-use Sonatra\Bundle\BlockBundle\Block\BlockFactoryInterface;
-use Sonatra\Bundle\BlockBundle\Block\BlockTypeInterface;
-use Sonatra\Bundle\BlockBundle\Block\BlockView;
-use Sonatra\Bundle\BlockBundle\Block\BlockRegistryInterface;
-use Sonatra\Bundle\BlockBundle\Twig\TokenParser\BlockThemeTokenParser;
-use Sonatra\Bundle\BlockBundle\Twig\TokenParser\SuperblockTokenParser;
-use Sonatra\Bundle\BlockBundle\Twig\Block\TwigRendererInterface;
-use Sonatra\Bundle\BlockBundle\Block\BlockInterface;
-use Sonatra\Bundle\BlockBundle\Block\Util\BlockUtil;
+use Sonatra\Component\Block\BlockFactoryInterface;
+use Sonatra\Component\Block\BlockTypeInterface;
+use Sonatra\Component\Block\BlockView;
+use Sonatra\Component\Block\BlockRegistryInterface;
+use Sonatra\Component\Block\Twig\TokenParser\BlockThemeTokenParser;
+use Sonatra\Component\Block\Twig\TokenParser\SuperblockTokenParser;
+use Sonatra\Component\Block\Twig\Block\TwigRendererInterface;
+use Sonatra\Component\Block\BlockInterface;
+use Sonatra\Component\Block\Util\BlockUtil;
 
 /**
  * BlockExtension extends Twig with block capabilities.
@@ -32,7 +32,7 @@ class BlockExtension extends \Twig_Extension
      * This property is public so that it can be accessed directly from compiled
      * templates without having to call a getter, which slightly decreases performance.
      *
-     * @var \Sonatra\Bundle\BlockBundle\Block\BlockRendererInterface
+     * @var \Sonatra\Component\Block\BlockRendererInterface
      */
     public $renderer;
 
@@ -102,10 +102,10 @@ class BlockExtension extends \Twig_Extension
     public function getFunctions()
     {
         $functions = array(
-            new \Twig_SimpleFunction('block_widget',      null, array('node_class' => 'Sonatra\Bundle\BlockBundle\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
-            new \Twig_SimpleFunction('block_component',   null, array('node_class' => 'Sonatra\Bundle\BlockBundle\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
-            new \Twig_SimpleFunction('block_label',       null, array('node_class' => 'Sonatra\Bundle\BlockBundle\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
-            new \Twig_SimpleFunction('block_row',         null, array('node_class' => 'Sonatra\Bundle\BlockBundle\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
+            new \Twig_SimpleFunction('block_widget',      null, array('node_class' => 'Sonatra\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
+            new \Twig_SimpleFunction('block_component',   null, array('node_class' => 'Sonatra\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
+            new \Twig_SimpleFunction('block_label',       null, array('node_class' => 'Sonatra\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
+            new \Twig_SimpleFunction('block_row',         null, array('node_class' => 'Sonatra\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
             new \Twig_SimpleFunction('block_twig_render', array($this, 'renderTwigBlock'), array('is_safe' => array('html'))),
         );
 
@@ -140,7 +140,7 @@ class BlockExtension extends \Twig_Extension
      * @param string|BlockTypeInterface|BlockInterface $type
      * @param array                                    $options
      *
-     * @return \Sonatra\Bundle\BlockBundle\Block\BlockBuilderInterface
+     * @return \Sonatra\Component\Block\BlockBuilderInterface
      */
     public function createNamed($type, array $options = array())
     {

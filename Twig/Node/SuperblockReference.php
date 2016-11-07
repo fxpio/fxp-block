@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BlockBundle\Twig\Node;
+namespace Sonatra\Component\Block\Twig\Node;
 
 /**
  * Represents a sblock call node.
@@ -48,8 +48,8 @@ class SuperblockReference extends \Twig_Node implements \Twig_NodeOutputInterfac
             $compiler
                 ->addDebugInfo($this)
                 ->write(sprintf('$%s = ', $name))
-                ->raw('$this->env->getExtension(\'Sonatra\Bundle\BlockBundle\Twig\Extension\BlockExtension\')->createNamed(')
-                ->raw('"Sonatra\Bundle\BlockBundle\Block\Extension\Core\Type\ClosureType"')
+                ->raw('$this->env->getExtension(\'Sonatra\Component\Block\Twig\Extension\BlockExtension\')->createNamed(')
+                ->raw('"Sonatra\Component\Block\Extension\Core\Type\ClosureType"')
                 ->raw(', ')
                 ->raw(sprintf('array("data" => function ($blockView) use ($context, $blocks) {$this->block_%s(array_merge($context, array(\'closure\' => $blockView)), $blocks);}', $name))
                 ->raw(sprintf(', "block_name" => "%s", "label" => "")', $name))
@@ -77,10 +77,10 @@ class SuperblockReference extends \Twig_Node implements \Twig_NodeOutputInterfac
                 ->write('}')
                 ->raw("\n")
                 ->write(sprintf('$%s = $%s ', $name, $name))
-                ->raw(sprintf('instanceof \Sonatra\Bundle\BlockBundle\Block\BlockView ? $%s : $%s->createView();', $name, $name))
+                ->raw(sprintf('instanceof \Sonatra\Component\Block\BlockView ? $%s : $%s->createView();', $name, $name))
                 ->raw("\n")
                 // render
-                ->write('echo $this->env->getExtension(\'Sonatra\Bundle\BlockBundle\Twig\Extension\BlockExtension\')->renderer->searchAndRenderBlock(')
+                ->write('echo $this->env->getExtension(\'Sonatra\Component\Block\Twig\Extension\BlockExtension\')->renderer->searchAndRenderBlock(')
                 ->raw("\n")
                 ->indent()
                 ->write(sprintf('$%s', $name))

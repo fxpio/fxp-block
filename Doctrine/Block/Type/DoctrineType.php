@@ -9,16 +9,16 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BlockBundle\Doctrine\Block\Type;
+namespace Sonatra\Component\Block\Doctrine\Block\Type;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
-use Sonatra\Bundle\BlockBundle\Block\AbstractType;
-use Sonatra\Bundle\BlockBundle\Block\BlockBuilderInterface;
-use Sonatra\Bundle\BlockBundle\Block\Exception\RuntimeException;
-use Sonatra\Bundle\BlockBundle\Block\Extension\Core\Type\ChoiceType;
-use Sonatra\Bundle\BlockBundle\Doctrine\Block\DataTransformer\CollectionToArrayTransformer;
-use Sonatra\Bundle\BlockBundle\Doctrine\Block\DataTransformer\EntityToArrayTransformer;
+use Sonatra\Component\Block\AbstractType;
+use Sonatra\Component\Block\BlockBuilderInterface;
+use Sonatra\Component\Block\Exception\RuntimeException;
+use Sonatra\Component\Block\Extension\Core\Type\ChoiceType;
+use Sonatra\Component\Block\Doctrine\Block\DataTransformer\CollectionToArrayTransformer;
+use Sonatra\Component\Block\Doctrine\Block\DataTransformer\EntityToArrayTransformer;
 use Symfony\Bridge\Doctrine\Form\ChoiceList\DoctrineChoiceLoader;
 use Symfony\Bridge\Doctrine\Form\ChoiceList\EntityLoaderInterface;
 use Symfony\Bridge\Doctrine\Form\ChoiceList\IdReader;

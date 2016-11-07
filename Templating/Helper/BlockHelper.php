@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BlockBundle\Templating\Helper;
+namespace Sonatra\Component\Block\Templating\Helper;
 
-use Sonatra\Bundle\BlockBundle\Block\Extension\Core\Type\BlockType;
+use Sonatra\Component\Block\Extension\Core\Type\BlockType;
 use Symfony\Component\Templating\Helper\Helper;
-use Sonatra\Bundle\BlockBundle\Block\BlockRendererInterface;
-use Sonatra\Bundle\BlockBundle\Block\BlockView;
+use Sonatra\Component\Block\BlockRendererInterface;
+use Sonatra\Component\Block\BlockView;
 
 /**
  * BlockHelper provides helpers to help display blocks.

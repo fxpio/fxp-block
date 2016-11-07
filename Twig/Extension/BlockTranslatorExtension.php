@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BlockBundle\Twig\Extension;
+namespace Sonatra\Component\Block\Twig\Extension;
 
 use Symfony\Component\Translation\TranslatorInterface;
 

@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BlockBundle\Twig\Node;
+namespace Sonatra\Component\Block\Twig\Node;
 
-use Sonatra\Bundle\BlockBundle\Block\Util\BlockUtil;
+use Sonatra\Component\Block\Util\BlockUtil;
 
 /**
  * Represents a sblock node.
@@ -58,11 +58,11 @@ class Superblock extends \Twig_Node_Block
             $compiler
                 ->raw('(')
                 ->subcompile($this->getAttribute('type'))
-                ->raw(' instanceof \Sonatra\Bundle\BlockBundle\Block\BlockBuilderInterface || ')
+                ->raw(' instanceof \Sonatra\Component\Block\BlockBuilderInterface || ')
                 ->subcompile($this->getAttribute('type'))
-                ->raw(' instanceof \Sonatra\Bundle\BlockBundle\Block\BlockInterface || ')
+                ->raw(' instanceof \Sonatra\Component\Block\BlockInterface || ')
                 ->subcompile($this->getAttribute('type'))
-                ->raw(' instanceof \Sonatra\Bundle\BlockBundle\Block\BlockView) ? ')
+                ->raw(' instanceof \Sonatra\Component\Block\BlockView) ? ')
                 ->subcompile($this->getAttribute('type'))
                 ->raw(' : ')
             ;
@@ -70,7 +70,7 @@ class Superblock extends \Twig_Node_Block
 
         // create the block
         $compiler
-            ->raw('$this->env->getExtension(\'Sonatra\Bundle\BlockBundle\Twig\Extension\BlockExtension\')->createNamed(')
+            ->raw('$this->env->getExtension(\'Sonatra\Component\Block\Twig\Extension\BlockExtension\')->createNamed(')
             ->subcompile($this->getAttribute('type'))
             ->raw(', ')
             ->subcompile($this->getAttribute('options'))
@@ -80,7 +80,7 @@ class Superblock extends \Twig_Node_Block
 
         if ($this->getAttribute('type') instanceof \Twig_Node_Expression_Name) {
             $compiler
-                ->write(sprintf('if ($%s instanceof \Sonatra\Bundle\BlockBundle\Block\BlockBuilderInterface) {', $name))
+                ->write(sprintf('if ($%s instanceof \Sonatra\Component\Block\BlockBuilderInterface) {', $name))
                 ->raw("\n")
                 ->indent()
                 ->write(sprintf('$%s = $%s->getBlock();', $name, $name))

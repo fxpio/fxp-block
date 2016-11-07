@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BlockBundle\Doctrine\Block\DataTransformer;
+namespace Sonatra\Component\Block\Doctrine\Block\DataTransformer;
 
-use Sonatra\Bundle\BlockBundle\Block\DataTransformerInterface;
+use Sonatra\Component\Block\DataTransformerInterface;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
