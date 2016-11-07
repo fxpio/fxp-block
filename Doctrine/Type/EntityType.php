@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Doctrine\Block\Type;
+namespace Sonatra\Component\Block\Doctrine\Type;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\QueryBuilder;

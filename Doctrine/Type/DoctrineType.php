@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Doctrine\Block\Type;
+namespace Sonatra\Component\Block\Doctrine\Type;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -17,8 +17,8 @@ use Sonatra\Component\Block\AbstractType;
 use Sonatra\Component\Block\BlockBuilderInterface;
 use Sonatra\Component\Block\Exception\RuntimeException;
 use Sonatra\Component\Block\Extension\Core\Type\ChoiceType;
-use Sonatra\Component\Block\Doctrine\Block\DataTransformer\CollectionToArrayTransformer;
-use Sonatra\Component\Block\Doctrine\Block\DataTransformer\EntityToArrayTransformer;
+use Sonatra\Component\Block\Doctrine\DataTransformer\CollectionToArrayTransformer;
+use Sonatra\Component\Block\Doctrine\DataTransformer\EntityToArrayTransformer;
 use Symfony\Bridge\Doctrine\Form\ChoiceList\DoctrineChoiceLoader;
 use Symfony\Bridge\Doctrine\Form\ChoiceList\EntityLoaderInterface;
 use Symfony\Bridge\Doctrine\Form\ChoiceList\IdReader;

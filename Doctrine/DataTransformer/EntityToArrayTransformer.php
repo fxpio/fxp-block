@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Doctrine\Block\DataTransformer;
+namespace Sonatra\Component\Block\Doctrine\DataTransformer;
 
 use Sonatra\Component\Block\DataTransformerInterface;
 

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Doctrine\Block;
+namespace Sonatra\Component\Block\Doctrine;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\Mapping\MappingException;
@@ -28,7 +28,7 @@ use Sonatra\Component\Block\Extension\Core\Type\TextType;
 use Sonatra\Component\Block\Extension\Core\Type\TimeType;
 use Sonatra\Component\Block\Guess\Guess;
 use Sonatra\Component\Block\Guess\TypeGuess;
-use Sonatra\Component\Block\Doctrine\Block\Type\EntityType;
+use Sonatra\Component\Block\Doctrine\Type\EntityType;
 
 class DoctrineOrmTypeGuesser implements BlockTypeGuesserInterface
 {

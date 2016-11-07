@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Doctrine\Block;
+namespace Sonatra\Component\Block\Doctrine;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Sonatra\Component\Block\AbstractExtension;
