@@ -2,9 +2,9 @@ Sonatra Block
 =============
 
 [![Latest Version](https://img.shields.io/packagist/v/sonatra/block.svg)](https://packagist.org/packages/sonatra/block)
-[![Build Status](https://img.shields.io/travis/sonatra/sonatra/sonatra-block/master.svg)](https://travis-ci.org/sonatra/sonatra/sonatra-block)
-[![Coverage Status](https://img.shields.io/coveralls/sonatra/sonatra/sonatra-block/master.svg)](https://coveralls.io/r/sonatra/sonatra/sonatra-block?branch=master)
-[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/sonatra/sonatra/sonatra-block/master.svg)](https://scrutinizer-ci.com/g/sonatra/sonatra/sonatra-block?branch=master)
+[![Build Status](https://img.shields.io/travis/sonatra/sonatra-block/master.svg)](https://travis-ci.org/sonatra/sonatra-block)
+[![Coverage Status](https://img.shields.io/coveralls/sonatra/sonatra-block/master.svg)](https://coveralls.io/r/sonatra/sonatra-block?branch=master)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/sonatra/sonatra-block/master.svg)](https://scrutinizer-ci.com/g/sonatra/sonatra-block?branch=master)
 [![SensioLabsInsight](https://img.shields.io/sensiolabs/i/5cbffffd-287d-4ed6-afcf-5a5d525718be.svg)](https://insight.sensiolabs.com/projects/5cbffffd-287d-4ed6-afcf-5a5d525718be)
 
 The Sonatra Block provides tools for defining UI blocks, rendering and mapping
@@ -60,9 +60,9 @@ About
 -----
 
 Sonatra Block is a [sonatra](https://github.com/sonatra) initiative.
-See also the list of [contributors](https://github.com/sonatra/sonatra/sonatra-block/graphs/contributors).
+See also the list of [contributors](https://github.com/sonatra/sonatra-block/graphs/contributors).
 
 Reporting an issue or a feature request
 ---------------------------------------
 
-Issues and feature requests are tracked in the [Github issue tracker](https://github.com/sonatra/sonatra/sonatra-block/issues).
+Issues and feature requests are tracked in the [Github issue tracker](https://github.com/sonatra/sonatra-block/issues).
