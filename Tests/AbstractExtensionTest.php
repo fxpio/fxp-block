@@ -64,7 +64,7 @@ class AbstractExtensionTest extends \PHPUnit_Framework_TestCase
         $ext = $this->getMockForAbstractClass('Sonatra\Component\Block\AbstractExtension');
         $typeExts = $ext->getTypeExtensions('unexisting_type_extension');
 
-        $this->assertTrue(is_array($typeExts));
+        $this->assertInternalType('array', $typeExts);
         $this->assertCount(0, $typeExts);
     }
 
@@ -88,7 +88,7 @@ class AbstractExtensionTest extends \PHPUnit_Framework_TestCase
         $ext = new TestExtension();
         $typeExts = $ext->getTypeExtensions(FooType::class);
 
-        $this->assertTrue(is_array($typeExts));
+        $this->assertInternalType('array', $typeExts);
         $this->assertCount(1, $typeExts);
         $this->assertInstanceOf('Sonatra\Component\Block\BlockTypeExtensionInterface', $typeExts[0]);
     }

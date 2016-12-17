@@ -67,7 +67,7 @@ abstract class AbstractBaseExtensionTest extends \PHPUnit_Framework_TestCase
     {
         $exts = $this->extension->getTypeExtensions(FooType::class);
 
-        $this->assertTrue(is_array($exts));
+        $this->assertInternalType('array', $exts);
         $this->assertCount(1, $exts);
 
         /* @var BlockTypeExtensionInterface $ext */

@@ -41,7 +41,7 @@ class ResolvedBlockTypeTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($type, $rType->getInnerType());
 
         $exts = $rType->getTypeExtensions();
-        $this->assertTrue(is_array($exts));
+        $this->assertInternalType('array', $exts);
         $this->assertCount(1, $exts);
 
         $options = $rType->getOptionsResolver();
