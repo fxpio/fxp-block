@@ -23,18 +23,23 @@ class Superblock extends \Twig_Node_Block
     /**
      * Constructor.
      *
-     * @param \Twig_Node_Expression $type
-     * @param \Twig_Node_Expression $options
-     * @param int                   $lineno
-     * @param string                $tag
+     * @param \Twig_Node_Expression $type    The block type
+     * @param \Twig_Node_Expression $options The block options
+     * @param array                 $loop    The list of loop variable name and list variable name
+     * @param int                   $lineno  The lineno
+     * @param string                $tag     The tag name
      */
     public function __construct(\Twig_Node_Expression $type,
-            \Twig_Node_Expression $options, $lineno, $tag = null)
+                                \Twig_Node_Expression $options,
+                                array $loop,
+                                $lineno,
+                                $tag = null)
     {
         parent::__construct(BlockUtil::createUniqueName(), new \Twig_Node(array()), $lineno, $tag);
 
         $this->setAttribute('type', $type);
         $this->setAttribute('options', $options);
+        $this->setAttribute('loop', $loop);
     }
 
     /**
@@ -45,25 +50,28 @@ class Superblock extends \Twig_Node_Block
     public function compile(\Twig_Compiler $compiler)
     {
         $name = $this->getAttribute('name');
+        $type = $this->getAttribute('type');
+        list($loopKey, $loopId) = $this->buildLoopVariables();
 
         $compiler
-            ->write(sprintf("public function block_%s(\$context, array \$blocks = array())\n", $this->getAttribute('name')), "{\n")
+            ->write('public function block_')->raw($name)->raw('($context, array $blocks = array()')->raw($loopKey)->raw(')')->raw("\n")
+            ->write('{')->raw("\n")
             ->indent()
             ->addDebugInfo($this)
-            ->write(sprintf('$%s = ', $name))
+            ->write('$')->raw($name)->raw(' = ')
         ;
 
         // checks if the type is an block builder, block, or block view
-        if ($this->getAttribute('type') instanceof \Twig_Node_Expression_Name) {
+        if ($type instanceof \Twig_Node_Expression_Name) {
             $compiler
                 ->raw('(')
-                ->subcompile($this->getAttribute('type'))
+                ->subcompile($type)
                 ->raw(' instanceof \Sonatra\Component\Block\BlockBuilderInterface || ')
-                ->subcompile($this->getAttribute('type'))
+                ->subcompile($type)
                 ->raw(' instanceof \Sonatra\Component\Block\BlockInterface || ')
-                ->subcompile($this->getAttribute('type'))
+                ->subcompile($type)
                 ->raw(' instanceof \Sonatra\Component\Block\BlockView) ? ')
-                ->subcompile($this->getAttribute('type'))
+                ->subcompile($type)
                 ->raw(' : ')
             ;
         }
@@ -71,30 +79,25 @@ class Superblock extends \Twig_Node_Block
         // create the block
         $compiler
             ->raw('$this->env->getExtension(\'Sonatra\Component\Block\Twig\Extension\BlockExtension\')->createNamed(')
-            ->subcompile($this->getAttribute('type'))
+            ->subcompile($type)
             ->raw(', ')
-            ->subcompile($this->getAttribute('options'))
-            ->raw(')')
-            ->raw(";\n")
         ;
+        $this->compileBlockOptions($compiler, $loopId);
+        $compiler->raw(');')->raw("\n");
 
-        if ($this->getAttribute('type') instanceof \Twig_Node_Expression_Name) {
+        if ($type instanceof \Twig_Node_Expression_Name) {
             $compiler
-                ->write(sprintf('if ($%s instanceof \Sonatra\Component\Block\BlockBuilderInterface) {', $name))
-                ->raw("\n")
+                ->write('if ($')->raw($name)->raw(' instanceof \Sonatra\Component\Block\BlockBuilderInterface) {')->raw("\n")
                 ->indent()
-                ->write(sprintf('$%s = $%s->getBlock();', $name, $name))
-                ->raw("\n")
+                ->write('$')->raw($name)->raw(' = $')->raw($name)->raw('->getBlock();')->raw("\n")
                 ->outdent()
-                ->write('}')
-                ->raw("\n")
+                ->write('}')->raw("\n")
             ;
         }
 
         // list of children
         $compiler
-            ->write(sprintf('$%sChildren = array();', $name))
-            ->raw("\n")
+            ->write('$')->raw($name)->raw('Children = array();')->raw("\n")
         ;
 
         if ($this->hasNode('sblocks')) {
@@ -103,10 +106,71 @@ class Superblock extends \Twig_Node_Block
 
         $compiler
             ->raw("\n")
-            ->write(sprintf('return array($%s, $%sChildren);', $name, $name))
-            ->raw("\n")
+            ->write('return array($')->raw($name)->raw(', $')->raw($name)->raw('Children);')->raw("\n")
             ->outdent()
-            ->write("}\n\n")
+            ->write('}')->raw("\n")->raw("\n")
         ;
+    }
+
+    /**
+     * Compile the block options.
+     *
+     * @param \Twig_Compiler $compiler The compiler
+     * @param string|null    $loopId   The loop id
+     */
+    private function compileBlockOptions(\Twig_Compiler $compiler, $loopId = null)
+    {
+        $options = $this->getAttribute('options');
+
+        if (null !== $loopId) {
+            $compiler
+                ->raw('array_merge(')
+                ->subcompile($options)
+                ->raw(', array(\'id\' => ')->string($loopId.'__')->raw('.$key)')
+                ->raw(')')
+            ;
+        } else {
+            $compiler->subcompile($options);
+        }
+    }
+
+    /**
+     * Build the loop key and loop id variables.
+     *
+     * @return array
+     */
+    private function buildLoopVariables()
+    {
+        /* @var \Twig_Node_Expression_Array $options */
+        $options = $this->getAttribute('options');
+        $loop = $this->getAttribute('loop');
+        $loopKey = '';
+        $loopId = null;
+        $hasId = false;
+
+        if (!empty($loop)) {
+            foreach ($options->getKeyValuePairs() as $val) {
+                /* @var \Twig_Node_Expression_Constant $key */
+                $key = $val['key'];
+                $value = $val['value'];
+
+                if ('id' === $key->getAttribute('value')) {
+                    $hasId = true;
+
+                    if ($value instanceof \Twig_Node_Expression_Constant) {
+                        $loopKey = ', $key';
+                        $loopId = $value->getAttribute('value');
+                        break;
+                    }
+                }
+            }
+
+            if (!$hasId) {
+                $loopKey = ', $key';
+                $loopId = $this->getAttribute('name');
+            }
+        }
+
+        return array($loopKey, $loopId);
     }
 }

@@ -48,14 +48,14 @@ class SuperblockTokenParser extends \Twig_TokenParser
      */
     public function parse(\Twig_Token $token)
     {
-        list($type, $options, $variables, $skip) = $this->parseArguments();
+        list($type, $options, $variables, $skip, $loop) = $this->parseArguments();
 
         $stream = $this->parser->getStream();
         $lineno = $stream->getCurrent()->getLine();
 
-        $superblock = new Superblock($type, $options, $lineno, $this->getTag());
+        $superblock = new Superblock($type, $options, $loop, $lineno, $this->getTag());
         $name = $superblock->getAttribute('name');
-        $reference = new SuperblockReference($name, $variables, $lineno, $this->getTag());
+        $reference = new SuperblockReference($name, $variables, $loop, $lineno, $this->getTag());
         $reference->setAttribute('parent_name', $name);
 
         $this->parser->setBlock($name, $superblock);
@@ -154,6 +154,7 @@ class SuperblockTokenParser extends \Twig_TokenParser
         $options = new \Twig_Node_Expression_Array(array(), $stream->getCurrent()->getLine());
         $variables = new \Twig_Node_Expression_Array(array(), $stream->getCurrent()->getLine());
         $skip = false;
+        $loop = array();
         $tagNotSupported = 'The "%s" tag does not supported. Constructs your "%s" directly in code, otherwise it is impossible to recover the form in your code.';
         $isNotSupported = null;
 
@@ -170,30 +171,22 @@ class SuperblockTokenParser extends \Twig_TokenParser
             $options = new \Twig_Node_Expression_Array(array(), $stream->getCurrent()->getLine());
 
             do {
-                if (!$stream->test(\Twig_Token::NAME_TYPE)
-                    && !$stream->test(\Twig_Token::STRING_TYPE)) {
-                    throw new \Twig_Error_Syntax(sprintf('The attribute name "%s" must be an STRING or CONSTANT', $stream->getCurrent()->getValue()), $stream->getCurrent()->getLine(), $stream->getSourceContext()->getName());
-                }
-
-                $attr = $stream->getCurrent();
-                $attr = new \Twig_Node_Expression_Constant($attr->getValue(), $attr->getLine());
-                $stream->next();
-
-                if (!$stream->test(\Twig_Token::OPERATOR_TYPE, '=')) {
-                    throw new \Twig_Error_Syntax("The attribute must be followed by '=' operator", $stream->getCurrent()->getLine(), $stream->getSourceContext()->getName());
-                }
-
-                $stream->next();
-                $options->addElement($this->parser->getExpressionParser()->parseExpression(), $attr);
+                $this->addKeyValues($stream, $options);
             } while (!$stream->test(\Twig_Token::NAME_TYPE, 'with')
+                && !$stream->test(\Twig_Token::NAME_TYPE, 'sfor')
                 && !$stream->test(\Twig_Token::PUNCTUATION_TYPE, ':')
                 && !$stream->test(\Twig_Token::BLOCK_END_TYPE));
 
             // {% sblock 'checkbox' {data:true} ... :%} or {% sblock 'checkbox' ... :%}
         } elseif (!$stream->test(\Twig_Token::NAME_TYPE, 'with')
+            && !$stream->test(\Twig_Token::NAME_TYPE, 'sfor')
             && !$stream->test(\Twig_Token::PUNCTUATION_TYPE, ':')
             && !$stream->test(\Twig_Token::BLOCK_END_TYPE)) {
             $options = $this->parser->getExpressionParser()->parseExpression();
+        }
+
+        if ($stream->test(\Twig_Token::NAME_TYPE, 'sfor')) {
+            $loop = $this->getSforVariables($stream);
         }
 
         if ($stream->test(\Twig_Token::NAME_TYPE, 'with')) {
@@ -236,7 +229,7 @@ class SuperblockTokenParser extends \Twig_TokenParser
             }
         }
 
-        return array($type, $options, $variables, $skip);
+        return array($type, $options, $variables, $skip, $loop);
     }
 
     /**
@@ -254,7 +247,7 @@ class SuperblockTokenParser extends \Twig_TokenParser
         }
 
         $name = $previous->getAttribute('name');
-        $reference = new SuperblockReference($name, $variables, $previous->getTemplateLine(), $previous->getNodeTag());
+        $reference = new SuperblockReference($name, $variables, array(), $previous->getTemplateLine(), $previous->getNodeTag());
         $reference->setAttribute('is_closure', true);
         $reference->setAttribute('parent_name', $parentName);
 
@@ -273,5 +266,56 @@ class SuperblockTokenParser extends \Twig_TokenParser
         }
 
         return $type;
+    }
+
+    /**
+     * Get the variables defines in the Sfor attribute.
+     *
+     * @param \Twig_TokenStream $stream
+     *
+     * @return string[] The sfor variable names
+     *
+     * @throws \Twig_Error_Syntax
+     */
+    protected function getSforVariables(\Twig_TokenStream $stream)
+    {
+        $forOptions = new \Twig_Node_Expression_Array(array(), $stream->getCurrent()->getLine());
+        $this->addKeyValues($stream, $forOptions);
+        $sfor = $forOptions->getNode(1)->getAttribute('value');
+
+        preg_match('/([\w\d\_]+) in ([\w\d\_]+)/', $sfor, $matches);
+
+        if (!isset($matches[1]) || !isset($matches[2])) {
+            throw new \Twig_Error_Syntax("The sfor parameter must be the pattern: '<varialble> in <variables>'", $stream->getCurrent()->getLine(), $stream->getSourceContext()->getName());
+        }
+
+        return array($matches[1], $matches[2]);
+    }
+
+    /**
+     * Add key with values in the array of values.
+     *
+     * @param \Twig_TokenStream           $stream The stream
+     * @param \Twig_Node_Expression_Array $values The values
+     *
+     * @throws \Twig_Error_Syntax
+     */
+    protected function addKeyValues(\Twig_TokenStream $stream, \Twig_Node_Expression_Array $values)
+    {
+        if (!$stream->test(\Twig_Token::NAME_TYPE)
+            && !$stream->test(\Twig_Token::STRING_TYPE)) {
+            throw new \Twig_Error_Syntax(sprintf('The attribute name "%s" must be an STRING or CONSTANT', $stream->getCurrent()->getValue()), $stream->getCurrent()->getLine(), $stream->getSourceContext()->getName());
+        }
+
+        $attr = $stream->getCurrent();
+        $attr = new \Twig_Node_Expression_Constant($attr->getValue(), $attr->getLine());
+        $stream->next();
+
+        if (!$stream->test(\Twig_Token::OPERATOR_TYPE, '=')) {
+            throw new \Twig_Error_Syntax("The attribute must be followed by '=' operator", $stream->getCurrent()->getLine(), $stream->getSourceContext()->getName());
+        }
+
+        $stream->next();
+        $values->addElement($this->parser->getExpressionParser()->parseExpression(), $attr);
     }
 }
