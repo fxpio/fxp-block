@@ -11,11 +11,11 @@
 
 namespace Sonatra\Component\Block\Extension\DataCollector\Proxy;
 
-use Sonatra\Component\Block\Extension\DataCollector\BlockDataCollectorInterface;
 use Sonatra\Component\Block\BlockBuilderInterface;
 use Sonatra\Component\Block\BlockFactoryInterface;
 use Sonatra\Component\Block\BlockInterface;
 use Sonatra\Component\Block\BlockView;
+use Sonatra\Component\Block\Extension\DataCollector\BlockDataCollectorInterface;
 use Sonatra\Component\Block\ResolvedBlockTypeInterface;
 
 /**

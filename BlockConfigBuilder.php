@@ -14,13 +14,13 @@ namespace Sonatra\Component\Block;
 use Sonatra\Component\Block\Exception\BadMethodCallException;
 use Sonatra\Component\Block\Exception\InvalidArgumentException;
 use Sonatra\Component\Block\Exception\UnexpectedTypeException;
-use Symfony\Component\EventDispatcher\ImmutableEventDispatcher;
-use Symfony\Component\Form\Form;
-use Symfony\Component\PropertyAccess\PropertyPath;
-use Symfony\Component\PropertyAccess\PropertyPathInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\EventDispatcher\ImmutableEventDispatcher;
+use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\PropertyAccess\PropertyPath;
+use Symfony\Component\PropertyAccess\PropertyPathInterface;
 
 /**
  * A basic block configuration.

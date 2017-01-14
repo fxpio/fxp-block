@@ -16,11 +16,11 @@ use Sonatra\Component\Block\BlockBuilderInterface;
 use Sonatra\Component\Block\BlockInterface;
 use Sonatra\Component\Block\BlockView;
 use Sonatra\Component\Block\Exception\InvalidConfigurationException;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\Options;
-use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
-use Symfony\Component\PropertyAccess\PropertyAccess;
 use Sonatra\Component\Block\Extension\Core\DataMapper\PropertyPathMapper;
+use Symfony\Component\OptionsResolver\Options;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\PropertyAccess\PropertyAccess;
+use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>

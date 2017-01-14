@@ -11,9 +11,9 @@
 
 namespace Sonatra\Component\Block;
 
-use Sonatra\Component\Block\Exception\UnexpectedTypeException;
 use Sonatra\Component\Block\Exception\ExceptionInterface;
 use Sonatra\Component\Block\Exception\InvalidArgumentException;
+use Sonatra\Component\Block\Exception\UnexpectedTypeException;
 
 /**
  * The central registry of the Block component.

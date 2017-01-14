@@ -11,8 +11,8 @@
 
 namespace Sonatra\Component\Block\Extension\DataCollector\Proxy;
 
-use Sonatra\Component\Block\Extension\DataCollector\BlockDataCollectorInterface;
 use Sonatra\Component\Block\BlockTypeInterface;
+use Sonatra\Component\Block\Extension\DataCollector\BlockDataCollectorInterface;
 use Sonatra\Component\Block\ResolvedBlockTypeFactoryInterface;
 use Sonatra\Component\Block\ResolvedBlockTypeInterface;
 

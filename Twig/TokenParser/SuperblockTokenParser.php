@@ -12,8 +12,8 @@
 namespace Sonatra\Component\Block\Twig\TokenParser;
 
 use Sonatra\Component\Block\Twig\Node\Superblock;
-use Sonatra\Component\Block\Twig\Node\SuperblockReference;
 use Sonatra\Component\Block\Twig\Node\SuperblockClosure;
+use Sonatra\Component\Block\Twig\Node\SuperblockReference;
 
 /**
  * Token Parser for the 'sblock' tag.

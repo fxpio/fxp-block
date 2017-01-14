@@ -11,9 +11,9 @@
 
 namespace Sonatra\Component\Block\Doctrine\DataTransformer;
 
-use Sonatra\Component\Block\Exception\UnexpectedTypeException;
-use Sonatra\Component\Block\DataTransformerInterface;
 use Doctrine\Common\Collections\Collection;
+use Sonatra\Component\Block\DataTransformerInterface;
+use Sonatra\Component\Block\Exception\UnexpectedTypeException;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>

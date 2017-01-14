@@ -11,10 +11,10 @@
 
 namespace Sonatra\Component\Block\Templating\Helper;
 
-use Sonatra\Component\Block\Extension\Core\Type\BlockType;
-use Symfony\Component\Templating\Helper\Helper;
 use Sonatra\Component\Block\BlockRendererInterface;
 use Sonatra\Component\Block\BlockView;
+use Sonatra\Component\Block\Extension\Core\Type\BlockType;
+use Symfony\Component\Templating\Helper\Helper;
 
 /**
  * BlockHelper provides helpers to help display blocks.

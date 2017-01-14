@@ -11,8 +11,8 @@
 
 namespace Sonatra\Component\Block;
 
-use Sonatra\Component\Block\Guess\Guess;
 use Sonatra\Component\Block\Exception\UnexpectedTypeException;
+use Sonatra\Component\Block\Guess\Guess;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>

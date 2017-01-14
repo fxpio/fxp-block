@@ -11,10 +11,10 @@
 
 namespace Sonatra\Component\Block\Extension\DataCollector\EventListener;
 
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Sonatra\Component\Block\Extension\DataCollector\BlockDataCollectorInterface;
 use Sonatra\Component\Block\BlockEvent;
 use Sonatra\Component\Block\BlockEvents;
+use Sonatra\Component\Block\Extension\DataCollector\BlockDataCollectorInterface;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
  * Listener that invokes a data collector for the {@link BlockEvents::POST_SET_DATA}.

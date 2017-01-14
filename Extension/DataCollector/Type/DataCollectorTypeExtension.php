@@ -12,10 +12,10 @@
 namespace Sonatra\Component\Block\Extension\DataCollector\Type;
 
 use Sonatra\Component\Block\AbstractTypeExtension;
-use Sonatra\Component\Block\Extension\Core\Type\BlockType;
-use Sonatra\Component\Block\Extension\DataCollector\EventListener\DataCollectorListener;
-use Sonatra\Component\Block\Extension\DataCollector\BlockDataCollectorInterface;
 use Sonatra\Component\Block\BlockBuilderInterface;
+use Sonatra\Component\Block\Extension\Core\Type\BlockType;
+use Sonatra\Component\Block\Extension\DataCollector\BlockDataCollectorInterface;
+use Sonatra\Component\Block\Extension\DataCollector\EventListener\DataCollectorListener;
 
 /**
  * Type extension for collecting data of a block with this type.

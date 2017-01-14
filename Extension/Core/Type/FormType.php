@@ -16,10 +16,10 @@ use Sonatra\Component\Block\BlockBuilderInterface;
 use Sonatra\Component\Block\BlockInterface;
 use Sonatra\Component\Block\BlockView;
 use Sonatra\Component\Block\Util\BlockFormUtil;
+use Symfony\Component\Form\Extension\Core\Type\FormType as FormFormType;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\FormFactoryInterface;
-use Symfony\Component\Form\Extension\Core\Type\FormType as FormFormType;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>

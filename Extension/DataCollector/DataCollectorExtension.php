@@ -11,8 +11,8 @@
 
 namespace Sonatra\Component\Block\Extension\DataCollector;
 
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Sonatra\Component\Block\AbstractExtension;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
  * Extension for collecting data of the blocks on a page.

@@ -12,13 +12,13 @@
 namespace Sonatra\Component\Block\Twig\Extension;
 
 use Sonatra\Component\Block\BlockFactoryInterface;
+use Sonatra\Component\Block\BlockInterface;
+use Sonatra\Component\Block\BlockRegistryInterface;
 use Sonatra\Component\Block\BlockTypeInterface;
 use Sonatra\Component\Block\BlockView;
-use Sonatra\Component\Block\BlockRegistryInterface;
+use Sonatra\Component\Block\Twig\Block\TwigRendererInterface;
 use Sonatra\Component\Block\Twig\TokenParser\BlockThemeTokenParser;
 use Sonatra\Component\Block\Twig\TokenParser\SuperblockTokenParser;
-use Sonatra\Component\Block\Twig\Block\TwigRendererInterface;
-use Sonatra\Component\Block\BlockInterface;
 use Sonatra\Component\Block\Util\BlockUtil;
 
 /**

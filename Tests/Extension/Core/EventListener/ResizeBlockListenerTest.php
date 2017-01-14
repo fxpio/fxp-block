@@ -11,13 +11,13 @@
 
 namespace Sonatra\Component\Block\Tests\Extension\Core\EventListener;
 
+use Sonatra\Component\Block\BlockBuilder;
+use Sonatra\Component\Block\BlockEvent;
 use Sonatra\Component\Block\BlockEvents;
 use Sonatra\Component\Block\BlockFactoryInterface;
 use Sonatra\Component\Block\BlockInterface;
 use Sonatra\Component\Block\DataMapperInterface;
 use Sonatra\Component\Block\Extension\Core\EventListener\ResizeBlockListener;
-use Sonatra\Component\Block\BlockBuilder;
-use Sonatra\Component\Block\BlockEvent;
 use Sonatra\Component\Block\Extension\Core\Type\TextType;
 use Sonatra\Component\Block\ResolvedBlockTypeInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;

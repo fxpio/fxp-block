@@ -12,9 +12,9 @@
 namespace Sonatra\Component\Block\Extension\DependencyInjection;
 
 use Sonatra\Component\Block\BlockExtensionInterface;
+use Sonatra\Component\Block\BlockTypeGuesserChain;
 use Sonatra\Component\Block\Exception\InvalidArgumentException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Sonatra\Component\Block\BlockTypeGuesserChain;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>

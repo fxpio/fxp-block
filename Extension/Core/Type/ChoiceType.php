@@ -24,8 +24,8 @@ use Symfony\Component\Form\ChoiceList\Factory\PropertyAccessDecorator;
 use Symfony\Component\Form\ChoiceList\View\ChoiceGroupView;
 use Symfony\Component\Form\ChoiceList\View\ChoiceListView;
 use Symfony\Component\Form\ChoiceList\View\ChoiceView;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\Options;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>

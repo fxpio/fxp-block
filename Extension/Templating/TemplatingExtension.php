@@ -13,8 +13,8 @@ namespace Sonatra\Component\Block\Extension\Templating;
 
 use Sonatra\Component\Block\AbstractExtension;
 use Sonatra\Component\Block\BlockRenderer;
-use Symfony\Component\Templating\PhpEngine;
 use Sonatra\Component\Block\Templating\Helper\BlockHelper;
+use Symfony\Component\Templating\PhpEngine;
 
 /**
  * Integrates the Templating component with the Block library.

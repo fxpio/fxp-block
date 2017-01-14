@@ -11,8 +11,8 @@
 
 namespace Sonatra\Component\Block\Extension\Core\EventListener;
 
-use Sonatra\Component\Block\BlockEvents;
 use Sonatra\Component\Block\BlockEvent;
+use Sonatra\Component\Block\BlockEvents;
 use Sonatra\Component\Block\Exception\UnexpectedTypeException;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 

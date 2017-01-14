@@ -11,8 +11,8 @@
 
 namespace Sonatra\Component\Block\Tests\Fixtures\DataTransformer;
 
-use Sonatra\Component\Block\BlockEvents;
 use Sonatra\Component\Block\BlockEvent;
+use Sonatra\Component\Block\BlockEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**

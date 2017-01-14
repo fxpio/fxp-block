@@ -15,10 +15,10 @@ use Sonatra\Component\Block\BlockRegistry;
 use Sonatra\Component\Block\BlockTypeGuesserChain;
 use Sonatra\Component\Block\BlockTypeGuesserInterface;
 use Sonatra\Component\Block\ResolvedBlockTypeFactoryInterface;
+use Sonatra\Component\Block\Tests\Fixtures\Extension\FooTypeBarExtension;
+use Sonatra\Component\Block\Tests\Fixtures\Extension\FooTypeBazExtension;
 use Sonatra\Component\Block\Tests\Fixtures\TestCustomExtension;
 use Sonatra\Component\Block\Tests\Fixtures\Type\FooSubType;
-use Sonatra\Component\Block\Tests\Fixtures\Extension\FooTypeBazExtension;
-use Sonatra\Component\Block\Tests\Fixtures\Extension\FooTypeBarExtension;
 use Sonatra\Component\Block\Tests\Fixtures\Type\FooType;
 
 /**

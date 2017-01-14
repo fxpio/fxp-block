@@ -13,9 +13,9 @@ namespace Sonatra\Component\Block\Extension\Core\Type;
 
 use Sonatra\Component\Block\AbstractType;
 use Sonatra\Component\Block\BlockBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 use Sonatra\Component\Block\Extension\Core\DataTransformer\DateTimeToLocalizedStringTransformer;
+use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>

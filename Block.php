@@ -11,8 +11,8 @@
 
 namespace Sonatra\Component\Block;
 
-use Sonatra\Component\Block\Exception\LogicException;
 use Sonatra\Component\Block\Exception\InvalidArgumentException;
+use Sonatra\Component\Block\Exception\LogicException;
 use Sonatra\Component\Block\Exception\RuntimeException;
 use Sonatra\Component\Block\Exception\TransformationFailedException;
 use Sonatra\Component\Block\Exception\UnexpectedTypeException;

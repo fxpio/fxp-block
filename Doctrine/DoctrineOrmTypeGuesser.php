@@ -17,6 +17,7 @@ use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Doctrine\ORM\Mapping\MappingException as LegacyMappingException;
 use Sonatra\Component\Block\BlockTypeGuesserInterface;
+use Sonatra\Component\Block\Doctrine\Type\EntityType;
 use Sonatra\Component\Block\Extension\Core\Type\CheckboxType;
 use Sonatra\Component\Block\Extension\Core\Type\CollectionType;
 use Sonatra\Component\Block\Extension\Core\Type\DateTimeType;
@@ -28,7 +29,6 @@ use Sonatra\Component\Block\Extension\Core\Type\TextType;
 use Sonatra\Component\Block\Extension\Core\Type\TimeType;
 use Sonatra\Component\Block\Guess\Guess;
 use Sonatra\Component\Block\Guess\TypeGuess;
-use Sonatra\Component\Block\Doctrine\Type\EntityType;
 
 class DoctrineOrmTypeGuesser implements BlockTypeGuesserInterface
 {

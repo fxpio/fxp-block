@@ -13,8 +13,8 @@ namespace Sonatra\Component\Block\Extension\Core\Type;
 
 use Sonatra\Component\Block\AbstractType;
 use Sonatra\Component\Block\BlockBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Sonatra\Component\Block\Extension\Core\DataTransformer\PasswordTransformer;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>

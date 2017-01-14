@@ -11,8 +11,8 @@
 
 namespace Sonatra\Component\Block;
 
-use Sonatra\Component\Block\Exception\InvalidArgumentException;
 use Sonatra\Component\Block\Exception\BadMethodCallException;
+use Sonatra\Component\Block\Exception\InvalidArgumentException;
 use Sonatra\Component\Block\Exception\UnexpectedTypeException;
 use Sonatra\Component\Block\Extension\Core\Type\TextType;
 use Sonatra\Component\Block\Util\BlockUtil;

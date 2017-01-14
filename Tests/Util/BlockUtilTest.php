@@ -12,8 +12,8 @@
 namespace Sonatra\Component\Block\Tests\Util;
 
 use Sonatra\Component\Block\BlockInterface;
-use Sonatra\Component\Block\Util\BlockUtil;
 use Sonatra\Component\Block\Tests\Fixtures\Type\FooType;
+use Sonatra\Component\Block\Util\BlockUtil;
 
 /**
  * Block Util Test.
