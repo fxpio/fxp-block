@@ -60,8 +60,22 @@ class BlockFormUtil
     {
         $parentForm = static::getParentFormView($view);
 
-        if (null !== $parentForm && isset($parentForm->vars['form']->children[$block->getName()])) {
-            return $parentForm->vars['form']->children[$block->getName()];
+        if (null !== $parentForm) {
+            $formPath = $block->hasOption('form_path') && null !== $block->getOption('form_path')
+                ? $block->getOption('form_path')
+                : $block->getName();
+            $formNames = explode('.', $formPath);
+            $form = $parentForm->vars['form'];
+
+            foreach ($formNames as $formName) {
+                if (isset($form->children[$formName])) {
+                    $form = $form->children[$formName];
+                }
+            }
+
+            if ($form !== $parentForm->vars['form']) {
+                return $form;
+            }
         }
 
         return $block->getForm()->createView($parentForm);

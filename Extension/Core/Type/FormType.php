@@ -108,6 +108,7 @@ class FormType extends AbstractType
         $resolver->setDefaults(array(
             'type' => FormFormType::class,
             'options' => array(),
+            'form_path' => null,
         ));
 
         $resolver->addAllowedTypes('type', array('string', 'Symfony\Component\Form\FormInterface'));
