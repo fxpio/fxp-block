@@ -94,7 +94,7 @@ class SuperblockReference extends \Twig_Node implements \Twig_NodeOutputInterfac
         $this->compileChildBlock($compiler, '$key');
         $compiler
             ->outdent()
-            ->write("}")->raw("\n")
+            ->write('}')->raw("\n")
             ->write('unset($context[')->string($loop[0])->raw(']);')->raw("\n")
         ;
     }
