@@ -283,13 +283,30 @@ class SuperblockTokenParser extends \Twig_TokenParser
         $this->addKeyValues($stream, $forOptions);
         $sfor = $forOptions->getNode(1)->getAttribute('value');
 
-        preg_match('/([\w\d\_]+) in ([\w\d\_]+)/', $sfor, $matches);
+        preg_match('/([\w\d\_]+) in ([\w\d\_\.\(\)\'\"]+)/', $sfor, $matches);
 
         if (!isset($matches[1]) || !isset($matches[2])) {
-            throw new \Twig_Error_Syntax("The sfor parameter must be the pattern: '<varialble> in <variables>'", $stream->getCurrent()->getLine(), $stream->getSourceContext()->getName());
+            throw new \Twig_Error_Syntax("The sfor parameter must be the pattern: '<variable> in <variables>'", $stream->getCurrent()->getLine(), $stream->getSourceContext()->getName());
         }
 
-        return array($matches[1], $matches[2]);
+        return array($matches[1], $this->getSforInVariableNode($matches[2]));
+    }
+
+    /**
+     * Get the in variable of sfor.
+     *
+     * @param string $variable The in variable of sfor
+     *
+     * @return \Twig_Node
+     */
+    protected function getSforInVariableNode($variable)
+    {
+        $env = new \Twig_Environment(new \Twig_Loader_Array());
+        $parser = new \Twig_Parser($env);
+        $lexer = new \Twig_Lexer($env);
+        $stream = $lexer->tokenize(new \Twig_Source('{{'.$variable.'}}', 'variables'));
+
+        return $parser->parse($stream)->getNode('body')->getNode(0)->getNode('expr')->getNode('node');
     }
 
     /**

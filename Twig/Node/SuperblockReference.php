@@ -87,7 +87,7 @@ class SuperblockReference extends \Twig_Node implements \Twig_NodeOutputInterfac
         $loop = $this->getAttribute('loop');
 
         $compiler
-            ->write('foreach($this->getContext($context, ')->string($loop[1])->raw(') as $key => $value) {')->raw("\n")
+            ->write('foreach(')->subcompile($loop[1])->raw(' as $key => $value) {')->raw("\n")
             ->indent()
             ->write('$context[')->string($loop[0])->raw('] = $value;')->raw("\n")
         ;
