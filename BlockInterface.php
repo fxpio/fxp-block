@@ -47,7 +47,7 @@ interface BlockInterface extends \ArrayAccess, \Traversable, \Countable
      * Sets the value for an option.
      *
      * @param string $name  The name of the option
-     * @param string $value The value of the option
+     * @param mixed  $value The value of the option
      *
      * @return BlockInterface The block instance
      */

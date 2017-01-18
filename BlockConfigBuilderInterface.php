@@ -85,7 +85,7 @@ interface BlockConfigBuilderInterface extends BlockConfigInterface
      * Sets the value for an attribute.
      *
      * @param string $name  The name of the attribute
-     * @param string $value The value of the attribute
+     * @param mixed  $value The value of the attribute
      *
      * @return self The configuration object
      */
