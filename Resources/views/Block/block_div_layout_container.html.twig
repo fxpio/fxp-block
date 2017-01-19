@@ -1,0 +1,133 @@
+{# Widgets #}
+
+{% block block_widget -%}
+    {%- if compound -%}
+        {{- block('block_widget_compound') -}}
+    {%- else -%}
+        {{- block('block_widget_simple') -}}
+    {%- endif -%}
+{%- endblock block_widget %}
+
+{% block block_component -%}
+{%- endblock block_component %}
+
+
+{% block block_widget_simple -%}
+{%- if rendered -%}
+    {% if wrapped %}<div{{ block('widget_attributes') }}>{% endif %}{{ value|raw }}{% if wrapped %}</div>{% endif %}
+{%- endif -%}
+{%- endblock block_widget_simple %}
+
+{% block block_widget_compound -%}
+{%- if rendered -%}
+    {%- if wrapped %}<div{{ block('widget_container_attributes') }}>{% endif %}
+    {{- block('block_rows') -}}
+    {% if wrapped %}</div>{% endif -%}
+{%- endif -%}
+{%- endblock block_widget_compound %}
+
+
+{% block output_widget -%}
+{%- if rendered -%}
+    {%- if escape -%}
+        {{- value -}}
+    {%- else -%}
+        {{ value|raw }}
+    {%- endif -%}
+    {{- block('block_rows') -}}
+{%- endif -%}
+{%- endblock output_widget %}
+
+
+{% block closure_widget -%}
+{%- if rendered -%}
+    {{- value|raw_closure(block) -}}
+    {{- block('block_rows') -}}
+{%- endif -%}
+{%- endblock closure_widget %}
+
+{# Labels #}
+
+{% block block_label -%}
+{%- if rendered -%}
+    {%- if not compound -%}
+        {%- set label_attr = label_attr -%}
+    {%- endif -%}
+
+    {%- set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' block_label')|trim}) -%}
+
+    {%- if label is null -%}
+        {%- if label_format is not empty -%}
+            {%- set label = label_format|replace({
+                '%name%': name,
+                '%id%': id,
+            }) -%}
+        {%- else -%}
+            {%- set label = name|block_humanize -%}
+        {%- endif -%}
+    {%- endif -%}
+
+    {%- if label is not empty -%}
+        <div{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
+            {%- set block_label_content = block_label_content|default('block_label_content') -%}
+            {{- block(block_label_content) -}}
+        </div>
+    {%- endif -%}
+{%- endif -%}
+{%- endblock block_label %}
+
+{% block block_label_content -%}
+{%- if rendered -%}
+    {{- label|block_trans({}, translation_domain) -}}
+{%- endif -%}
+{%- endblock block_label_content %}
+
+{# Rows #}
+
+{% block repeated_row -%}
+{%- if rendered -%}
+    {{- block('block_rows') -}}
+{%- endif -%}
+{%- endblock repeated_row %}
+
+{% block block_row -%}
+{%- if rendered -%}
+    {%- if block.parent.vars.row|default(false) -%}
+        <div>
+    {%- endif -%}
+    {%- if block.parent.vars.row|default(false) and block.parent.vars.row_label|default(false) -%}
+        {{- block_label(block) -}}
+    {%- endif -%}
+    {{- block_widget(block) -}}
+    {%- if block.parent.vars.row|default(false) -%}
+        </div>
+    {%- endif -%}
+{%- endif -%}
+{%- endblock block_row %}
+
+{% block hidden_row -%}
+{%- if rendered -%}
+    {{- block_widget(block) -}}
+{%- endif -%}
+{%- endblock hidden_row %}
+
+{# Misc #}
+
+
+{# Support #}
+
+{% block block_rows -%}
+{%- if rendered -%}
+    {%- for child in block -%}
+        {{- block_row(child) -}}
+    {%- endfor -%}
+{%- endif -%}
+{%- endblock block_rows -%}
+
+{% block widget_attributes -%}
+    {%- if render_id %} id="{{ id }}"{% endif %}{% for attrname, attrvalue in attr %} {{ attrname }}="{{ attrvalue }}"{% endfor -%}
+{%- endblock widget_attributes %}
+
+{% block widget_container_attributes -%}
+    {%- if render_id %} id="{{ id }}"{% endif %}{% for attrname, attrvalue in attr %} {{ attrname }}="{{ attrvalue }}"{% endfor -%}
+{%- endblock widget_container_attributes %}

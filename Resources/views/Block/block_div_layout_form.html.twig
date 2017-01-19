@@ -1,0 +1,63 @@
+{# Form Widget #}
+{% block form_row -%}
+{%- if rendered -%}
+    {{- block_widget(block) -}}
+{%- endif -%}
+{%- endblock form_row %}
+
+{% block form_label -%}
+{%- endblock form_label %}
+
+
+{% block form_widget -%}
+{%- if rendered -%}
+    {{- block('form_start_widget') -}}
+    {{- block('form_errors_widget') -}}
+    {{- block('form_content_widget') -}}
+    {{- block('form_end_widget') -}}
+{%- endif -%}
+{%- endblock form_widget %}
+
+
+{% block form_content_widget -%}
+{%- if rendered -%}
+    {%- for child in block -%}
+        {{- block_widget(child) -}}
+    {%- endfor -%}
+    {{- form_widget(block_form) }}
+{%- endif -%}
+{%- endblock form_content_widget %}
+
+
+{% block form_start_widget -%}
+{%- if rendered -%}
+    {%- if block_form.parent is empty and block_form.children|length > 0 and 'button' not in block_form.vars.block_prefixes -%}
+        {{- form_start(block_form) -}}
+    {%- endif -%}
+{%- endif -%}
+{%- endblock form_start_widget %}
+
+
+{% block form_end_widget -%}
+{%- if rendered -%}
+    {%- if block_form.parent is empty and block_form.children|length > 0 and 'button' not in block_form.vars.block_prefixes -%}
+        {{- form_end(block_form) -}}
+    {%- endif -%}
+{%- endif -%}
+{%- endblock form_end_widget %}
+
+{% block form_errors_widget -%}
+{%- if rendered -%}
+    {%- if block_form is defined and block_form.parent is empty and 'button' not in block_form.vars.block_prefixes -%}
+        {{- form_errors(block_form) -}}
+    {%- endif -%}
+{%- endif -%}
+{%- endblock form_errors_widget %}
+
+{% block form_rest_widget -%}
+{%- if rendered -%}
+    {%- if block_form is defined -%}
+        {{- form_rest(block_form) -}}
+    {%- endif -%}
+{%- endif -%}
+{%- endblock form_rest_widget %}
