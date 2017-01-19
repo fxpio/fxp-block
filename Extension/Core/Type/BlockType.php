@@ -110,6 +110,7 @@ class BlockType extends AbstractType
                 'block' => $view,
                 'id' => $id,
                 'name' => $name,
+                'rendered' => $options['rendered'],
                 'render_id' => $options['render_id'],
                 'row' => $options['row'],
                 'row_label' => $options['row_label'],
@@ -131,6 +132,18 @@ class BlockType extends AbstractType
                 // be rendered differently.
                 'cache_key' => $uniqueBlockPrefix.'_'.$block->getConfig()->getType()->getBlockPrefix(),
         ));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function finishView(BlockView $view, BlockInterface $block, array $options)
+    {
+        foreach ($view->children as $name => $child) {
+            if (!$child->vars['rendered']) {
+                unset($view->children[$name]);
+            }
+        }
     }
 
     /**
@@ -171,6 +184,7 @@ class BlockType extends AbstractType
         $resolver->setDefaults(array(
                 'block_name' => null,
                 'id' => null,
+                'rendered' => true,
                 'render_id' => false,
                 'row' => false,
                 'row_label' => false,
@@ -191,6 +205,7 @@ class BlockType extends AbstractType
                 'auto_initialize' => true,
         ));
 
+        $resolver->setAllowedTypes('rendered', 'bool');
         $resolver->setAllowedTypes('empty_message', array('null', 'string'));
         $resolver->setAllowedTypes('attr', 'array');
         $resolver->setAllowedTypes('label_attr', 'array');
