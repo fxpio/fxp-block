@@ -60,22 +60,17 @@ abstract class BaseSuperblockTokenParser extends \Twig_TokenParser
         }
 
         // {% sblock 'checkbox' data=true block_name='foo' label='Bar' :%}
-        if ($stream->look(1)->getType() === \Twig_Token::OPERATOR_TYPE
-            && $stream->look(1)->getValue() === '=') {
+        if ($this->isNotSpecialToken($stream)
+                && $stream->look(1)->getType() === \Twig_Token::OPERATOR_TYPE
+                && $stream->look(1)->getValue() === '=') {
             $options = new \Twig_Node_Expression_Array(array(), $stream->getCurrent()->getLine());
 
             do {
                 $this->addKeyValues($stream, $options);
-            } while (!$stream->test(\Twig_Token::NAME_TYPE, 'with')
-                && !$stream->test(\Twig_Token::NAME_TYPE, 'sfor')
-                && !$stream->test(\Twig_Token::PUNCTUATION_TYPE, ':')
-                && !$stream->test(\Twig_Token::BLOCK_END_TYPE));
+            } while ($this->isNotSpecialToken($stream));
 
             // {% sblock 'checkbox' {data:true} ... :%} or {% sblock 'checkbox' ... :%}
-        } elseif (!$stream->test(\Twig_Token::NAME_TYPE, 'with')
-            && !$stream->test(\Twig_Token::NAME_TYPE, 'sfor')
-            && !$stream->test(\Twig_Token::PUNCTUATION_TYPE, ':')
-            && !$stream->test(\Twig_Token::BLOCK_END_TYPE)) {
+        } elseif ($this->isNotSpecialToken($stream)) {
             $options = $this->parser->getExpressionParser()->parseExpression();
         }
 
@@ -102,7 +97,7 @@ abstract class BaseSuperblockTokenParser extends \Twig_TokenParser
                 && !$stream->test(\Twig_Token::BLOCK_END_TYPE));
         }
 
-        // end schortcut
+        // end shortcut
         if ($stream->test(\Twig_Token::PUNCTUATION_TYPE, ':')) {
             $stream->next();
             $skip = true;
@@ -228,5 +223,20 @@ abstract class BaseSuperblockTokenParser extends \Twig_TokenParser
 
         $stream->next();
         $values->addElement($this->parser->getExpressionParser()->parseExpression(), $attr);
+    }
+
+    /**
+     * Check if the current token isn't a special token (sfor, with, :).
+     *
+     * @param \Twig_TokenStream $stream The stream
+     *
+     * @return bool
+     */
+    protected function isNotSpecialToken(\Twig_TokenStream $stream)
+    {
+        return !$stream->test(\Twig_Token::NAME_TYPE, 'with')
+            && !$stream->test(\Twig_Token::NAME_TYPE, 'sfor')
+            && !$stream->test(\Twig_Token::PUNCTUATION_TYPE, ':')
+            && !$stream->test(\Twig_Token::BLOCK_END_TYPE);
     }
 }
