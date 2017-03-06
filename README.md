@@ -54,7 +54,7 @@ License
 
 This library is under the MIT license. See the complete license:
 
-[Resources/meta/LICENSE](Resources/meta/LICENSE)
+[LICENSE](LICENSE)
 
 About
 -----
