@@ -127,7 +127,7 @@ class OrderedHashMap implements \ArrayAccess, \IteratorAggregate, \Countable
             if (null === $key) {
                 $key = array() === $this->orderedKeys
                     ? 0
-                    : max($this->orderedKeys) + 1;
+                    : 1 + (int) max($this->orderedKeys);
             }
 
             $this->orderedKeys[] = $key;
