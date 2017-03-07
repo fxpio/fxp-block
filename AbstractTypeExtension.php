@@ -14,6 +14,7 @@ namespace Sonatra\Component\Block;
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-abstract class AbstractTypeExtension extends AbstractCommonType implements BlockTypeExtensionInterface
+abstract class AbstractTypeExtension implements BlockTypeExtensionInterface
 {
+    use CommonTypeTrait;
 }

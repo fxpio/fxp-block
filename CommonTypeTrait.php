@@ -16,7 +16,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-abstract class AbstractCommonType
+trait CommonTypeTrait
 {
     /**
      * {@inheritdoc}

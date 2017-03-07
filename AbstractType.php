@@ -17,8 +17,10 @@ use Sonatra\Component\Block\Util\StringUtil;
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-abstract class AbstractType extends AbstractCommonType implements BlockTypeInterface
+abstract class AbstractType implements BlockTypeInterface
 {
+    use CommonTypeTrait;
+
     /**
      * {@inheritdoc}
      */
