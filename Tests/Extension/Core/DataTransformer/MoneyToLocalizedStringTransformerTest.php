@@ -11,13 +11,14 @@
 
 namespace Sonatra\Component\Block\Tests\Extension\Core\DataTransformer;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\Extension\Core\DataTransformer\MoneyToLocalizedStringTransformer;
 use Symfony\Component\Intl\Util\IntlTestHelper;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class MoneyToLocalizedStringTransformerTest extends \PHPUnit_Framework_TestCase
+class MoneyToLocalizedStringTransformerTest extends TestCase
 {
     protected function setUp()
     {

@@ -11,13 +11,14 @@
 
 namespace Sonatra\Component\Block\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\BlockTypeInterface;
 use Sonatra\Component\Block\ResolvedBlockTypeFactory;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class ResolvedBlockTypeFactoryTest extends \PHPUnit_Framework_TestCase
+class ResolvedBlockTypeFactoryTest extends TestCase
 {
     public function testCreateResolvedType()
     {

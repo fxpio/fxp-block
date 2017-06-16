@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Block\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\BlockExtensionInterface;
 use Sonatra\Component\Block\BlockFactoryBuilder;
 use Sonatra\Component\Block\BlockFactoryBuilderInterface;
@@ -22,7 +23,7 @@ use Sonatra\Component\Block\ResolvedBlockTypeFactoryInterface;
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class BlockFactoryBuilderTest extends \PHPUnit_Framework_TestCase
+class BlockFactoryBuilderTest extends TestCase
 {
     /**
      * @var BlockFactoryBuilderInterface

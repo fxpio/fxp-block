@@ -11,13 +11,14 @@
 
 namespace Sonatra\Component\Block\Tests\Extension\Core\DataTransformer;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\Extension\Core\DataTransformer\ChoiceToValueTransformer;
 use Symfony\Component\Form\ChoiceList\ArrayChoiceList;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class ChoiceToValueTransformerTest extends \PHPUnit_Framework_TestCase
+class ChoiceToValueTransformerTest extends TestCase
 {
     /**
      * @var ChoiceToValueTransformer

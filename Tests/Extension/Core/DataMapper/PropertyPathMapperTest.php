@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Block\Tests\Extension\Core\DataMapper;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\Block;
 use Sonatra\Component\Block\BlockConfigBuilder;
 use Sonatra\Component\Block\BlockConfigInterface;
@@ -21,7 +22,7 @@ use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class PropertyPathMapperTest extends \PHPUnit_Framework_TestCase
+class PropertyPathMapperTest extends TestCase
 {
     /**
      * @var PropertyPathMapper

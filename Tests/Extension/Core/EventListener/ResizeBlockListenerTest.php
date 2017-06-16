@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Block\Tests\Extension\Core\EventListener;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\BlockBuilder;
 use Sonatra\Component\Block\BlockEvent;
 use Sonatra\Component\Block\BlockEvents;
@@ -25,7 +26,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class ResizeBlockListenerTest extends \PHPUnit_Framework_TestCase
+class ResizeBlockListenerTest extends TestCase
 {
     /**
      * @var \PHPUnit_Framework_MockObject_MockObject

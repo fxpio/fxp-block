@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Block\Tests\Extension\Validator;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\Extension\Validator\ValidatorTypeGuesser;
 use Sonatra\Component\Block\Guess\Guess;
 use Symfony\Component\Validator\Constraints\Count;
@@ -38,7 +39,7 @@ use Symfony\Component\Validator\Mapping\Factory\MetadataFactoryInterface;
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class ValidatorTypeGuesserTest extends \PHPUnit_Framework_TestCase
+class ValidatorTypeGuesserTest extends TestCase
 {
     /**
      * @var ValidatorTypeGuesser

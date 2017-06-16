@@ -11,12 +11,13 @@
 
 namespace Sonatra\Component\Block\Tests\Extension\Core\ViewTransformer;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\Extension\Core\ViewTransformer\TwigTemplateTransformer;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class TwigTemplateTransformerTest extends \PHPUnit_Framework_TestCase
+class TwigTemplateTransformerTest extends TestCase
 {
     /**
      * @var \Twig_Environment

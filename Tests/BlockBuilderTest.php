@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Block\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\BlockBuilder;
 use Sonatra\Component\Block\BlockBuilderInterface;
 use Sonatra\Component\Block\BlockFactoryInterface;
@@ -22,7 +23,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class BlockBuilderTest extends \PHPUnit_Framework_TestCase
+class BlockBuilderTest extends TestCase
 {
     /**
      * @var EventDispatcherInterface

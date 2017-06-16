@@ -11,12 +11,13 @@
 
 namespace Sonatra\Component\Block\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\BlockRendererInterface;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class BlockRendererTest extends \PHPUnit_Framework_TestCase
+class BlockRendererTest extends TestCase
 {
     public function testHumanize()
     {

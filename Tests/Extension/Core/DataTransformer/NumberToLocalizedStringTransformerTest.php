@@ -11,13 +11,14 @@
 
 namespace Sonatra\Component\Block\Tests\Extension\Core\DataTransformer;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\Extension\Core\DataTransformer\NumberToLocalizedStringTransformer;
 use Symfony\Component\Intl\Util\IntlTestHelper;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class NumberToLocalizedStringTransformerTest extends \PHPUnit_Framework_TestCase
+class NumberToLocalizedStringTransformerTest extends TestCase
 {
     protected function setUp()
     {

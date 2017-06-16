@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Block\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\BlockConfigBuilder;
 use Sonatra\Component\Block\BlockConfigBuilderInterface;
 use Sonatra\Component\Block\DataMapperInterface;
@@ -23,7 +24,7 @@ use Symfony\Component\Form\FormInterface;
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class BlockConfigBuilderTest extends \PHPUnit_Framework_TestCase
+class BlockConfigBuilderTest extends TestCase
 {
     /**
      * @var EventDispatcherInterface
@@ -84,7 +85,7 @@ class BlockConfigBuilderTest extends \PHPUnit_Framework_TestCase
 
         $this->config->addEventListener('foo', function () {
         }, 0);
-        $this->config->addEventSubscriber($subscriber);
+        $this->assertInstanceOf(BlockConfigBuilderInterface::class, $this->config->addEventSubscriber($subscriber));
     }
 
     public function testViewTransformers()

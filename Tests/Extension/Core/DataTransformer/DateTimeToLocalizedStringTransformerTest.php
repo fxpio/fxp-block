@@ -11,13 +11,14 @@
 
 namespace Sonatra\Component\Block\Tests\Extension\Core\DataTransformer;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\Extension\Core\DataTransformer\DateTimeToLocalizedStringTransformer;
 use Symfony\Component\Intl\Util\IntlTestHelper;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class DateTimeToLocalizedStringTransformerTest extends \PHPUnit_Framework_TestCase
+class DateTimeToLocalizedStringTransformerTest extends TestCase
 {
     protected $dateTime;
     protected $dateTimeWithoutSeconds;
@@ -78,6 +79,7 @@ class DateTimeToLocalizedStringTransformerTest extends \PHPUnit_Framework_TestCa
     }
 
     /**
+     * @group fxp
      * @dataProvider dataProvider
      */
     public function testTransform($dateFormat, $timeFormat, $output, $input)

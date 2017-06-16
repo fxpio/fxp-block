@@ -11,12 +11,13 @@
 
 namespace Sonatra\Component\Block\Tests\Util;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\Util\OrderedHashMap;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class OrderedHashMapTest extends \PHPUnit_Framework_TestCase
+class OrderedHashMapTest extends TestCase
 {
     public function testGet()
     {
@@ -115,6 +116,8 @@ class OrderedHashMapTest extends \PHPUnit_Framework_TestCase
         $map = new OrderedHashMap();
 
         unset($map['first']);
+
+        $this->assertCount(0, $map);
     }
 
     public function testEmptyIteration()

@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Block\Tests\Extension\Core\Type;
 
+use Sonatra\Component\Block\BlockBuilderInterface;
 use Sonatra\Component\Block\Extension\Core\Type\BlockType;
 use Sonatra\Component\Block\Tests\Fixtures\DataTransformer\FixedDataTransformer;
 use Sonatra\Component\Block\Tests\Fixtures\Object\Foo;
@@ -33,23 +34,23 @@ class BlockTypeTest extends BaseTypeTest
 
     public function testDataClassMayBeNull()
     {
-        $this->factory->createBuilder(BlockType::class, null, array(
+        $this->assertInstanceOf(BlockBuilderInterface::class, $this->factory->createBuilder(BlockType::class, null, array(
             'data_class' => null,
-        ));
+        )));
     }
 
     public function testDataClassMayBeAbstractClass()
     {
-        $this->factory->createBuilder(BlockType::class, null, array(
+        $this->assertInstanceOf(BlockBuilderInterface::class, $this->factory->createBuilder(BlockType::class, null, array(
             'data_class' => 'Sonatra\Component\Block\Tests\Fixtures\Object\AbstractFoo',
-        ));
+        )));
     }
 
     public function testDataClassMayBeInterface()
     {
-        $this->factory->createBuilder(BlockType::class, null, array(
+        $this->assertInstanceOf(BlockBuilderInterface::class, $this->factory->createBuilder(BlockType::class, null, array(
             'data_class' => 'Sonatra\Component\Block\Tests\Fixtures\Object\FooInterface',
-        ));
+        )));
     }
 
     public function testEmptyDataCreateNewInstanceWithoutConstructorArguments()

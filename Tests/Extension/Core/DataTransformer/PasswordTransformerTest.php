@@ -11,12 +11,13 @@
 
 namespace Sonatra\Component\Block\Tests\Extension\Core\DataTransformer;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\Extension\Core\DataTransformer\PasswordTransformer;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class PasswordTransformerTest extends \PHPUnit_Framework_TestCase
+class PasswordTransformerTest extends TestCase
 {
     public function providerTestTransform()
     {

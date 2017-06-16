@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Block\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\BlockRegistry;
 use Sonatra\Component\Block\BlockTypeGuesserChain;
 use Sonatra\Component\Block\BlockTypeGuesserInterface;
@@ -24,7 +25,7 @@ use Sonatra\Component\Block\Tests\Fixtures\Type\FooType;
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class BlockRegistryTest extends \PHPUnit_Framework_TestCase
+class BlockRegistryTest extends TestCase
 {
     /**
      * @var BlockRegistry

@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Block\Tests\Exception;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\Exception\InvalidChildException;
 use Sonatra\Component\Block\Test\BlockBuilderInterface;
 use Sonatra\Component\Block\Tests\Fixtures\Type\FooType;
@@ -18,7 +19,7 @@ use Sonatra\Component\Block\Tests\Fixtures\Type\FooType;
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class InvalidChildExceptionTest extends \PHPUnit_Framework_TestCase
+class InvalidChildExceptionTest extends TestCase
 {
     /**
      * @var BlockBuilderInterface

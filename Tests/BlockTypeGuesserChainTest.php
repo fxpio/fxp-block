@@ -11,13 +11,14 @@
 
 namespace Sonatra\Component\Block\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\BlockTypeGuesserChain;
 use Sonatra\Component\Block\Guess\Guess;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class BlockTypeGuesserChainTest extends \PHPUnit_Framework_TestCase
+class BlockTypeGuesserChainTest extends TestCase
 {
     /**
      * @expectedException \Sonatra\Component\Block\Exception\UnexpectedTypeException

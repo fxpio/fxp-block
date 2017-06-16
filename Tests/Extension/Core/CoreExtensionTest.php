@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Block\Tests\Extension\Core;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\Extension\Core\CoreExtension;
 use Sonatra\Component\Block\Extension\Core\Type\BirthdayType;
 use Sonatra\Component\Block\Extension\Core\Type\BlockType;
@@ -41,7 +42,7 @@ use Sonatra\Component\Block\Tests\Fixtures\Type\FooType;
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class CoreExtensionTest extends \PHPUnit_Framework_TestCase
+class CoreExtensionTest extends TestCase
 {
     /**
      * @var CoreExtension

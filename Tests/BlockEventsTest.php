@@ -11,12 +11,13 @@
 
 namespace Sonatra\Component\Block\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\BlockEvents;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class BlockEventsTest extends \PHPUnit_Framework_TestCase
+class BlockEventsTest extends TestCase
 {
     /**
      * @expectedException \Sonatra\Component\Block\Exception\RuntimeException

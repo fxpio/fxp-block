@@ -11,13 +11,14 @@
 
 namespace Sonatra\Component\Block\Tests\Guess;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\Guess\Guess;
 use Sonatra\Component\Block\Tests\Fixtures\Guess\TestGuess;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class GuessTest extends \PHPUnit_Framework_TestCase
+class GuessTest extends TestCase
 {
     public function testGetBestGuessReturnsGuessWithHighestConfidence()
     {

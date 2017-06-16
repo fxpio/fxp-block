@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Block\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\BlockInterface;
 use Sonatra\Component\Block\BlockView;
 use Sonatra\Component\Block\DataMapperInterface;
@@ -234,7 +235,7 @@ class CompoundBlockTest extends AbstractBlockTest
 
     public function testRemoveIgnoresUnknownName()
     {
-        $this->block->remove('notexisting');
+        $this->assertInstanceOf(BlockInterface::class, $this->block->remove('notexisting'));
     }
 
     public function testArrayAccess()
@@ -448,7 +449,7 @@ class CompoundBlockTest extends AbstractBlockTest
 
         $assertChildViewsEqual = function (array $childViews) use ($test) {
             return function (BlockView $view) use ($test, $childViews) {
-                /* @var \PHPUnit_Framework_TestCase $test */
+                /* @var TestCase $test */
                 $test->assertSame($childViews, $view->children);
             };
         };

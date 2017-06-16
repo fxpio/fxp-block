@@ -11,12 +11,13 @@
 
 namespace Sonatra\Component\Block\Tests\Extension\Core\DataTransformer;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\Extension\Core\DataTransformer\ValueToDuplicatesTransformer;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class ValueToDuplicatesTransformerTest extends \PHPUnit_Framework_TestCase
+class ValueToDuplicatesTransformerTest extends TestCase
 {
     /**
      * @var ValueToDuplicatesTransformer

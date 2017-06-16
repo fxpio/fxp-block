@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Block\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\BlockExtensionInterface;
 use Sonatra\Component\Block\BlockTypeExtensionInterface;
 use Sonatra\Component\Block\Tests\Fixtures\Type\FooType;
@@ -18,7 +19,7 @@ use Sonatra\Component\Block\Tests\Fixtures\Type\FooType;
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-abstract class AbstractBaseExtensionTest extends \PHPUnit_Framework_TestCase
+abstract class AbstractBaseExtensionTest extends TestCase
 {
     /**
      * @var BlockExtensionInterface

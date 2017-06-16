@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Block\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\BlockFactoryInterface;
 use Sonatra\Component\Block\ResolvedBlockType;
 use Sonatra\Component\Block\Tests\Fixtures\Extension\FooExtension;
@@ -20,7 +21,7 @@ use Sonatra\Component\Block\Tests\Fixtures\Type\FooType;
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class ResolvedBlockTypeTest extends \PHPUnit_Framework_TestCase
+class ResolvedBlockTypeTest extends TestCase
 {
     /**
      * @expectedException \Sonatra\Component\Block\Exception\UnexpectedTypeException

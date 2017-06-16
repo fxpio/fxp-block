@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Block\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\BlockExtensionInterface;
 use Sonatra\Component\Block\Tests\Fixtures\TestExpectedExtension;
 use Sonatra\Component\Block\Tests\Fixtures\TestExtension;
@@ -19,7 +20,7 @@ use Sonatra\Component\Block\Tests\Fixtures\Type\FooType;
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class AbstractExtensionTest extends \PHPUnit_Framework_TestCase
+class AbstractExtensionTest extends TestCase
 {
     /**
      * @expectedException \Sonatra\Component\Block\Exception\InvalidArgumentException

@@ -11,13 +11,14 @@
 
 namespace Sonatra\Component\Block\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\BlockFactoryInterface;
 use Sonatra\Component\Block\Blocks;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-abstract class BlockIntegrationTestCase extends \PHPUnit_Framework_TestCase
+abstract class BlockIntegrationTestCase extends TestCase
 {
     /**
      * @var BlockFactoryInterface

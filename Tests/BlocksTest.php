@@ -11,12 +11,13 @@
 
 namespace Sonatra\Component\Block\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\Blocks;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class BlocksTest extends \PHPUnit_Framework_TestCase
+class BlocksTest extends TestCase
 {
     public function testObjectFactoryBuilderCreator()
     {

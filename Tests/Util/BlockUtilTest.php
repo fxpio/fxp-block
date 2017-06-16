@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Block\Tests\Util;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Block\BlockInterface;
 use Sonatra\Component\Block\Tests\Fixtures\Type\FooType;
 use Sonatra\Component\Block\Util\BlockUtil;
@@ -20,7 +21,7 @@ use Sonatra\Component\Block\Util\BlockUtil;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class BlockUtilTest extends \PHPUnit_Framework_TestCase
+class BlockUtilTest extends TestCase
 {
     public function testIsEmpty()
     {
