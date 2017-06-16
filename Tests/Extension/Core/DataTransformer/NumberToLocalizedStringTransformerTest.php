@@ -25,7 +25,7 @@ class NumberToLocalizedStringTransformerTest extends TestCase
         parent::setUp();
 
         // Since we test against "fr_FR", we need the full implementation
-        IntlTestHelper::requireFullIntl($this);
+        IntlTestHelper::requireFullIntl($this, false);
 
         \Locale::setDefault('fr_FR');
     }

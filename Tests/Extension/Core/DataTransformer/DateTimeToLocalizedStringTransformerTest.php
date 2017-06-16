@@ -28,7 +28,7 @@ class DateTimeToLocalizedStringTransformerTest extends TestCase
         parent::setUp();
 
         // Since we test against "fr_FR", we need the full implementation
-        IntlTestHelper::requireFullIntl($this);
+        IntlTestHelper::requireFullIntl($this, false);
 
         \Locale::setDefault('fr_FR');
 
@@ -79,7 +79,6 @@ class DateTimeToLocalizedStringTransformerTest extends TestCase
     }
 
     /**
-     * @group fxp
      * @dataProvider dataProvider
      */
     public function testTransform($dateFormat, $timeFormat, $output, $input)
