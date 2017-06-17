@@ -41,7 +41,7 @@ class BlockTranslatorExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            new \Twig_SimpleFilter('block_trans', array($this, 'trans')),
+            new \Twig_Filter('block_trans', array($this, 'trans')),
         );
     }
 

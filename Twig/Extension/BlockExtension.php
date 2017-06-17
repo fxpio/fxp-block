@@ -102,11 +102,11 @@ class BlockExtension extends \Twig_Extension
     public function getFunctions()
     {
         $functions = array(
-            new \Twig_SimpleFunction('block_widget', null, array('node_class' => 'Sonatra\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
-            new \Twig_SimpleFunction('block_component', null, array('node_class' => 'Sonatra\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
-            new \Twig_SimpleFunction('block_label', null, array('node_class' => 'Sonatra\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
-            new \Twig_SimpleFunction('block_row', null, array('node_class' => 'Sonatra\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
-            new \Twig_SimpleFunction('block_twig_render', array($this, 'renderTwigBlock'), array('is_safe' => array('html'))),
+            new \Twig_Function('block_widget', null, array('node_class' => 'Sonatra\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
+            new \Twig_Function('block_component', null, array('node_class' => 'Sonatra\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
+            new \Twig_Function('block_label', null, array('node_class' => 'Sonatra\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
+            new \Twig_Function('block_row', null, array('node_class' => 'Sonatra\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
+            new \Twig_Function('block_twig_render', array($this, 'renderTwigBlock'), array('is_safe' => array('html'))),
         );
 
         return $functions;
@@ -118,9 +118,9 @@ class BlockExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            new \Twig_SimpleFilter('block_humanize', array($this, 'humanize')),
-            new \Twig_SimpleFilter('raw_closure', array($this, 'rawClosure')),
-            new \Twig_SimpleFilter('block_formatter', array($this, 'formatter'), array('is_safe' => array('html'))),
+            new \Twig_Filter('block_humanize', array($this, 'humanize')),
+            new \Twig_Filter('raw_closure', array($this, 'rawClosure')),
+            new \Twig_Filter('block_formatter', array($this, 'formatter'), array('is_safe' => array('html'))),
         );
     }
 
