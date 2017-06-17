@@ -140,7 +140,7 @@ class BlockExtension extends \Twig_Extension
      * @param string|BlockTypeInterface|BlockInterface $type
      * @param array                                    $options
      *
-     * @return \Sonatra\Component\Block\BlockBuilderInterface
+     * @return \Sonatra\Component\Block\BlockInterface
      */
     public function createNamed($type, array $options = array())
     {
