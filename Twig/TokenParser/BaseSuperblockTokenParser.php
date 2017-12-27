@@ -61,8 +61,8 @@ abstract class BaseSuperblockTokenParser extends \Twig_TokenParser
 
         // {% sblock 'checkbox' data=true block_name='foo' label='Bar' :%}
         if ($this->isNotSpecialToken($stream)
-                && $stream->look(1)->getType() === \Twig_Token::OPERATOR_TYPE
-                && $stream->look(1)->getValue() === '=') {
+                && \Twig_Token::OPERATOR_TYPE === $stream->look(1)->getType()
+                && '=' === $stream->look(1)->getValue()) {
             $options = new \Twig_Node_Expression_Array(array(), $stream->getCurrent()->getLine());
 
             do {
@@ -113,7 +113,7 @@ abstract class BaseSuperblockTokenParser extends \Twig_TokenParser
                 }
             }
 
-            if (null !== $isNotSupported || $options->count() !== 2) {
+            if (null !== $isNotSupported || 2 !== $options->count()) {
                 throw new \Twig_Error_Syntax(sprintf($tagNotSupported, $isNotSupported, $isNotSupported));
             }
         }

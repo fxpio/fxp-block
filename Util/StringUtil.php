@@ -35,7 +35,7 @@ class StringUtil
             if ($vendor && is_string($type) && strlen($type) > 0 && strpos($fqcn, '\\') > 0) {
                 $vendor = strtolower(substr($fqcn, 0, strpos($fqcn, '\\')));
 
-                $type = $vendor === 'sonatra'
+                $type = 'sonatra' === $vendor
                     ? $type
                     : $vendor.':'.$type;
             }
