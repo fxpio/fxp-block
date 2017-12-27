@@ -5,6 +5,8 @@ return PhpCsFixer\Config::create()
         '@Symfony' => true,
         '@Symfony:risky' => true,
         'array_syntax' => array('syntax' => 'long'),
+        'self_accessor' => false,
+        'non_printable_character' => false,
     ))
     ->setRiskyAllowed(true)
     ->setFinder(
