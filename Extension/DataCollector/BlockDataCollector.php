@@ -75,6 +75,16 @@ class BlockDataCollector extends DataCollector implements BlockDataCollectorInte
     public function __construct(BlockDataExtractorInterface $dataExtractor)
     {
         $this->dataExtractor = $dataExtractor;
+        $this->reset();
+    }
+
+    /**
+     * Does nothing. The data is collected during the block event listeners.
+     *
+     * {@inheritdoc}
+     */
+    public function reset()
+    {
         $this->data = array(
             'blocks' => array(),
             'duplicate_ids' => array(),
