@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Util;
+namespace Fxp\Component\Block\Util;
 
 /**
  * Iterator for {@link OrderedHashMap} objects.
  *
  * This class is internal and should not be used.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class OrderedHashMapIterator implements \Iterator
 {

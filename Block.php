@@ -1,29 +1,29 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block;
+namespace Fxp\Component\Block;
 
-use Sonatra\Component\Block\Exception\InvalidArgumentException;
-use Sonatra\Component\Block\Exception\LogicException;
-use Sonatra\Component\Block\Exception\RuntimeException;
-use Sonatra\Component\Block\Exception\TransformationFailedException;
-use Sonatra\Component\Block\Exception\UnexpectedTypeException;
-use Sonatra\Component\Block\Util\BlockUtil;
-use Sonatra\Component\Block\Util\InheritDataAwareIterator;
-use Sonatra\Component\Block\Util\OrderedHashMap;
+use Fxp\Component\Block\Exception\InvalidArgumentException;
+use Fxp\Component\Block\Exception\LogicException;
+use Fxp\Component\Block\Exception\RuntimeException;
+use Fxp\Component\Block\Exception\TransformationFailedException;
+use Fxp\Component\Block\Exception\UnexpectedTypeException;
+use Fxp\Component\Block\Util\BlockUtil;
+use Fxp\Component\Block\Util\InheritDataAwareIterator;
+use Fxp\Component\Block\Util\OrderedHashMap;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\PropertyAccess\PropertyPath;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class Block implements \IteratorAggregate, BlockInterface
 {
@@ -622,11 +622,11 @@ class Block implements \IteratorAggregate, BlockInterface
 
         if (!$child instanceof BlockInterface) {
             if (null !== $child && !is_string($child) && !is_int($child)) {
-                throw new UnexpectedTypeException($child, 'string, integer or Sonatra\Component\Block\BlockInterface');
+                throw new UnexpectedTypeException($child, 'string, integer or Fxp\Component\Block\BlockInterface');
             }
 
             if (null !== $type && !is_string($type) && !$type instanceof BlockTypeInterface) {
-                throw new UnexpectedTypeException($type, 'string or Sonatra\Component\Block\BlockTypeInterface');
+                throw new UnexpectedTypeException($type, 'string or Fxp\Component\Block\BlockTypeInterface');
             }
 
             // Never initialize child blocks automatically

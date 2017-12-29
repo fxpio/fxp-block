@@ -1,34 +1,34 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Doctrine;
+namespace Fxp\Component\Block\Doctrine;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\Mapping\MappingException;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Doctrine\ORM\Mapping\MappingException as LegacyMappingException;
-use Sonatra\Component\Block\BlockTypeGuesserInterface;
-use Sonatra\Component\Block\Doctrine\Type\EntityType;
-use Sonatra\Component\Block\Extension\Core\Type\CheckboxType;
-use Sonatra\Component\Block\Extension\Core\Type\CollectionType;
-use Sonatra\Component\Block\Extension\Core\Type\DateTimeType;
-use Sonatra\Component\Block\Extension\Core\Type\DateType;
-use Sonatra\Component\Block\Extension\Core\Type\IntegerType;
-use Sonatra\Component\Block\Extension\Core\Type\NumberType;
-use Sonatra\Component\Block\Extension\Core\Type\TextareaType;
-use Sonatra\Component\Block\Extension\Core\Type\TextType;
-use Sonatra\Component\Block\Extension\Core\Type\TimeType;
-use Sonatra\Component\Block\Guess\Guess;
-use Sonatra\Component\Block\Guess\TypeGuess;
+use Fxp\Component\Block\BlockTypeGuesserInterface;
+use Fxp\Component\Block\Doctrine\Type\EntityType;
+use Fxp\Component\Block\Extension\Core\Type\CheckboxType;
+use Fxp\Component\Block\Extension\Core\Type\CollectionType;
+use Fxp\Component\Block\Extension\Core\Type\DateTimeType;
+use Fxp\Component\Block\Extension\Core\Type\DateType;
+use Fxp\Component\Block\Extension\Core\Type\IntegerType;
+use Fxp\Component\Block\Extension\Core\Type\NumberType;
+use Fxp\Component\Block\Extension\Core\Type\TextareaType;
+use Fxp\Component\Block\Extension\Core\Type\TextType;
+use Fxp\Component\Block\Extension\Core\Type\TimeType;
+use Fxp\Component\Block\Guess\Guess;
+use Fxp\Component\Block\Guess\TypeGuess;
 
 class DoctrineOrmTypeGuesser implements BlockTypeGuesserInterface
 {

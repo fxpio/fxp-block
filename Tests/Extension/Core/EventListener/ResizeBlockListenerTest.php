@@ -1,30 +1,30 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Tests\Extension\Core\EventListener;
+namespace Fxp\Component\Block\Tests\Extension\Core\EventListener;
 
+use Fxp\Component\Block\BlockBuilder;
+use Fxp\Component\Block\BlockEvent;
+use Fxp\Component\Block\BlockEvents;
+use Fxp\Component\Block\BlockFactoryInterface;
+use Fxp\Component\Block\BlockInterface;
+use Fxp\Component\Block\DataMapperInterface;
+use Fxp\Component\Block\Extension\Core\EventListener\ResizeBlockListener;
+use Fxp\Component\Block\Extension\Core\Type\TextType;
+use Fxp\Component\Block\ResolvedBlockTypeInterface;
 use PHPUnit\Framework\TestCase;
-use Sonatra\Component\Block\BlockBuilder;
-use Sonatra\Component\Block\BlockEvent;
-use Sonatra\Component\Block\BlockEvents;
-use Sonatra\Component\Block\BlockFactoryInterface;
-use Sonatra\Component\Block\BlockInterface;
-use Sonatra\Component\Block\DataMapperInterface;
-use Sonatra\Component\Block\Extension\Core\EventListener\ResizeBlockListener;
-use Sonatra\Component\Block\Extension\Core\Type\TextType;
-use Sonatra\Component\Block\ResolvedBlockTypeInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class ResizeBlockListenerTest extends TestCase
 {
@@ -48,7 +48,7 @@ class ResizeBlockListenerTest extends TestCase
         $dataMapper = $this->getDataMapper();
 
         $this->dispatcher = $this->getMockBuilder('Symfony\Component\EventDispatcher\EventDispatcherInterface')->getMock();
-        $this->factory = $this->getMockBuilder('Sonatra\Component\Block\BlockFactoryInterface')->getMock();
+        $this->factory = $this->getMockBuilder('Fxp\Component\Block\BlockFactoryInterface')->getMock();
         $this->block = $this->getBuilder()
             ->setCompound(true)
             ->setDataMapper($dataMapper)
@@ -69,7 +69,7 @@ class ResizeBlockListenerTest extends TestCase
         /* @var BlockFactoryInterface $factory */
         $factory = $this->factory;
         /* @var ResolvedBlockTypeInterface $type */
-        $type = $this->getMockBuilder('Sonatra\Component\Block\ResolvedBlockTypeInterface')->getMock();
+        $type = $this->getMockBuilder('Fxp\Component\Block\ResolvedBlockTypeInterface')->getMock();
         $builder = new BlockBuilder($name, null, $dispatcher, $factory);
         $builder->setType($type);
 
@@ -86,7 +86,7 @@ class ResizeBlockListenerTest extends TestCase
      */
     protected function getDataMapper()
     {
-        return $this->getMockBuilder('Sonatra\Component\Block\DataMapperInterface')->getMock();
+        return $this->getMockBuilder('Fxp\Component\Block\DataMapperInterface')->getMock();
     }
 
     /**
@@ -94,7 +94,7 @@ class ResizeBlockListenerTest extends TestCase
      */
     protected function getMockBlock()
     {
-        return $this->getMockBuilder('Sonatra\Component\Block\Test\BlockInterface')->getMock();
+        return $this->getMockBuilder('Fxp\Component\Block\Test\BlockInterface')->getMock();
     }
 
     public function testGetSubscriber()
@@ -129,7 +129,7 @@ class ResizeBlockListenerTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\UnexpectedTypeException
+     * @expectedException \Fxp\Component\Block\Exception\UnexpectedTypeException
      */
     public function testPreSetDataRequiresArrayOrTraversable()
     {

@@ -1,34 +1,34 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Tests;
+namespace Fxp\Component\Block\Tests;
 
-use Sonatra\Component\Block\Block;
-use Sonatra\Component\Block\BlockConfigBuilder;
-use Sonatra\Component\Block\BlockEvent;
-use Sonatra\Component\Block\BlockEvents;
-use Sonatra\Component\Block\BlockInterface;
-use Sonatra\Component\Block\BlockView;
-use Sonatra\Component\Block\DataMapperInterface;
-use Sonatra\Component\Block\ResolvedBlockTypeInterface;
-use Sonatra\Component\Block\Tests\Fixtures\DataTransformer\FixedDataTransformer;
-use Sonatra\Component\Block\Tests\Fixtures\DataTransformer\FixedFilterListener;
-use Sonatra\Component\Block\Tests\Fixtures\Object\SimpleBlockTestCountable;
-use Sonatra\Component\Block\Tests\Fixtures\Object\SimpleBlockTestTraversable;
+use Fxp\Component\Block\Block;
+use Fxp\Component\Block\BlockConfigBuilder;
+use Fxp\Component\Block\BlockEvent;
+use Fxp\Component\Block\BlockEvents;
+use Fxp\Component\Block\BlockInterface;
+use Fxp\Component\Block\BlockView;
+use Fxp\Component\Block\DataMapperInterface;
+use Fxp\Component\Block\ResolvedBlockTypeInterface;
+use Fxp\Component\Block\Tests\Fixtures\DataTransformer\FixedDataTransformer;
+use Fxp\Component\Block\Tests\Fixtures\DataTransformer\FixedFilterListener;
+use Fxp\Component\Block\Tests\Fixtures\Object\SimpleBlockTestCountable;
+use Fxp\Component\Block\Tests\Fixtures\Object\SimpleBlockTestTraversable;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\PropertyAccess\PropertyPath;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class SimpleBlockTest extends AbstractBlockTest
 {
@@ -107,7 +107,7 @@ class SimpleBlockTest extends AbstractBlockTest
 
     public function testEmptyIfEmptyCountable()
     {
-        $this->block = new Block(new BlockConfigBuilder('name', 'Sonatra\Component\Block\Tests\Fixtures\Object\SimpleBlockTestCountable', $this->dispatcher));
+        $this->block = new Block(new BlockConfigBuilder('name', 'Fxp\Component\Block\Tests\Fixtures\Object\SimpleBlockTestCountable', $this->dispatcher));
 
         $this->block->setData(new SimpleBlockTestCountable(0));
 
@@ -116,7 +116,7 @@ class SimpleBlockTest extends AbstractBlockTest
 
     public function testNotEmptyIfFilledCountable()
     {
-        $this->block = new Block(new BlockConfigBuilder('name', 'Sonatra\Component\Block\Tests\Fixtures\Object\SimpleBlockTestCountable', $this->dispatcher));
+        $this->block = new Block(new BlockConfigBuilder('name', 'Fxp\Component\Block\Tests\Fixtures\Object\SimpleBlockTestCountable', $this->dispatcher));
 
         $this->block->setData(new SimpleBlockTestCountable(1));
 
@@ -125,7 +125,7 @@ class SimpleBlockTest extends AbstractBlockTest
 
     public function testEmptyIfEmptyTraversable()
     {
-        $this->block = new Block(new BlockConfigBuilder('name', 'Sonatra\Component\Block\Tests\Fixtures\Object\SimpleBlockTestTraversable', $this->dispatcher));
+        $this->block = new Block(new BlockConfigBuilder('name', 'Fxp\Component\Block\Tests\Fixtures\Object\SimpleBlockTestTraversable', $this->dispatcher));
 
         $this->block->setData(new SimpleBlockTestTraversable(0));
 
@@ -134,7 +134,7 @@ class SimpleBlockTest extends AbstractBlockTest
 
     public function testNotEmptyIfFilledTraversable()
     {
-        $this->block = new Block(new BlockConfigBuilder('name', 'Sonatra\Component\Block\Tests\Fixtures\Object\SimpleBlockTestTraversable', $this->dispatcher));
+        $this->block = new Block(new BlockConfigBuilder('name', 'Fxp\Component\Block\Tests\Fixtures\Object\SimpleBlockTestTraversable', $this->dispatcher));
 
         $this->block->setData(new SimpleBlockTestTraversable(1));
 
@@ -278,7 +278,7 @@ class SimpleBlockTest extends AbstractBlockTest
             ->setEmptyData(function ($block) use ($test) {
                 // the block instance is passed to the closure to allow use
                 // of block data when creating the empty value
-                $test->assertInstanceOf('Sonatra\Component\Block\BlockInterface', $block);
+                $test->assertInstanceOf('Fxp\Component\Block\BlockInterface', $block);
 
                 return 'foo';
             })
@@ -317,8 +317,8 @@ class SimpleBlockTest extends AbstractBlockTest
     public function testCreateView()
     {
         /* @var ResolvedBlockTypeInterface $type */
-        $type = $this->getMockBuilder('Sonatra\Component\Block\ResolvedBlockTypeInterface')->getMock();
-        $view = $this->getMockBuilder('Sonatra\Component\Block\BlockView')->getMock();
+        $type = $this->getMockBuilder('Fxp\Component\Block\ResolvedBlockTypeInterface')->getMock();
+        $view = $this->getMockBuilder('Fxp\Component\Block\BlockView')->getMock();
         $block = $this->getBuilder()->setType($type)->getBlock();
 
         /* @var \PHPUnit_Framework_MockObject_MockObject $type */
@@ -333,11 +333,11 @@ class SimpleBlockTest extends AbstractBlockTest
     public function testCreateViewWithParent()
     {
         /* @var ResolvedBlockTypeInterface $type */
-        $type = $this->getMockBuilder('Sonatra\Component\Block\ResolvedBlockTypeInterface')->getMock();
-        $view = $this->getMockBuilder('Sonatra\Component\Block\BlockView')->getMock();
+        $type = $this->getMockBuilder('Fxp\Component\Block\ResolvedBlockTypeInterface')->getMock();
+        $view = $this->getMockBuilder('Fxp\Component\Block\BlockView')->getMock();
         /* @var BlockInterface $parentBlock */
-        $parentBlock = $this->getMockBuilder('Sonatra\Component\Block\BlockInterface')->getMock();
-        $parentView = $this->getMockBuilder('Sonatra\Component\Block\BlockView')->getMock();
+        $parentBlock = $this->getMockBuilder('Fxp\Component\Block\BlockInterface')->getMock();
+        $parentView = $this->getMockBuilder('Fxp\Component\Block\BlockView')->getMock();
         $block = $this->getBuilder()->setType($type)->getBlock();
         $block->setParent($parentBlock);
 
@@ -358,10 +358,10 @@ class SimpleBlockTest extends AbstractBlockTest
     public function testCreateViewWithExplicitParent()
     {
         /* @var ResolvedBlockTypeInterface $type */
-        $type = $this->getMockBuilder('Sonatra\Component\Block\ResolvedBlockTypeInterface')->getMock();
-        $view = $this->getMockBuilder('Sonatra\Component\Block\BlockView')->getMock();
+        $type = $this->getMockBuilder('Fxp\Component\Block\ResolvedBlockTypeInterface')->getMock();
+        $view = $this->getMockBuilder('Fxp\Component\Block\BlockView')->getMock();
         /* @var BlockView $parentView */
-        $parentView = $this->getMockBuilder('Sonatra\Component\Block\BlockView')->getMock();
+        $parentView = $this->getMockBuilder('Fxp\Component\Block\BlockView')->getMock();
         $block = $this->getBuilder()->setType($type)->getBlock();
 
         /* @var \PHPUnit_Framework_MockObject_MockObject $type */
@@ -389,7 +389,7 @@ class SimpleBlockTest extends AbstractBlockTest
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\LogicException
+     * @expectedException \Fxp\Component\Block\Exception\LogicException
      * @expectedExceptionMessage A block with an empty name cannot have a parent block.
      */
     public function testBlockCannotHaveEmptyNameNotInRootLevel()
@@ -488,7 +488,7 @@ class SimpleBlockTest extends AbstractBlockTest
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\LogicException
+     * @expectedException \Fxp\Component\Block\Exception\LogicException
      */
     public function testViewDataMustNotBeObjectIfDataClassIsNull()
     {
@@ -518,7 +518,7 @@ class SimpleBlockTest extends AbstractBlockTest
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\LogicException
+     * @expectedException \Fxp\Component\Block\Exception\LogicException
      */
     public function testViewDataMustBeObjectIfDataClassIsSet()
     {
@@ -533,7 +533,7 @@ class SimpleBlockTest extends AbstractBlockTest
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\RuntimeException
+     * @expectedException \Fxp\Component\Block\Exception\RuntimeException
      */
     public function testSetDataCannotInvokeItself()
     {
@@ -574,7 +574,7 @@ class SimpleBlockTest extends AbstractBlockTest
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\RuntimeException
+     * @expectedException \Fxp\Component\Block\Exception\RuntimeException
      */
     public function testInheritDataDisallowsSetData()
     {
@@ -586,7 +586,7 @@ class SimpleBlockTest extends AbstractBlockTest
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\RuntimeException
+     * @expectedException \Fxp\Component\Block\Exception\RuntimeException
      */
     public function testGetDataRequiresParentToBeSetIfInheritData()
     {
@@ -598,7 +598,7 @@ class SimpleBlockTest extends AbstractBlockTest
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\RuntimeException
+     * @expectedException \Fxp\Component\Block\Exception\RuntimeException
      */
     public function testGetNormDataRequiresParentToBeSetIfInheritData()
     {
@@ -610,7 +610,7 @@ class SimpleBlockTest extends AbstractBlockTest
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\RuntimeException
+     * @expectedException \Fxp\Component\Block\Exception\RuntimeException
      */
     public function testGetViewDataRequiresParentToBeSetIfInheritData()
     {
@@ -622,7 +622,7 @@ class SimpleBlockTest extends AbstractBlockTest
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\LogicException
+     * @expectedException \Fxp\Component\Block\Exception\LogicException
      */
     public function testCreateCompoundBlockWithoutDataMapper()
     {
@@ -648,7 +648,7 @@ class SimpleBlockTest extends AbstractBlockTest
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\InvalidArgumentException
+     * @expectedException \Fxp\Component\Block\Exception\InvalidArgumentException
      */
     public function testGetInvalidChild()
     {
@@ -684,7 +684,7 @@ class SimpleBlockTest extends AbstractBlockTest
                 'foo' => 'bar',
             )));
 
-        $type = $this->getMockBuilder('Sonatra\Component\Block\ResolvedBlockTypeInterface')->getMock();
+        $type = $this->getMockBuilder('Fxp\Component\Block\ResolvedBlockTypeInterface')->getMock();
         $type->expects($this->any())
             ->method('getOptionsResolver')
             ->will($this->returnValue($resolver));

@@ -1,26 +1,26 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Extension\DataCollector;
+namespace Fxp\Component\Block\Extension\DataCollector;
 
-use Sonatra\Component\Block\BlockInterface;
-use Sonatra\Component\Block\BlockView;
+use Fxp\Component\Block\BlockInterface;
+use Fxp\Component\Block\BlockView;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\DataCollector\DataCollector;
 
 /**
- * Data collector for {@link \Sonatra\Component\Block\BlockInterface} instances.
+ * Data collector for {@link \Fxp\Component\Block\BlockInterface} instances.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class BlockDataCollector extends DataCollector implements BlockDataCollectorInterface
 {
@@ -188,7 +188,7 @@ class BlockDataCollector extends DataCollector implements BlockDataCollectorInte
      */
     public function getName()
     {
-        return 'sonatra_block';
+        return 'fxp_block';
     }
 
     /**

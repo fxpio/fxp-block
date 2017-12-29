@@ -1,23 +1,23 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Extension\Core\DataMapper;
+namespace Fxp\Component\Block\Extension\Core\DataMapper;
 
-use Sonatra\Component\Block\BlockInterface;
-use Sonatra\Component\Block\DataMapperInterface;
+use Fxp\Component\Block\BlockInterface;
+use Fxp\Component\Block\DataMapperInterface;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class PropertyPathMapper implements DataMapperInterface
 {

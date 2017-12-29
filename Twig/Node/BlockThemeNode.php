@@ -1,18 +1,18 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Twig\Node;
+namespace Fxp\Component\Block\Twig\Node;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class BlockThemeNode extends \Twig_Node
 {
@@ -38,7 +38,7 @@ class BlockThemeNode extends \Twig_Node
     {
         $compiler
             ->addDebugInfo($this)
-            ->write('$this->env->getExtension(\'Sonatra\Component\Block\Twig\Extension\BlockExtension\')->renderer->setTheme(')
+            ->write('$this->env->getExtension(\'Fxp\Component\Block\Twig\Extension\BlockExtension\')->renderer->setTheme(')
             ->subcompile($this->getNode('block'))
             ->raw(', ')
             ->subcompile($this->getNode('resources'))

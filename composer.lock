@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "47ecaa683b86da56fe8c34a9646a257d",
+    "content-hash": "2a7fac662c3fb89923165a3bdd5f0e64",
     "packages": [
         {
             "name": "symfony/event-dispatcher",

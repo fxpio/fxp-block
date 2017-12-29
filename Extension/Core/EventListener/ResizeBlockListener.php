@@ -1,25 +1,25 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Extension\Core\EventListener;
+namespace Fxp\Component\Block\Extension\Core\EventListener;
 
-use Sonatra\Component\Block\BlockEvent;
-use Sonatra\Component\Block\BlockEvents;
-use Sonatra\Component\Block\Exception\UnexpectedTypeException;
+use Fxp\Component\Block\BlockEvent;
+use Fxp\Component\Block\BlockEvents;
+use Fxp\Component\Block\Exception\UnexpectedTypeException;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
  * Resize a collection form element based on the data sent from the client.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class ResizeBlockListener implements EventSubscriberInterface
 {

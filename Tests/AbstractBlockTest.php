@@ -1,25 +1,25 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Tests;
+namespace Fxp\Component\Block\Tests;
 
+use Fxp\Component\Block\BlockBuilder;
+use Fxp\Component\Block\BlockFactoryInterface;
+use Fxp\Component\Block\BlockInterface;
 use PHPUnit\Framework\TestCase;
-use Sonatra\Component\Block\BlockBuilder;
-use Sonatra\Component\Block\BlockFactoryInterface;
-use Sonatra\Component\Block\BlockInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 abstract class AbstractBlockTest extends TestCase
 {
@@ -41,7 +41,7 @@ abstract class AbstractBlockTest extends TestCase
     protected function setUp()
     {
         $this->dispatcher = new EventDispatcher();
-        $this->factory = $this->getMockBuilder('Sonatra\Component\Block\BlockFactoryInterface')->getMock();
+        $this->factory = $this->getMockBuilder('Fxp\Component\Block\BlockFactoryInterface')->getMock();
         $this->block = $this->createBlock();
     }
 
@@ -77,8 +77,8 @@ abstract class AbstractBlockTest extends TestCase
      */
     protected function getMockBlock($name = 'name')
     {
-        $block = $this->getMockBuilder('Sonatra\Component\Block\BlockInterface')->getMock();
-        $config = $this->getMockBuilder('Sonatra\Component\Block\BlockConfigInterface')->getMock();
+        $block = $this->getMockBuilder('Fxp\Component\Block\BlockInterface')->getMock();
+        $config = $this->getMockBuilder('Fxp\Component\Block\BlockConfigInterface')->getMock();
 
         $block->expects($this->any())
             ->method('getName')
@@ -95,7 +95,7 @@ abstract class AbstractBlockTest extends TestCase
      */
     protected function getDataMapper()
     {
-        return $this->getMockBuilder('Sonatra\Component\Block\DataMapperInterface')->getMock();
+        return $this->getMockBuilder('Fxp\Component\Block\DataMapperInterface')->getMock();
     }
 
     /**
@@ -103,7 +103,7 @@ abstract class AbstractBlockTest extends TestCase
      */
     protected function getDataTransformer()
     {
-        return $this->getMockBuilder('Sonatra\Component\Block\DataTransformerInterface')->getMock();
+        return $this->getMockBuilder('Fxp\Component\Block\DataTransformerInterface')->getMock();
     }
 
     /**
@@ -111,6 +111,6 @@ abstract class AbstractBlockTest extends TestCase
      */
     protected function getBlockValidator()
     {
-        return $this->getMockBuilder('Sonatra\Component\Block\BlockValidatorInterface')->getMock();
+        return $this->getMockBuilder('Fxp\Component\Block\BlockValidatorInterface')->getMock();
     }
 }

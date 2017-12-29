@@ -1,15 +1,15 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Util;
+namespace Fxp\Component\Block\Util;
 
 /**
  * Iterator that traverses fields of a field group.
@@ -17,7 +17,7 @@ namespace Sonatra\Component\Block\Util;
  * If the iterator encounters a inherit data field group, it enters the field
  * group and traverses its children as well.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class InheritDataAwareIterator extends \IteratorIterator implements \RecursiveIterator
 {

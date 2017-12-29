@@ -1,22 +1,22 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Tests\Guess;
+namespace Fxp\Component\Block\Tests\Guess;
 
+use Fxp\Component\Block\Guess\Guess;
+use Fxp\Component\Block\Tests\Fixtures\Guess\TestGuess;
 use PHPUnit\Framework\TestCase;
-use Sonatra\Component\Block\Guess\Guess;
-use Sonatra\Component\Block\Tests\Fixtures\Guess\TestGuess;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class GuessTest extends TestCase
 {

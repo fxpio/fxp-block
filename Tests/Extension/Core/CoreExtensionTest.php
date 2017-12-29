@@ -1,46 +1,46 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Tests\Extension\Core;
+namespace Fxp\Component\Block\Tests\Extension\Core;
 
+use Fxp\Component\Block\Extension\Core\CoreExtension;
+use Fxp\Component\Block\Extension\Core\Type\BirthdayType;
+use Fxp\Component\Block\Extension\Core\Type\BlockType;
+use Fxp\Component\Block\Extension\Core\Type\CheckboxType;
+use Fxp\Component\Block\Extension\Core\Type\ChoiceType;
+use Fxp\Component\Block\Extension\Core\Type\CollectionType;
+use Fxp\Component\Block\Extension\Core\Type\CountryType;
+use Fxp\Component\Block\Extension\Core\Type\DateTimeType;
+use Fxp\Component\Block\Extension\Core\Type\DateType;
+use Fxp\Component\Block\Extension\Core\Type\EmailType;
+use Fxp\Component\Block\Extension\Core\Type\HiddenType;
+use Fxp\Component\Block\Extension\Core\Type\IntegerType;
+use Fxp\Component\Block\Extension\Core\Type\LanguageType;
+use Fxp\Component\Block\Extension\Core\Type\LocaleType;
+use Fxp\Component\Block\Extension\Core\Type\MoneyType;
+use Fxp\Component\Block\Extension\Core\Type\NumberType;
+use Fxp\Component\Block\Extension\Core\Type\PasswordType;
+use Fxp\Component\Block\Extension\Core\Type\PercentType;
+use Fxp\Component\Block\Extension\Core\Type\RadioType;
+use Fxp\Component\Block\Extension\Core\Type\RepeatedType;
+use Fxp\Component\Block\Extension\Core\Type\TextareaType;
+use Fxp\Component\Block\Extension\Core\Type\TextType;
+use Fxp\Component\Block\Extension\Core\Type\TimeType;
+use Fxp\Component\Block\Extension\Core\Type\TimezoneType;
+use Fxp\Component\Block\Extension\Core\Type\UrlType;
+use Fxp\Component\Block\Tests\Fixtures\Type\FooType;
 use PHPUnit\Framework\TestCase;
-use Sonatra\Component\Block\Extension\Core\CoreExtension;
-use Sonatra\Component\Block\Extension\Core\Type\BirthdayType;
-use Sonatra\Component\Block\Extension\Core\Type\BlockType;
-use Sonatra\Component\Block\Extension\Core\Type\CheckboxType;
-use Sonatra\Component\Block\Extension\Core\Type\ChoiceType;
-use Sonatra\Component\Block\Extension\Core\Type\CollectionType;
-use Sonatra\Component\Block\Extension\Core\Type\CountryType;
-use Sonatra\Component\Block\Extension\Core\Type\DateTimeType;
-use Sonatra\Component\Block\Extension\Core\Type\DateType;
-use Sonatra\Component\Block\Extension\Core\Type\EmailType;
-use Sonatra\Component\Block\Extension\Core\Type\HiddenType;
-use Sonatra\Component\Block\Extension\Core\Type\IntegerType;
-use Sonatra\Component\Block\Extension\Core\Type\LanguageType;
-use Sonatra\Component\Block\Extension\Core\Type\LocaleType;
-use Sonatra\Component\Block\Extension\Core\Type\MoneyType;
-use Sonatra\Component\Block\Extension\Core\Type\NumberType;
-use Sonatra\Component\Block\Extension\Core\Type\PasswordType;
-use Sonatra\Component\Block\Extension\Core\Type\PercentType;
-use Sonatra\Component\Block\Extension\Core\Type\RadioType;
-use Sonatra\Component\Block\Extension\Core\Type\RepeatedType;
-use Sonatra\Component\Block\Extension\Core\Type\TextareaType;
-use Sonatra\Component\Block\Extension\Core\Type\TextType;
-use Sonatra\Component\Block\Extension\Core\Type\TimeType;
-use Sonatra\Component\Block\Extension\Core\Type\TimezoneType;
-use Sonatra\Component\Block\Extension\Core\Type\UrlType;
-use Sonatra\Component\Block\Tests\Fixtures\Type\FooType;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class CoreExtensionTest extends TestCase
 {
@@ -61,7 +61,7 @@ class CoreExtensionTest extends TestCase
 
     public function testCoreExtension()
     {
-        $this->assertInstanceOf('Sonatra\Component\Block\BlockExtensionInterface', $this->extension);
+        $this->assertInstanceOf('Fxp\Component\Block\BlockExtensionInterface', $this->extension);
         $this->assertFalse($this->extension->hasType(FooType::class));
         $this->assertFalse($this->extension->hasTypeExtensions(FooType::class));
 

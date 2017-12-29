@@ -1,21 +1,21 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Tests;
+namespace Fxp\Component\Block\Tests;
 
+use Fxp\Component\Block\Blocks;
 use PHPUnit\Framework\TestCase;
-use Sonatra\Component\Block\Blocks;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class BlocksTest extends TestCase
 {
@@ -23,18 +23,18 @@ class BlocksTest extends TestCase
     {
         $bf = Blocks::createBlockFactoryBuilder();
 
-        $this->assertInstanceOf('Sonatra\Component\Block\BlockFactoryBuilderInterface', $bf);
+        $this->assertInstanceOf('Fxp\Component\Block\BlockFactoryBuilderInterface', $bf);
     }
 
     public function testObjectFactoryCreator()
     {
         $bf = Blocks::createBlockFactory();
 
-        $this->assertInstanceOf('Sonatra\Component\Block\BlockFactoryInterface', $bf);
+        $this->assertInstanceOf('Fxp\Component\Block\BlockFactoryInterface', $bf);
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\RuntimeException
+     * @expectedException \Fxp\Component\Block\Exception\RuntimeException
      */
     public function testInstantiationOfClass()
     {

@@ -1,18 +1,18 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Util;
+namespace Fxp\Component\Block\Util;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class StringUtil
 {
@@ -35,7 +35,7 @@ class StringUtil
             if ($vendor && is_string($type) && strlen($type) > 0 && strpos($fqcn, '\\') > 0) {
                 $vendor = strtolower(substr($fqcn, 0, strpos($fqcn, '\\')));
 
-                $type = 'sonatra' === $vendor
+                $type = 'fxp' === $vendor
                     ? $type
                     : $vendor.':'.$type;
             }

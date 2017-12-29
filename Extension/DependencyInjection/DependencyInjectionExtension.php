@@ -1,23 +1,23 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Extension\DependencyInjection;
+namespace Fxp\Component\Block\Extension\DependencyInjection;
 
-use Sonatra\Component\Block\BlockExtensionInterface;
-use Sonatra\Component\Block\BlockTypeGuesserChain;
-use Sonatra\Component\Block\Exception\InvalidArgumentException;
+use Fxp\Component\Block\BlockExtensionInterface;
+use Fxp\Component\Block\BlockTypeGuesserChain;
+use Fxp\Component\Block\Exception\InvalidArgumentException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class DependencyInjectionExtension implements BlockExtensionInterface
 {

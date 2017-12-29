@@ -1,39 +1,39 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Tests;
+namespace Fxp\Component\Block\Tests;
 
+use Fxp\Component\Block\BlockExtensionInterface;
+use Fxp\Component\Block\Tests\Fixtures\TestExpectedExtension;
+use Fxp\Component\Block\Tests\Fixtures\TestExtension;
+use Fxp\Component\Block\Tests\Fixtures\Type\FooType;
 use PHPUnit\Framework\TestCase;
-use Sonatra\Component\Block\BlockExtensionInterface;
-use Sonatra\Component\Block\Tests\Fixtures\TestExpectedExtension;
-use Sonatra\Component\Block\Tests\Fixtures\TestExtension;
-use Sonatra\Component\Block\Tests\Fixtures\Type\FooType;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class AbstractExtensionTest extends TestCase
 {
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\InvalidArgumentException
+     * @expectedException \Fxp\Component\Block\Exception\InvalidArgumentException
      */
     public function testGetUnexistingType()
     {
         /* @var BlockExtensionInterface $ext */
-        $ext = $this->getMockForAbstractClass('Sonatra\Component\Block\AbstractExtension');
+        $ext = $this->getMockForAbstractClass('Fxp\Component\Block\AbstractExtension');
         $ext->getType('unexisting_type');
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\UnexpectedTypeException
+     * @expectedException \Fxp\Component\Block\Exception\UnexpectedTypeException
      */
     public function testInitLoadTypeException()
     {
@@ -42,7 +42,7 @@ class AbstractExtensionTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\UnexpectedTypeException
+     * @expectedException \Fxp\Component\Block\Exception\UnexpectedTypeException
      */
     public function testInitLoadTypeExtensionException()
     {
@@ -51,7 +51,7 @@ class AbstractExtensionTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\UnexpectedTypeException
+     * @expectedException \Fxp\Component\Block\Exception\UnexpectedTypeException
      */
     public function testInitLoadTypeGuesserException()
     {
@@ -62,7 +62,7 @@ class AbstractExtensionTest extends TestCase
     public function testGetEmptyTypeExtension()
     {
         /* @var BlockExtensionInterface $ext */
-        $ext = $this->getMockForAbstractClass('Sonatra\Component\Block\AbstractExtension');
+        $ext = $this->getMockForAbstractClass('Fxp\Component\Block\AbstractExtension');
         $typeExts = $ext->getTypeExtensions('unexisting_type_extension');
 
         $this->assertInternalType('array', $typeExts);
@@ -74,7 +74,7 @@ class AbstractExtensionTest extends TestCase
         $ext = new TestExtension();
         $type = $ext->getType(FooType::class);
 
-        $this->assertInstanceOf('Sonatra\Component\Block\BlockTypeInterface', $type);
+        $this->assertInstanceOf('Fxp\Component\Block\BlockTypeInterface', $type);
     }
 
     public function testHasType()
@@ -91,7 +91,7 @@ class AbstractExtensionTest extends TestCase
 
         $this->assertInternalType('array', $typeExts);
         $this->assertCount(1, $typeExts);
-        $this->assertInstanceOf('Sonatra\Component\Block\BlockTypeExtensionInterface', $typeExts[0]);
+        $this->assertInstanceOf('Fxp\Component\Block\BlockTypeExtensionInterface', $typeExts[0]);
     }
 
     public function testHasTypeExtensions()

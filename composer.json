@@ -1,14 +1,14 @@
 {
-    "name": "sonatra/block",
+    "name": "fxp/block",
     "type": "library",
     "description": "Provides tools for defining UI blocks, rendering and mapping response data to related models",
     "keywords": ["block", "user interface", "ui"],
-    "homepage": "https://github.com/sonatra/sonatra-block",
+    "homepage": "https://github.com/fxpio/fxp-block",
     "license": "MIT",
     "authors": [
         {
             "name": "François Pluchino",
-            "email": "francois.pluchino@sonatra.com"
+            "email": "francois.pluchino@gmail.com"
         }
     ],
     "minimum-stability": "dev",
@@ -33,7 +33,7 @@
         "doctrine/orm": "For doctrine block type"
     },
     "autoload": {
-        "psr-4": { "Sonatra\\Component\\Block\\": "" },
+        "psr-4": { "Fxp\\Component\\Block\\": "" },
         "exclude-from-classmap": [
             "/Tests/"
         ]

@@ -1,25 +1,25 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Tests\Util;
+namespace Fxp\Component\Block\Tests\Util;
 
+use Fxp\Component\Block\BlockInterface;
+use Fxp\Component\Block\Tests\Fixtures\Type\FooType;
+use Fxp\Component\Block\Util\BlockUtil;
 use PHPUnit\Framework\TestCase;
-use Sonatra\Component\Block\BlockInterface;
-use Sonatra\Component\Block\Tests\Fixtures\Type\FooType;
-use Sonatra\Component\Block\Util\BlockUtil;
 
 /**
  * Block Util Test.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class BlockUtilTest extends TestCase
 {
@@ -41,12 +41,12 @@ class BlockUtilTest extends TestCase
 
     public function testCreateBlockId()
     {
-        $parentBlock = $this->getMockBuilder('Sonatra\Component\Block\BlockInterface')->getMock();
+        $parentBlock = $this->getMockBuilder('Fxp\Component\Block\BlockInterface')->getMock();
         $parentBlock->expects($this->any())
             ->method('getName')
             ->will($this->returnValue('foo'));
 
-        $block = $this->getMockBuilder('Sonatra\Component\Block\BlockInterface')->getMock();
+        $block = $this->getMockBuilder('Fxp\Component\Block\BlockInterface')->getMock();
         $block->expects($this->any())
             ->method('getName')
             ->will($this->returnValue('bar'));
@@ -64,14 +64,14 @@ class BlockUtilTest extends TestCase
 
     public function testIsValidBlock()
     {
-        $parentType = $this->getMockBuilder('Sonatra\Component\Block\ResolvedBlockTypeInterface')->getMock();
+        $parentType = $this->getMockBuilder('Fxp\Component\Block\ResolvedBlockTypeInterface')->getMock();
         $parentType->expects($this->any())
             ->method('getInnerType')
             ->will($this->returnValue(new FooType()));
 
-        $blockInnerType = $this->getMockBuilder('Sonatra\Component\Block\BlockTypeInterface')->getMock();
+        $blockInnerType = $this->getMockBuilder('Fxp\Component\Block\BlockTypeInterface')->getMock();
 
-        $blockType = $this->getMockBuilder('Sonatra\Component\Block\ResolvedBlockTypeInterface')->getMock();
+        $blockType = $this->getMockBuilder('Fxp\Component\Block\ResolvedBlockTypeInterface')->getMock();
         $blockType->expects($this->any())
             ->method('getInnerType')
             ->will($this->returnValue($blockInnerType));
@@ -79,12 +79,12 @@ class BlockUtilTest extends TestCase
             ->method('getParent')
             ->will($this->returnValue($parentType));
 
-        $blockConfig = $this->getMockBuilder('Sonatra\Component\Block\BlockBuilderInterface')->getMock();
+        $blockConfig = $this->getMockBuilder('Fxp\Component\Block\BlockBuilderInterface')->getMock();
         $blockConfig->expects($this->any())
             ->method('getType')
             ->will($this->returnValue($blockType));
 
-        $block = $this->getMockBuilder('Sonatra\Component\Block\BlockInterface')->getMock();
+        $block = $this->getMockBuilder('Fxp\Component\Block\BlockInterface')->getMock();
         $block->expects($this->any())
             ->method('getConfig')
             ->will($this->returnValue($blockConfig));

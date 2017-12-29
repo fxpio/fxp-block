@@ -1,22 +1,22 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Tests\Fixtures\DataTransformer;
+namespace Fxp\Component\Block\Tests\Fixtures\DataTransformer;
 
-use Sonatra\Component\Block\BlockEvent;
-use Sonatra\Component\Block\BlockEvents;
+use Fxp\Component\Block\BlockEvent;
+use Fxp\Component\Block\BlockEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class FixedFilterListener implements EventSubscriberInterface
 {

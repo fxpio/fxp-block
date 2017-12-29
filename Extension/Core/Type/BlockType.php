@@ -1,29 +1,29 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Extension\Core\Type;
+namespace Fxp\Component\Block\Extension\Core\Type;
 
-use Sonatra\Component\Block\AbstractType;
-use Sonatra\Component\Block\BlockBuilderInterface;
-use Sonatra\Component\Block\BlockInterface;
-use Sonatra\Component\Block\BlockView;
-use Sonatra\Component\Block\Exception\InvalidConfigurationException;
-use Sonatra\Component\Block\Extension\Core\DataMapper\PropertyPathMapper;
+use Fxp\Component\Block\AbstractType;
+use Fxp\Component\Block\BlockBuilderInterface;
+use Fxp\Component\Block\BlockInterface;
+use Fxp\Component\Block\BlockView;
+use Fxp\Component\Block\Exception\InvalidConfigurationException;
+use Fxp\Component\Block\Extension\Core\DataMapper\PropertyPathMapper;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class BlockType extends AbstractType
 {

@@ -1,21 +1,21 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block;
+namespace Fxp\Component\Block;
 
-use Sonatra\Component\Block\Exception\BadMethodCallException;
-use Sonatra\Component\Block\Exception\InvalidArgumentException;
-use Sonatra\Component\Block\Exception\UnexpectedTypeException;
-use Sonatra\Component\Block\Extension\Core\Type\TextType;
-use Sonatra\Component\Block\Util\BlockUtil;
+use Fxp\Component\Block\Exception\BadMethodCallException;
+use Fxp\Component\Block\Exception\InvalidArgumentException;
+use Fxp\Component\Block\Exception\UnexpectedTypeException;
+use Fxp\Component\Block\Extension\Core\Type\TextType;
+use Fxp\Component\Block\Util\BlockUtil;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
@@ -89,11 +89,11 @@ class BlockBuilder extends BlockConfigBuilder implements \IteratorAggregate, Blo
         }
 
         if (null !== $child && !is_string($child)) {
-            throw new UnexpectedTypeException($child, 'string or Sonatra\Component\Block\BlockBuilder');
+            throw new UnexpectedTypeException($child, 'string or Fxp\Component\Block\BlockBuilder');
         }
 
         if (null !== $type && !is_string($type) && !$type instanceof BlockTypeInterface) {
-            throw new UnexpectedTypeException($type, 'string or Sonatra\Component\Block\BlockTypeInterface');
+            throw new UnexpectedTypeException($type, 'string or Fxp\Component\Block\BlockTypeInterface');
         }
 
         if (null === $child) {

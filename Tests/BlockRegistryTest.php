@@ -1,29 +1,29 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license inBlockation, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Tests;
+namespace Fxp\Component\Block\Tests;
 
+use Fxp\Component\Block\BlockRegistry;
+use Fxp\Component\Block\BlockTypeGuesserChain;
+use Fxp\Component\Block\BlockTypeGuesserInterface;
+use Fxp\Component\Block\ResolvedBlockTypeFactoryInterface;
+use Fxp\Component\Block\Tests\Fixtures\Extension\FooTypeBarExtension;
+use Fxp\Component\Block\Tests\Fixtures\Extension\FooTypeBazExtension;
+use Fxp\Component\Block\Tests\Fixtures\TestCustomExtension;
+use Fxp\Component\Block\Tests\Fixtures\Type\FooSubType;
+use Fxp\Component\Block\Tests\Fixtures\Type\FooType;
 use PHPUnit\Framework\TestCase;
-use Sonatra\Component\Block\BlockRegistry;
-use Sonatra\Component\Block\BlockTypeGuesserChain;
-use Sonatra\Component\Block\BlockTypeGuesserInterface;
-use Sonatra\Component\Block\ResolvedBlockTypeFactoryInterface;
-use Sonatra\Component\Block\Tests\Fixtures\Extension\FooTypeBarExtension;
-use Sonatra\Component\Block\Tests\Fixtures\Extension\FooTypeBazExtension;
-use Sonatra\Component\Block\Tests\Fixtures\TestCustomExtension;
-use Sonatra\Component\Block\Tests\Fixtures\Type\FooSubType;
-use Sonatra\Component\Block\Tests\Fixtures\Type\FooType;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class BlockRegistryTest extends TestCase
 {
@@ -59,9 +59,9 @@ class BlockRegistryTest extends TestCase
 
     protected function setUp()
     {
-        $this->resolvedTypeFactory = $this->getMockBuilder('Sonatra\Component\Block\ResolvedBlockTypeFactory')->getMock();
-        $this->guesser1 = $this->getMockBuilder('Sonatra\Component\Block\BlockTypeGuesserInterface')->getMock();
-        $this->guesser2 = $this->getMockBuilder('Sonatra\Component\Block\BlockTypeGuesserInterface')->getMock();
+        $this->resolvedTypeFactory = $this->getMockBuilder('Fxp\Component\Block\ResolvedBlockTypeFactory')->getMock();
+        $this->guesser1 = $this->getMockBuilder('Fxp\Component\Block\BlockTypeGuesserInterface')->getMock();
+        $this->guesser2 = $this->getMockBuilder('Fxp\Component\Block\BlockTypeGuesserInterface')->getMock();
 
         /* @var ResolvedBlockTypeFactoryInterface $rtf */
         $rtf = $this->resolvedTypeFactory;
@@ -81,7 +81,7 @@ class BlockRegistryTest extends TestCase
     public function testGetTypeFromExtension()
     {
         $type = new FooType();
-        $resolvedType = $this->getMockBuilder('Sonatra\Component\Block\ResolvedBlockTypeInterface')->getMock();
+        $resolvedType = $this->getMockBuilder('Fxp\Component\Block\ResolvedBlockTypeInterface')->getMock();
 
         $this->extension2->addType($type);
 
@@ -100,7 +100,7 @@ class BlockRegistryTest extends TestCase
         $type = new FooType();
         $ext1 = new FooTypeBarExtension();
         $ext2 = new FooTypeBazExtension();
-        $resolvedType = $this->getMockBuilder('Sonatra\Component\Block\ResolvedBlockTypeInterface')->getMock();
+        $resolvedType = $this->getMockBuilder('Fxp\Component\Block\ResolvedBlockTypeInterface')->getMock();
 
         $this->extension2->addType($type);
         $this->extension1->addTypeExtension($ext1);
@@ -118,8 +118,8 @@ class BlockRegistryTest extends TestCase
     {
         $parentType = new FooType();
         $type = new FooSubType();
-        $parentResolvedType = $this->getMockBuilder('Sonatra\Component\Block\ResolvedBlockTypeInterface')->getMock();
-        $resolvedType = $this->getMockBuilder('Sonatra\Component\Block\ResolvedBlockTypeInterface')->getMock();
+        $parentResolvedType = $this->getMockBuilder('Fxp\Component\Block\ResolvedBlockTypeInterface')->getMock();
+        $resolvedType = $this->getMockBuilder('Fxp\Component\Block\ResolvedBlockTypeInterface')->getMock();
 
         $this->extension1->addType($parentType);
         $this->extension2->addType($type);
@@ -138,7 +138,7 @@ class BlockRegistryTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\UnexpectedTypeException
+     * @expectedException \Fxp\Component\Block\Exception\UnexpectedTypeException
      */
     public function testGetTypeThrowsExceptionIfParentNotFound()
     {
@@ -150,7 +150,7 @@ class BlockRegistryTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\InvalidArgumentException
+     * @expectedException \Fxp\Component\Block\Exception\InvalidArgumentException
      */
     public function testGetTypeThrowsExceptionIfTypeNotFound()
     {
@@ -158,7 +158,7 @@ class BlockRegistryTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\UnexpectedTypeException
+     * @expectedException \Fxp\Component\Block\Exception\UnexpectedTypeException
      */
     public function testGetTypeThrowsExceptionIfNoString()
     {
@@ -168,7 +168,7 @@ class BlockRegistryTest extends TestCase
     public function testHasTypeAfterLoadingFromExtension()
     {
         $type = new FooType();
-        $resolvedType = $this->getMockBuilder('Sonatra\Component\Block\ResolvedBlockTypeInterface')->getMock();
+        $resolvedType = $this->getMockBuilder('Fxp\Component\Block\ResolvedBlockTypeInterface')->getMock();
 
         $this->resolvedTypeFactory->expects($this->once())
             ->method('createResolvedType')
@@ -193,7 +193,7 @@ class BlockRegistryTest extends TestCase
         $rtf = $this->resolvedTypeFactory;
 
         $registry = new BlockRegistry(
-            array($this->getMockBuilder('Sonatra\Component\Block\BlockExtensionInterface')->getMock()),
+            array($this->getMockBuilder('Fxp\Component\Block\BlockExtensionInterface')->getMock()),
             $rtf);
 
         $this->assertNull($registry->getTypeGuesser());
@@ -207,7 +207,7 @@ class BlockRegistryTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\UnexpectedTypeException
+     * @expectedException \Fxp\Component\Block\Exception\UnexpectedTypeException
      */
     public function testInvalidExtensions()
     {

@@ -1,25 +1,25 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Templating\Helper;
+namespace Fxp\Component\Block\Templating\Helper;
 
-use Sonatra\Component\Block\BlockRendererInterface;
-use Sonatra\Component\Block\BlockView;
-use Sonatra\Component\Block\Extension\Core\Type\BlockType;
+use Fxp\Component\Block\BlockRendererInterface;
+use Fxp\Component\Block\BlockView;
+use Fxp\Component\Block\Extension\Core\Type\BlockType;
 use Symfony\Component\Templating\Helper\Helper;
 
 /**
  * BlockHelper provides helpers to help display blocks.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class BlockHelper extends Helper
 {

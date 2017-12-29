@@ -1,23 +1,23 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block;
+namespace Fxp\Component\Block;
 
-use Sonatra\Component\Block\Exception\UnexpectedTypeException;
-use Sonatra\Component\Block\Extension\Core\Type\BlockType;
-use Sonatra\Component\Block\Extension\Core\Type\TextType;
-use Sonatra\Component\Block\Util\BlockUtil;
+use Fxp\Component\Block\Exception\UnexpectedTypeException;
+use Fxp\Component\Block\Extension\Core\Type\BlockType;
+use Fxp\Component\Block\Extension\Core\Type\TextType;
+use Fxp\Component\Block\Util\BlockUtil;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class BlockFactory implements BlockFactoryInterface
 {

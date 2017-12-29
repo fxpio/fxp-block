@@ -1,22 +1,22 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Twig\Node;
+namespace Fxp\Component\Block\Twig\Node;
 
-use Sonatra\Component\Block\Util\BlockUtil;
+use Fxp\Component\Block\Util\BlockUtil;
 
 /**
  * Represents a sblock node.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class Superblock extends \Twig_Node_Block
 {
@@ -66,11 +66,11 @@ class Superblock extends \Twig_Node_Block
             $compiler
                 ->raw('(')
                 ->subcompile($type)
-                ->raw(' instanceof \Sonatra\Component\Block\BlockBuilderInterface || ')
+                ->raw(' instanceof \Fxp\Component\Block\BlockBuilderInterface || ')
                 ->subcompile($type)
-                ->raw(' instanceof \Sonatra\Component\Block\BlockInterface || ')
+                ->raw(' instanceof \Fxp\Component\Block\BlockInterface || ')
                 ->subcompile($type)
-                ->raw(' instanceof \Sonatra\Component\Block\BlockView) ? ')
+                ->raw(' instanceof \Fxp\Component\Block\BlockView) ? ')
                 ->subcompile($type)
                 ->raw(' : ')
             ;
@@ -78,7 +78,7 @@ class Superblock extends \Twig_Node_Block
 
         // create the block
         $compiler
-            ->raw('$this->env->getExtension(\'Sonatra\Component\Block\Twig\Extension\BlockExtension\')->createNamed(')
+            ->raw('$this->env->getExtension(\'Fxp\Component\Block\Twig\Extension\BlockExtension\')->createNamed(')
             ->subcompile($type)
             ->raw(', ')
         ;
@@ -87,7 +87,7 @@ class Superblock extends \Twig_Node_Block
 
         if ($type instanceof \Twig_Node_Expression_Name) {
             $compiler
-                ->write('if ($')->raw($name)->raw(' instanceof \Sonatra\Component\Block\BlockBuilderInterface) {')->raw("\n")
+                ->write('if ($')->raw($name)->raw(' instanceof \Fxp\Component\Block\BlockBuilderInterface) {')->raw("\n")
                 ->indent()
                 ->write('$')->raw($name)->raw(' = $')->raw($name)->raw('->getBlock();')->raw("\n")
                 ->outdent()

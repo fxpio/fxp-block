@@ -1,24 +1,24 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Doctrine\Type;
+namespace Fxp\Component\Block\Doctrine\Type;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
-use Sonatra\Component\Block\AbstractType;
-use Sonatra\Component\Block\BlockBuilderInterface;
-use Sonatra\Component\Block\Doctrine\DataTransformer\CollectionToArrayTransformer;
-use Sonatra\Component\Block\Doctrine\DataTransformer\EntityToArrayTransformer;
-use Sonatra\Component\Block\Exception\RuntimeException;
-use Sonatra\Component\Block\Extension\Core\Type\ChoiceType;
+use Fxp\Component\Block\AbstractType;
+use Fxp\Component\Block\BlockBuilderInterface;
+use Fxp\Component\Block\Doctrine\DataTransformer\CollectionToArrayTransformer;
+use Fxp\Component\Block\Doctrine\DataTransformer\EntityToArrayTransformer;
+use Fxp\Component\Block\Exception\RuntimeException;
+use Fxp\Component\Block\Extension\Core\Type\ChoiceType;
 use Symfony\Bridge\Doctrine\Form\ChoiceList\DoctrineChoiceLoader;
 use Symfony\Bridge\Doctrine\Form\ChoiceList\EntityLoaderInterface;
 use Symfony\Bridge\Doctrine\Form\ChoiceList\IdReader;
@@ -31,7 +31,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 abstract class DoctrineType extends AbstractType
 {

@@ -1,29 +1,29 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Tests;
+namespace Fxp\Component\Block\Tests;
 
+use Fxp\Component\Block\BlockFactory;
+use Fxp\Component\Block\BlockFactoryInterface;
+use Fxp\Component\Block\BlockRegistryInterface;
+use Fxp\Component\Block\BlockTypeGuesserChain;
+use Fxp\Component\Block\Extension\Core\Type\PasswordType;
+use Fxp\Component\Block\Extension\Core\Type\TextType;
+use Fxp\Component\Block\Guess\Guess;
+use Fxp\Component\Block\Guess\TypeGuess;
+use Fxp\Component\Block\ResolvedBlockTypeFactoryInterface;
 use PHPUnit\Framework\TestCase;
-use Sonatra\Component\Block\BlockFactory;
-use Sonatra\Component\Block\BlockFactoryInterface;
-use Sonatra\Component\Block\BlockRegistryInterface;
-use Sonatra\Component\Block\BlockTypeGuesserChain;
-use Sonatra\Component\Block\Extension\Core\Type\PasswordType;
-use Sonatra\Component\Block\Extension\Core\Type\TextType;
-use Sonatra\Component\Block\Guess\Guess;
-use Sonatra\Component\Block\Guess\TypeGuess;
-use Sonatra\Component\Block\ResolvedBlockTypeFactoryInterface;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class BlockFactoryTest extends TestCase
 {
@@ -59,11 +59,11 @@ class BlockFactoryTest extends TestCase
 
     protected function setUp()
     {
-        $this->resolvedTypeFactory = $this->getMockBuilder('Sonatra\Component\Block\ResolvedBlockTypeFactoryInterface')->getMock();
-        $this->guesser1 = $this->getMockBuilder('Sonatra\Component\Block\BlockTypeGuesserInterface')->getMock();
-        $this->guesser2 = $this->getMockBuilder('Sonatra\Component\Block\BlockTypeGuesserInterface')->getMock();
-        $this->registry = $this->getMockBuilder('Sonatra\Component\Block\BlockRegistryInterface')->getMock();
-        $this->builder = $this->getMockBuilder('Sonatra\Component\Block\Test\BlockBuilderInterface')->getMock();
+        $this->resolvedTypeFactory = $this->getMockBuilder('Fxp\Component\Block\ResolvedBlockTypeFactoryInterface')->getMock();
+        $this->guesser1 = $this->getMockBuilder('Fxp\Component\Block\BlockTypeGuesserInterface')->getMock();
+        $this->guesser2 = $this->getMockBuilder('Fxp\Component\Block\BlockTypeGuesserInterface')->getMock();
+        $this->registry = $this->getMockBuilder('Fxp\Component\Block\BlockRegistryInterface')->getMock();
+        $this->builder = $this->getMockBuilder('Fxp\Component\Block\Test\BlockBuilderInterface')->getMock();
 
         /* @var BlockRegistryInterface $registry */
         $registry = $this->registry;
@@ -114,7 +114,7 @@ class BlockFactoryTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\UnexpectedTypeException
+     * @expectedException \Fxp\Component\Block\Exception\UnexpectedTypeException
      * @expectedExceptionMessage Expected argument of type "string",
      */
     public function testCreateNamedBuilderWithResolvedTypeInstance()
@@ -182,7 +182,7 @@ class BlockFactoryTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\UnexpectedTypeException
+     * @expectedException \Fxp\Component\Block\Exception\UnexpectedTypeException
      * @expectedExceptionMessage Expected argument of type "string", "stdClass" given
      */
     public function testCreateNamedBuilderThrowsUnderstandableException()
@@ -221,7 +221,7 @@ class BlockFactoryTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\UnexpectedTypeException
+     * @expectedException \Fxp\Component\Block\Exception\UnexpectedTypeException
      * \@expectedExceptionMessage Expected argument of type "string",
      */
     public function testCreateUsesTypeNameIfTypeGivenAsObject()
@@ -266,8 +266,8 @@ class BlockFactoryTest extends TestCase
 
     public function testCreateBuilderForPropertyWithoutTypeGuesser()
     {
-        $registry = $this->getMockBuilder('Sonatra\Component\Block\BlockRegistryInterface')->getMock();
-        $factory = $this->getMockBuilder('Sonatra\Component\Block\BlockFactory')
+        $registry = $this->getMockBuilder('Fxp\Component\Block\BlockRegistryInterface')->getMock();
+        $factory = $this->getMockBuilder('Fxp\Component\Block\BlockFactory')
             ->setMethods(array('createNamedBuilder'))
             ->setConstructorArgs(array($registry, $this->resolvedTypeFactory))
             ->getMock();
@@ -342,7 +342,7 @@ class BlockFactoryTest extends TestCase
             ->method('guessType')
             ->with('Application\Author', 'firstName')
             ->will($this->returnValue(new TypeGuess(
-                'Sonatra\Component\Block\Extension\Core\Type\TextType',
+                'Fxp\Component\Block\Extension\Core\Type\TextType',
                 array('attr' => array('data-maxlength' => 10)),
                 Guess::MEDIUM_CONFIDENCE
             )));
@@ -373,7 +373,7 @@ class BlockFactoryTest extends TestCase
 
         $this->registry->expects($this->once())
             ->method('getType')
-            ->with('Sonatra\Component\Block\Extension\Core\Type\TextType')
+            ->with('Fxp\Component\Block\Extension\Core\Type\TextType')
             ->will($this->returnValue($resolvedType));
 
         $resolvedType->expects($this->once())
@@ -398,12 +398,12 @@ class BlockFactoryTest extends TestCase
 
     private function getMockResolvedType()
     {
-        return $this->getMockBuilder('Sonatra\Component\Block\ResolvedBlockTypeInterface')->getMock();
+        return $this->getMockBuilder('Fxp\Component\Block\ResolvedBlockTypeInterface')->getMock();
     }
 
     private function getMockFactory(array $methods = array())
     {
-        return $this->getMockBuilder('Sonatra\Component\Block\BlockFactory')
+        return $this->getMockBuilder('Fxp\Component\Block\BlockFactory')
             ->setMethods($methods)
             ->setConstructorArgs(array($this->registry, $this->resolvedTypeFactory))
             ->getMock();

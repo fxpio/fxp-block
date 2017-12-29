@@ -1,28 +1,28 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Tests;
+namespace Fxp\Component\Block\Tests;
 
+use Fxp\Component\Block\BlockRendererInterface;
 use PHPUnit\Framework\TestCase;
-use Sonatra\Component\Block\BlockRendererInterface;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class BlockRendererTest extends TestCase
 {
     public function testHumanize()
     {
         /* @var BlockRendererInterface $renderer */
-        $renderer = $this->getMockBuilder('Sonatra\Component\Block\BlockRenderer')
+        $renderer = $this->getMockBuilder('Fxp\Component\Block\BlockRenderer')
             ->setMethods(null)
             ->disableOriginalConstructor()
             ->getMock()

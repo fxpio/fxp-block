@@ -1,21 +1,21 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Twig\Block;
+namespace Fxp\Component\Block\Twig\Block;
 
-use Sonatra\Component\Block\AbstractRendererEngine;
-use Sonatra\Component\Block\BlockView;
+use Fxp\Component\Block\AbstractRendererEngine;
+use Fxp\Component\Block\BlockView;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class TwigRendererEngine extends AbstractRendererEngine implements TwigRendererEngineInterface
 {

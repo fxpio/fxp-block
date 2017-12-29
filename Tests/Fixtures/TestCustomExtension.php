@@ -1,25 +1,25 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Tests\Fixtures;
+namespace Fxp\Component\Block\Tests\Fixtures;
 
-use Sonatra\Component\Block\BlockExtensionInterface;
-use Sonatra\Component\Block\BlockTypeExtensionInterface;
-use Sonatra\Component\Block\BlockTypeGuesserInterface;
-use Sonatra\Component\Block\BlockTypeInterface;
+use Fxp\Component\Block\BlockExtensionInterface;
+use Fxp\Component\Block\BlockTypeExtensionInterface;
+use Fxp\Component\Block\BlockTypeGuesserInterface;
+use Fxp\Component\Block\BlockTypeInterface;
 
 /**
  * Test for extensions.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class TestCustomExtension implements BlockExtensionInterface
 {

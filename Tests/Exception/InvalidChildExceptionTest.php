@@ -1,23 +1,23 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Tests\Exception;
+namespace Fxp\Component\Block\Tests\Exception;
 
+use Fxp\Component\Block\Exception\InvalidChildException;
+use Fxp\Component\Block\Test\BlockBuilderInterface;
+use Fxp\Component\Block\Tests\Fixtures\Type\FooType;
 use PHPUnit\Framework\TestCase;
-use Sonatra\Component\Block\Exception\InvalidChildException;
-use Sonatra\Component\Block\Test\BlockBuilderInterface;
-use Sonatra\Component\Block\Tests\Fixtures\Type\FooType;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class InvalidChildExceptionTest extends TestCase
 {
@@ -33,12 +33,12 @@ class InvalidChildExceptionTest extends TestCase
 
     protected function setUp()
     {
-        $rType = $this->getMockBuilder('Sonatra\Component\Block\ResolvedBlockTypeInterface')->getMock();
+        $rType = $this->getMockBuilder('Fxp\Component\Block\ResolvedBlockTypeInterface')->getMock();
         $rType->expects($this->any())
             ->method('getInnerType')
             ->will($this->returnValue(new FooType()));
 
-        $this->builder = $this->getMockBuilder('Sonatra\Component\Block\BlockBuilderInterface')->getMock();
+        $this->builder = $this->getMockBuilder('Fxp\Component\Block\BlockBuilderInterface')->getMock();
         $this->builder->expects($this->any())
             ->method('getName')
             ->will($this->returnValue('foo'));
@@ -46,7 +46,7 @@ class InvalidChildExceptionTest extends TestCase
             ->method('getType')
             ->will($this->returnValue($rType));
 
-        $this->builderChild = $this->getMockBuilder('Sonatra\Component\Block\BlockBuilderInterface')->getMock();
+        $this->builderChild = $this->getMockBuilder('Fxp\Component\Block\BlockBuilderInterface')->getMock();
         $this->builderChild->expects($this->any())
             ->method('getName')
             ->will($this->returnValue('bar'));
@@ -62,8 +62,8 @@ class InvalidChildExceptionTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\InvalidChildException
-     * @expectedExceptionMessage The child "bar" ("Sonatra\Component\Block\Tests\Fixtures\Type\FooType" type) is not allowed for "foo" block ("Sonatra\Component\Block\Tests\Fixtures\Type\FooType" type)
+     * @expectedException \Fxp\Component\Block\Exception\InvalidChildException
+     * @expectedExceptionMessage The child "bar" ("Fxp\Component\Block\Tests\Fixtures\Type\FooType" type) is not allowed for "foo" block ("Fxp\Component\Block\Tests\Fixtures\Type\FooType" type)
      */
     public function testExceptionWithoutAllowedType()
     {
@@ -71,8 +71,8 @@ class InvalidChildExceptionTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\InvalidChildException
-     * @expectedExceptionMessage The child "bar" ("Sonatra\Component\Block\Tests\Fixtures\Type\FooType" type) is not allowed for "foo" block ("Sonatra\Component\Block\Tests\Fixtures\Type\FooType" type), only "baz" allowed
+     * @expectedException \Fxp\Component\Block\Exception\InvalidChildException
+     * @expectedExceptionMessage The child "bar" ("Fxp\Component\Block\Tests\Fixtures\Type\FooType" type) is not allowed for "foo" block ("Fxp\Component\Block\Tests\Fixtures\Type\FooType" type), only "baz" allowed
      */
     public function testExceptionWithSingleAllowedType()
     {
@@ -80,8 +80,8 @@ class InvalidChildExceptionTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\InvalidChildException
-     * @expectedExceptionMessage The child "bar" ("Sonatra\Component\Block\Tests\Fixtures\Type\FooType" type) is not allowed for "foo" block ("Sonatra\Component\Block\Tests\Fixtures\Type\FooType" type), only "Baz", "Boo" allowed
+     * @expectedException \Fxp\Component\Block\Exception\InvalidChildException
+     * @expectedExceptionMessage The child "bar" ("Fxp\Component\Block\Tests\Fixtures\Type\FooType" type) is not allowed for "foo" block ("Fxp\Component\Block\Tests\Fixtures\Type\FooType" type), only "Baz", "Boo" allowed
      */
     public function testExceptionWithMultipleAllowedType()
     {

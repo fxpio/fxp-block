@@ -1,19 +1,19 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Test;
+namespace Fxp\Component\Block\Test;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
-interface BlockBuilderInterface extends \Iterator, \Sonatra\Component\Block\BlockBuilderInterface
+interface BlockBuilderInterface extends \Iterator, \Fxp\Component\Block\BlockBuilderInterface
 {
 }

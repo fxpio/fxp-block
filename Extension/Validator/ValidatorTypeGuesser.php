@@ -1,39 +1,39 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Extension\Validator;
+namespace Fxp\Component\Block\Extension\Validator;
 
-use Sonatra\Component\Block\BlockTypeGuesserInterface;
-use Sonatra\Component\Block\Extension\Core\Type\CheckboxType;
-use Sonatra\Component\Block\Extension\Core\Type\CollectionType;
-use Sonatra\Component\Block\Extension\Core\Type\CountryType;
-use Sonatra\Component\Block\Extension\Core\Type\DateTimeType;
-use Sonatra\Component\Block\Extension\Core\Type\DateType;
-use Sonatra\Component\Block\Extension\Core\Type\EmailType;
-use Sonatra\Component\Block\Extension\Core\Type\IntegerType;
-use Sonatra\Component\Block\Extension\Core\Type\LanguageType;
-use Sonatra\Component\Block\Extension\Core\Type\LocaleType;
-use Sonatra\Component\Block\Extension\Core\Type\NumberType;
-use Sonatra\Component\Block\Extension\Core\Type\TextType;
-use Sonatra\Component\Block\Extension\Core\Type\TimeType;
-use Sonatra\Component\Block\Extension\Core\Type\UrlType;
-use Sonatra\Component\Block\Guess\Guess;
-use Sonatra\Component\Block\Guess\TypeGuess;
+use Fxp\Component\Block\BlockTypeGuesserInterface;
+use Fxp\Component\Block\Extension\Core\Type\CheckboxType;
+use Fxp\Component\Block\Extension\Core\Type\CollectionType;
+use Fxp\Component\Block\Extension\Core\Type\CountryType;
+use Fxp\Component\Block\Extension\Core\Type\DateTimeType;
+use Fxp\Component\Block\Extension\Core\Type\DateType;
+use Fxp\Component\Block\Extension\Core\Type\EmailType;
+use Fxp\Component\Block\Extension\Core\Type\IntegerType;
+use Fxp\Component\Block\Extension\Core\Type\LanguageType;
+use Fxp\Component\Block\Extension\Core\Type\LocaleType;
+use Fxp\Component\Block\Extension\Core\Type\NumberType;
+use Fxp\Component\Block\Extension\Core\Type\TextType;
+use Fxp\Component\Block\Extension\Core\Type\TimeType;
+use Fxp\Component\Block\Extension\Core\Type\UrlType;
+use Fxp\Component\Block\Guess\Guess;
+use Fxp\Component\Block\Guess\TypeGuess;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Mapping\Factory\MetadataFactoryInterface;
 use Symfony\Component\Validator\Mapping\MemberMetadata;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class ValidatorTypeGuesser implements BlockTypeGuesserInterface
 {

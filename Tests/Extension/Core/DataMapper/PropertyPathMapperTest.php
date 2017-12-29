@@ -1,26 +1,26 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Tests\Extension\Core\DataMapper;
+namespace Fxp\Component\Block\Tests\Extension\Core\DataMapper;
 
+use Fxp\Component\Block\Block;
+use Fxp\Component\Block\BlockConfigBuilder;
+use Fxp\Component\Block\BlockConfigInterface;
+use Fxp\Component\Block\Extension\Core\DataMapper\PropertyPathMapper;
 use PHPUnit\Framework\TestCase;
-use Sonatra\Component\Block\Block;
-use Sonatra\Component\Block\BlockConfigBuilder;
-use Sonatra\Component\Block\BlockConfigInterface;
-use Sonatra\Component\Block\Extension\Core\DataMapper\PropertyPathMapper;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class PropertyPathMapperTest extends TestCase
 {
@@ -77,7 +77,7 @@ class PropertyPathMapperTest extends TestCase
      */
     private function getBlock(BlockConfigInterface $config)
     {
-        $block = $this->getMockBuilder('Sonatra\Component\Block\Block')
+        $block = $this->getMockBuilder('Fxp\Component\Block\Block')
             ->setConstructorArgs(array($config))
             ->setMethods(null)
             ->getMock();
@@ -160,7 +160,7 @@ class PropertyPathMapperTest extends TestCase
         $config->setPropertyPath($propertyPath);
         $config->setData($default);
 
-        $block = $this->getMockBuilder('Sonatra\Component\Block\Block')
+        $block = $this->getMockBuilder('Fxp\Component\Block\Block')
             ->setConstructorArgs(array($config))
             ->setMethods(array('setData'))
             ->getMock();
@@ -186,7 +186,7 @@ class PropertyPathMapperTest extends TestCase
         $config->setPropertyPath($propertyPath);
         $config->setData($default);
 
-        $block = $this->getMockBuilder('Sonatra\Component\Block\Block')
+        $block = $this->getMockBuilder('Fxp\Component\Block\Block')
             ->setConstructorArgs(array($config))
             ->setMethods(array('setData'))
             ->getMock();
@@ -212,7 +212,7 @@ class PropertyPathMapperTest extends TestCase
         $config->setPropertyPath($propertyPath);
         $config->setData($default);
 
-        $block = $this->getMockBuilder('Sonatra\Component\Block\Block')
+        $block = $this->getMockBuilder('Fxp\Component\Block\Block')
             ->setConstructorArgs(array($config))
             ->setMethods(null)
             ->getMock();

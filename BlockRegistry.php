@@ -1,24 +1,24 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block;
+namespace Fxp\Component\Block;
 
-use Sonatra\Component\Block\Exception\ExceptionInterface;
-use Sonatra\Component\Block\Exception\InvalidArgumentException;
-use Sonatra\Component\Block\Exception\UnexpectedTypeException;
+use Fxp\Component\Block\Exception\ExceptionInterface;
+use Fxp\Component\Block\Exception\InvalidArgumentException;
+use Fxp\Component\Block\Exception\UnexpectedTypeException;
 
 /**
  * The central registry of the Block component.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class BlockRegistry implements BlockRegistryInterface
 {
@@ -56,7 +56,7 @@ class BlockRegistry implements BlockRegistryInterface
     {
         foreach ($extensions as $extension) {
             if (!$extension instanceof BlockExtensionInterface) {
-                throw new UnexpectedTypeException($extension, 'Sonatra\Component\Block\BlockExtensionInterface');
+                throw new UnexpectedTypeException($extension, 'Fxp\Component\Block\BlockExtensionInterface');
             }
         }
 
@@ -86,7 +86,7 @@ class BlockRegistry implements BlockRegistryInterface
 
             if (!$type) {
                 // Support fully-qualified class names
-                if (class_exists($name) && in_array('Sonatra\Component\Block\BlockTypeInterface', class_implements($name))) {
+                if (class_exists($name) && in_array('Fxp\Component\Block\BlockTypeInterface', class_implements($name))) {
                     $type = new $name();
                 } else {
                     throw new InvalidArgumentException(sprintf('Could not load type "%s"', $name));

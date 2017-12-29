@@ -1,26 +1,26 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Extension\DataCollector\Proxy;
+namespace Fxp\Component\Block\Extension\DataCollector\Proxy;
 
-use Sonatra\Component\Block\BlockTypeInterface;
-use Sonatra\Component\Block\Extension\DataCollector\BlockDataCollectorInterface;
-use Sonatra\Component\Block\ResolvedBlockTypeFactoryInterface;
-use Sonatra\Component\Block\ResolvedBlockTypeInterface;
+use Fxp\Component\Block\BlockTypeInterface;
+use Fxp\Component\Block\Extension\DataCollector\BlockDataCollectorInterface;
+use Fxp\Component\Block\ResolvedBlockTypeFactoryInterface;
+use Fxp\Component\Block\ResolvedBlockTypeInterface;
 
 /**
  * Proxy that wraps resolved types into {@link ResolvedTypeDataCollectorProxy}
  * instances.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class ResolvedTypeFactoryDataCollectorProxy implements ResolvedBlockTypeFactoryInterface
 {

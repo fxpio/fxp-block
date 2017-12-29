@@ -1,21 +1,21 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block;
+namespace Fxp\Component\Block;
 
-use Sonatra\Component\Block\Exception\InvalidArgumentException;
-use Sonatra\Component\Block\Exception\UnexpectedTypeException;
+use Fxp\Component\Block\Exception\InvalidArgumentException;
+use Fxp\Component\Block\Exception\UnexpectedTypeException;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 abstract class AbstractExtension implements BlockExtensionInterface
 {
@@ -154,7 +154,7 @@ abstract class AbstractExtension implements BlockExtensionInterface
 
         foreach ($this->loadTypes() as $type) {
             if (!$type instanceof BlockTypeInterface) {
-                throw new UnexpectedTypeException($type, 'Sonatra\Component\Block\BlockTypeInterface');
+                throw new UnexpectedTypeException($type, 'Fxp\Component\Block\BlockTypeInterface');
             }
 
             $this->types[get_class($type)] = $type;
@@ -173,7 +173,7 @@ abstract class AbstractExtension implements BlockExtensionInterface
 
         foreach ($this->loadTypeExtensions() as $extension) {
             if (!$extension instanceof BlockTypeExtensionInterface) {
-                throw new UnexpectedTypeException($extension, 'Sonatra\Component\Block\BlockTypeExtensionInterface');
+                throw new UnexpectedTypeException($extension, 'Fxp\Component\Block\BlockTypeExtensionInterface');
             }
 
             $type = $extension->getExtendedType();
@@ -193,7 +193,7 @@ abstract class AbstractExtension implements BlockExtensionInterface
 
         $this->typeGuesser = $this->loadTypeGuesser();
         if (null !== $this->typeGuesser && !$this->typeGuesser instanceof BlockTypeGuesserInterface) {
-            throw new UnexpectedTypeException($this->typeGuesser, 'Sonatra\Component\Block\BlockTypeGuesserInterface');
+            throw new UnexpectedTypeException($this->typeGuesser, 'Fxp\Component\Block\BlockTypeGuesserInterface');
         }
     }
 }

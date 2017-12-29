@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Util;
+namespace Fxp\Component\Block\Util;
 
 /**
  * A hash map which keeps track of deletions and additions.
@@ -62,7 +62,7 @@ namespace Sonatra\Component\Block\Util;
  *         }
  *     }
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class OrderedHashMap implements \ArrayAccess, \IteratorAggregate, \Countable
 {

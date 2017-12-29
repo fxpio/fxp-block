@@ -1,27 +1,27 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Tests;
+namespace Fxp\Component\Block\Tests;
 
+use Fxp\Component\Block\BlockInterface;
+use Fxp\Component\Block\BlockView;
+use Fxp\Component\Block\DataMapperInterface;
+use Fxp\Component\Block\Extension\Core\DataMapper\PropertyPathMapper;
+use Fxp\Component\Block\Extension\Core\Type\TextType;
+use Fxp\Component\Block\ResolvedBlockTypeInterface;
+use Fxp\Component\Block\Tests\Fixtures\DataTransformer\FixedDataTransformer;
 use PHPUnit\Framework\TestCase;
-use Sonatra\Component\Block\BlockInterface;
-use Sonatra\Component\Block\BlockView;
-use Sonatra\Component\Block\DataMapperInterface;
-use Sonatra\Component\Block\Extension\Core\DataMapper\PropertyPathMapper;
-use Sonatra\Component\Block\Extension\Core\Type\TextType;
-use Sonatra\Component\Block\ResolvedBlockTypeInterface;
-use Sonatra\Component\Block\Tests\Fixtures\DataTransformer\FixedDataTransformer;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class CompoundBlockTest extends AbstractBlockTest
 {
@@ -185,7 +185,7 @@ class CompoundBlockTest extends AbstractBlockTest
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\LogicException
+     * @expectedException \Fxp\Component\Block\Exception\LogicException
      */
     public function testAddWithoutCompound()
     {
@@ -196,7 +196,7 @@ class CompoundBlockTest extends AbstractBlockTest
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\UnexpectedTypeException
+     * @expectedException \Fxp\Component\Block\Exception\UnexpectedTypeException
      */
     public function testAddInvalidChild()
     {
@@ -210,7 +210,7 @@ class CompoundBlockTest extends AbstractBlockTest
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\UnexpectedTypeException
+     * @expectedException \Fxp\Component\Block\Exception\UnexpectedTypeException
      */
     public function testAddInvalidChildType()
     {
@@ -269,7 +269,7 @@ class CompoundBlockTest extends AbstractBlockTest
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\RuntimeException
+     * @expectedException \Fxp\Component\Block\Exception\RuntimeException
      */
     public function testInitializeBlockWithParent()
     {
@@ -301,7 +301,7 @@ class CompoundBlockTest extends AbstractBlockTest
             ->method('mapDataToViews')
             ->with('bar', $this->isInstanceOf('\RecursiveIteratorIterator'))
             ->will($this->returnCallback(function ($data, \RecursiveIteratorIterator $iterator) use ($child, $test) {
-                $test->assertInstanceOf('Sonatra\Component\Block\Util\InheritDataAwareIterator', $iterator->getInnerIterator());
+                $test->assertInstanceOf('Fxp\Component\Block\Util\InheritDataAwareIterator', $iterator->getInnerIterator());
                 $test->assertSame(array($child), iterator_to_array($iterator));
             }));
 
@@ -410,7 +410,7 @@ class CompoundBlockTest extends AbstractBlockTest
             ->method('mapDataToViews')
             ->with('bar', $this->isInstanceOf('\RecursiveIteratorIterator'))
             ->will($this->returnCallback(function ($data, \RecursiveIteratorIterator $iterator) use ($child1, $child2, $test) {
-                $test->assertInstanceOf('Sonatra\Component\Block\Util\InheritDataAwareIterator', $iterator->getInnerIterator());
+                $test->assertInstanceOf('Fxp\Component\Block\Util\InheritDataAwareIterator', $iterator->getInnerIterator());
                 $test->assertSame(array('firstName' => $child1, 'lastName' => $child2), iterator_to_array($iterator));
             }));
 
@@ -423,7 +423,7 @@ class CompoundBlockTest extends AbstractBlockTest
     public function testCreateViewWithChildren()
     {
         /* @var ResolvedBlockTypeInterface|\PHPUnit_Framework_MockObject_MockObject $type */
-        $type = $this->getMockBuilder('Sonatra\Component\Block\ResolvedBlockTypeInterface')->getMock();
+        $type = $this->getMockBuilder('Fxp\Component\Block\ResolvedBlockTypeInterface')->getMock();
         $options = array('a' => 'Foo', 'b' => 'Bar');
         $field1 = $this->getMockBlock('foo');
         $field2 = $this->getMockBlock('bar');

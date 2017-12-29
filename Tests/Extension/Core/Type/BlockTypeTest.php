@@ -1,24 +1,24 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Tests\Extension\Core\Type;
+namespace Fxp\Component\Block\Tests\Extension\Core\Type;
 
-use Sonatra\Component\Block\BlockBuilderInterface;
-use Sonatra\Component\Block\Extension\Core\Type\BlockType;
-use Sonatra\Component\Block\Tests\Fixtures\DataTransformer\FixedDataTransformer;
-use Sonatra\Component\Block\Tests\Fixtures\Object\Foo;
+use Fxp\Component\Block\BlockBuilderInterface;
+use Fxp\Component\Block\Extension\Core\Type\BlockType;
+use Fxp\Component\Block\Tests\Fixtures\DataTransformer\FixedDataTransformer;
+use Fxp\Component\Block\Tests\Fixtures\Object\Foo;
 use Symfony\Component\PropertyAccess\PropertyPath;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class BlockTypeTest extends BaseTypeTest
 {
@@ -29,7 +29,7 @@ class BlockTypeTest extends BaseTypeTest
 
     public function testCreateBlockInstances()
     {
-        $this->assertInstanceOf('Sonatra\Component\Block\Block', $this->factory->create(BlockType::class));
+        $this->assertInstanceOf('Fxp\Component\Block\Block', $this->factory->create(BlockType::class));
     }
 
     public function testDataClassMayBeNull()
@@ -42,21 +42,21 @@ class BlockTypeTest extends BaseTypeTest
     public function testDataClassMayBeAbstractClass()
     {
         $this->assertInstanceOf(BlockBuilderInterface::class, $this->factory->createBuilder(BlockType::class, null, array(
-            'data_class' => 'Sonatra\Component\Block\Tests\Fixtures\Object\AbstractFoo',
+            'data_class' => 'Fxp\Component\Block\Tests\Fixtures\Object\AbstractFoo',
         )));
     }
 
     public function testDataClassMayBeInterface()
     {
         $this->assertInstanceOf(BlockBuilderInterface::class, $this->factory->createBuilder(BlockType::class, null, array(
-            'data_class' => 'Sonatra\Component\Block\Tests\Fixtures\Object\FooInterface',
+            'data_class' => 'Fxp\Component\Block\Tests\Fixtures\Object\FooInterface',
         )));
     }
 
     public function testEmptyDataCreateNewInstanceWithoutConstructorArguments()
     {
         $block = $this->factory->create(BlockType::class, null, array(
-            'data_class' => 'Sonatra\Component\Block\Tests\Fixtures\Object\Foo',
+            'data_class' => 'Fxp\Component\Block\Tests\Fixtures\Object\Foo',
         ));
 
         $this->assertEquals(new Foo(), $block->getData());
@@ -65,12 +65,12 @@ class BlockTypeTest extends BaseTypeTest
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\InvalidConfigurationException
+     * @expectedException \Fxp\Component\Block\Exception\InvalidConfigurationException
      */
     public function testEmptyDataCreateNewInstanceWithConstructorArguments()
     {
         $this->factory->create(BlockType::class, null, array(
-            'data_class' => 'Sonatra\Component\Block\Tests\Fixtures\Object\SimpleBlockTestCountable',
+            'data_class' => 'Fxp\Component\Block\Tests\Fixtures\Object\SimpleBlockTestCountable',
         ));
     }
 

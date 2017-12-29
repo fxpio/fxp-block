@@ -1,20 +1,20 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Twig\Node;
+namespace Fxp\Component\Block\Twig\Node;
 
 /**
  * Represents a sblock call node.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class SuperblockReference extends \Twig_Node implements \Twig_NodeOutputInterface
 {
@@ -67,8 +67,8 @@ class SuperblockReference extends \Twig_Node implements \Twig_NodeOutputInterfac
         $compiler
             ->addDebugInfo($this)
             ->write('$')->raw($name)->raw(' = ')
-            ->raw('$this->env->getExtension(\'Sonatra\Component\Block\Twig\Extension\BlockExtension\')->createNamed(')
-            ->raw('\'Sonatra\Component\Block\Extension\Core\Type\ClosureType\'')
+            ->raw('$this->env->getExtension(\'Fxp\Component\Block\Twig\Extension\BlockExtension\')->createNamed(')
+            ->raw('\'Fxp\Component\Block\Extension\Core\Type\ClosureType\'')
             ->raw(', ')
             ->raw('array("data" => function ($blockView) use ($context, $blocks) { $this->block_')->raw($name)->raw('(array_merge($context, array(\'closure\' => $blockView)), $blocks); }')
             ->raw(', "block_name" => ')->string($name)->raw(', "label" => "")')
@@ -119,9 +119,9 @@ class SuperblockReference extends \Twig_Node implements \Twig_NodeOutputInterfac
             ->outdent()
             ->write('}')->raw("\n")
             ->write('$')->raw($name)->raw(' = $')->raw($name)->raw(' ')
-            ->raw('instanceof \Sonatra\Component\Block\BlockView ? $')->raw($name)->raw(' : $')->raw($name)->raw('->createView();')->raw("\n")
+            ->raw('instanceof \Fxp\Component\Block\BlockView ? $')->raw($name)->raw(' : $')->raw($name)->raw('->createView();')->raw("\n")
             // render
-            ->write('echo $this->env->getExtension(\'Sonatra\Component\Block\Twig\Extension\BlockExtension\')->renderer->searchAndRenderBlock(')->raw("\n")
+            ->write('echo $this->env->getExtension(\'Fxp\Component\Block\Twig\Extension\BlockExtension\')->renderer->searchAndRenderBlock(')->raw("\n")
             ->indent()
             ->write('$')->raw($name)
             // renderer prefix

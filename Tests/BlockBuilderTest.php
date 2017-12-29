@@ -1,27 +1,27 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Tests;
+namespace Fxp\Component\Block\Tests;
 
+use Fxp\Component\Block\BlockBuilder;
+use Fxp\Component\Block\BlockBuilderInterface;
+use Fxp\Component\Block\BlockFactoryInterface;
+use Fxp\Component\Block\DataMapperInterface;
+use Fxp\Component\Block\Extension\Core\Type\TextType;
+use Fxp\Component\Block\ResolvedBlockTypeInterface;
 use PHPUnit\Framework\TestCase;
-use Sonatra\Component\Block\BlockBuilder;
-use Sonatra\Component\Block\BlockBuilderInterface;
-use Sonatra\Component\Block\BlockFactoryInterface;
-use Sonatra\Component\Block\DataMapperInterface;
-use Sonatra\Component\Block\Extension\Core\Type\TextType;
-use Sonatra\Component\Block\ResolvedBlockTypeInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class BlockBuilderTest extends TestCase
 {
@@ -45,7 +45,7 @@ class BlockBuilderTest extends TestCase
         /* @var EventDispatcherInterface $dispatcher */
         $this->dispatcher = $this->getMockBuilder('Symfony\Component\EventDispatcher\EventDispatcherInterface')->getMock();
         /* @var BlockFactoryInterface $factory */
-        $this->factory = $this->getMockBuilder('Sonatra\Component\Block\BlockFactoryInterface')->getMock();
+        $this->factory = $this->getMockBuilder('Fxp\Component\Block\BlockFactoryInterface')->getMock();
 
         $this->builder = new BlockBuilder('name', null, $this->dispatcher, $this->factory);
     }
@@ -69,7 +69,7 @@ class BlockBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\UnexpectedTypeException
+     * @expectedException \Fxp\Component\Block\Exception\UnexpectedTypeException
      */
     public function testAddNameNoStringAndNoInteger()
     {
@@ -77,7 +77,7 @@ class BlockBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\UnexpectedTypeException
+     * @expectedException \Fxp\Component\Block\Exception\UnexpectedTypeException
      */
     public function testAddTypeNoString()
     {
@@ -139,7 +139,7 @@ class BlockBuilderTest extends TestCase
     public function testAddFormType()
     {
         $this->assertFalse($this->builder->has('foo'));
-        $this->builder->add('foo', $this->getMockBuilder('Sonatra\Component\Block\BlockTypeInterface')->getMock());
+        $this->builder->add('foo', $this->getMockBuilder('Fxp\Component\Block\BlockTypeInterface')->getMock());
         $this->assertTrue($this->builder->has('foo'));
     }
 
@@ -161,7 +161,7 @@ class BlockBuilderTest extends TestCase
         $this->builder->add('foo', TextType::class);
         $this->builder->remove('foo');
         $block = $this->builder->getBlock();
-        $this->assertInstanceOf('Sonatra\Component\Block\Block', $block);
+        $this->assertInstanceOf('Fxp\Component\Block\Block', $block);
     }
 
     public function testCreateNoTypeNo()
@@ -178,7 +178,7 @@ class BlockBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\InvalidArgumentException
+     * @expectedException \Fxp\Component\Block\Exception\InvalidArgumentException
      * @expectedExceptionMessage The child with the name "foo" does not exist.
      */
     public function testGetUnknown()
@@ -253,7 +253,7 @@ class BlockBuilderTest extends TestCase
 
     public function testGetBlockFactory()
     {
-        $this->assertInstanceOf('Sonatra\Component\Block\BlockFactoryInterface', $this->builder->getBlockFactory());
+        $this->assertInstanceOf('Fxp\Component\Block\BlockFactoryInterface', $this->builder->getBlockFactory());
     }
 
     public function testGetIterator()
@@ -271,9 +271,9 @@ class BlockBuilderTest extends TestCase
     public function testGetBlock()
     {
         /* @var DataMapperInterface $dataMapper */
-        $dataMapper = $this->getMockBuilder('Sonatra\Component\Block\DataMapperInterface')->getMock();
+        $dataMapper = $this->getMockBuilder('Fxp\Component\Block\DataMapperInterface')->getMock();
         /* @var ResolvedBlockTypeInterface $blockType */
-        $blockType = $this->getMockBuilder('Sonatra\Component\Block\ResolvedBlockTypeInterface')->getMock();
+        $blockType = $this->getMockBuilder('Fxp\Component\Block\ResolvedBlockTypeInterface')->getMock();
 
         $builder = new BlockBuilder('name', null, $this->dispatcher, $this->factory);
         $child = new BlockBuilder('child', null, $this->dispatcher, $this->factory);
@@ -286,7 +286,7 @@ class BlockBuilderTest extends TestCase
         $builder->add($child);
         $block = $builder->getBlock();
 
-        $this->assertInstanceOf('Sonatra\Component\Block\Block', $block);
+        $this->assertInstanceOf('Fxp\Component\Block\Block', $block);
         $this->assertEquals(1, $block->count());
     }
 
@@ -301,7 +301,7 @@ class BlockBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testAddTypeAfterGetBlock()
     {
@@ -311,7 +311,7 @@ class BlockBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testCreateTypeAfterGetBlock()
     {
@@ -321,7 +321,7 @@ class BlockBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testGetTypeAfterGetBlock()
     {
@@ -331,7 +331,7 @@ class BlockBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testRemoveTypeAfterGetBlock()
     {
@@ -341,7 +341,7 @@ class BlockBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testHasTypeAfterGetBlock()
     {
@@ -351,7 +351,7 @@ class BlockBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testAllTypeAfterGetBlock()
     {
@@ -361,7 +361,7 @@ class BlockBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testCountTypeAfterGetBlock()
     {
@@ -371,7 +371,7 @@ class BlockBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testGetBlockTypeAfterGetBlock()
     {
@@ -381,7 +381,7 @@ class BlockBuilderTest extends TestCase
     }
 
     /**
-     * @€@expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @€@expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testGetIteratorTypeAfterGetBlock()
     {
@@ -392,7 +392,7 @@ class BlockBuilderTest extends TestCase
 
     private function getBlockBuilder($name = 'name')
     {
-        $mock = $this->getMockBuilder('Sonatra\Component\Block\BlockBuilder')
+        $mock = $this->getMockBuilder('Fxp\Component\Block\BlockBuilder')
             ->disableOriginalConstructor()
             ->getMock();
 

@@ -1,28 +1,28 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Tests;
+namespace Fxp\Component\Block\Tests;
 
+use Fxp\Component\Block\BlockConfigBuilder;
+use Fxp\Component\Block\BlockConfigBuilderInterface;
+use Fxp\Component\Block\DataMapperInterface;
+use Fxp\Component\Block\DataTransformerInterface;
+use Fxp\Component\Block\ResolvedBlockTypeInterface;
 use PHPUnit\Framework\TestCase;
-use Sonatra\Component\Block\BlockConfigBuilder;
-use Sonatra\Component\Block\BlockConfigBuilderInterface;
-use Sonatra\Component\Block\DataMapperInterface;
-use Sonatra\Component\Block\DataTransformerInterface;
-use Sonatra\Component\Block\ResolvedBlockTypeInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormInterface;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class BlockConfigBuilderTest extends TestCase
 {
@@ -55,7 +55,7 @@ class BlockConfigBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\UnexpectedTypeException
+     * @expectedException \Fxp\Component\Block\Exception\UnexpectedTypeException
      */
     public function testNotStringName()
     {
@@ -63,7 +63,7 @@ class BlockConfigBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\InvalidArgumentException
+     * @expectedException \Fxp\Component\Block\Exception\InvalidArgumentException
      */
     public function testInvalidName()
     {
@@ -71,7 +71,7 @@ class BlockConfigBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\InvalidArgumentException
+     * @expectedException \Fxp\Component\Block\Exception\InvalidArgumentException
      */
     public function testInvalidClassname()
     {
@@ -91,9 +91,9 @@ class BlockConfigBuilderTest extends TestCase
     public function testViewTransformers()
     {
         /* @var DataTransformerInterface $dataTransformer */
-        $dataTransformer = $this->getMockBuilder('Sonatra\Component\Block\DataTransformerInterface')->getMock();
+        $dataTransformer = $this->getMockBuilder('Fxp\Component\Block\DataTransformerInterface')->getMock();
         /* @var DataTransformerInterface $dataTransformer2 */
-        $dataTransformer2 = $this->getMockBuilder('Sonatra\Component\Block\DataTransformerInterface')->getMock();
+        $dataTransformer2 = $this->getMockBuilder('Fxp\Component\Block\DataTransformerInterface')->getMock();
 
         $this->config->addViewTransformer($dataTransformer);
         $this->config->addViewTransformer($dataTransformer2, true);
@@ -109,9 +109,9 @@ class BlockConfigBuilderTest extends TestCase
     public function testModelTransformers()
     {
         /* @var DataTransformerInterface $dataTransformer */
-        $dataTransformer = $this->getMockBuilder('Sonatra\Component\Block\DataTransformerInterface')->getMock();
+        $dataTransformer = $this->getMockBuilder('Fxp\Component\Block\DataTransformerInterface')->getMock();
         /* @var DataTransformerInterface $dataTransformer2 */
-        $dataTransformer2 = $this->getMockBuilder('Sonatra\Component\Block\DataTransformerInterface')->getMock();
+        $dataTransformer2 = $this->getMockBuilder('Fxp\Component\Block\DataTransformerInterface')->getMock();
 
         $this->config->addModelTransformer($dataTransformer);
         $this->config->addModelTransformer($dataTransformer2, true);
@@ -127,9 +127,9 @@ class BlockConfigBuilderTest extends TestCase
     public function testGettersAndSetters()
     {
         /* @var ResolvedBlockTypeInterface $type */
-        $type = $this->getMockBuilder('Sonatra\Component\Block\ResolvedBlockTypeInterface')->getMock();
+        $type = $this->getMockBuilder('Fxp\Component\Block\ResolvedBlockTypeInterface')->getMock();
         /* @var DataMapperInterface $dataMapper */
-        $dataMapper = $this->getMockBuilder('Sonatra\Component\Block\DataMapperInterface')->getMock();
+        $dataMapper = $this->getMockBuilder('Fxp\Component\Block\DataMapperInterface')->getMock();
         /* @var FormInterface $form */
         $form = $this->getMockBuilder('Symfony\Component\Form\FormInterface')->getMock();
 
@@ -178,7 +178,7 @@ class BlockConfigBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testAddEventListenerAfterGetBlockConfig()
     {
@@ -188,7 +188,7 @@ class BlockConfigBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testAddEventSubscriberAfterGetBlockConfig()
     {
@@ -200,19 +200,19 @@ class BlockConfigBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testAddViewTransformersAfterGetBlockConfig()
     {
         /* @var DataTransformerInterface $dataTransformer */
-        $dataTransformer = $this->getMockBuilder('Sonatra\Component\Block\DataTransformerInterface')->getMock();
+        $dataTransformer = $this->getMockBuilder('Fxp\Component\Block\DataTransformerInterface')->getMock();
 
         $config = $this->getBlockConfig();
         $config->addViewTransformer($dataTransformer);
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testResetViewTransformersAfterGetBlockConfig()
     {
@@ -221,18 +221,18 @@ class BlockConfigBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testAddModelTransformersAfterGetBlockConfig()
     {
         /* @var DataTransformerInterface $dataTransformer */
-        $dataTransformer = $this->getMockBuilder('Sonatra\Component\Block\DataTransformerInterface')->getMock();
+        $dataTransformer = $this->getMockBuilder('Fxp\Component\Block\DataTransformerInterface')->getMock();
         $config = $this->getBlockConfig();
         $config->addModelTransformer($dataTransformer);
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testResetModelTransformersAfterGetBlockConfig()
     {
@@ -241,7 +241,7 @@ class BlockConfigBuilderTest extends TestCase
     }
 
     /**
-     * @€@expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @€@expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testGetBlockConfigAfterGetBlockConfig()
     {
@@ -250,7 +250,7 @@ class BlockConfigBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testSetPropertyPathAfterGetBlockConfig()
     {
@@ -259,7 +259,7 @@ class BlockConfigBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testSetMappedAfterGetBlockConfig()
     {
@@ -268,7 +268,7 @@ class BlockConfigBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testSetInheritDataAfterGetBlockConfig()
     {
@@ -277,7 +277,7 @@ class BlockConfigBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testSetCompoundAfterGetBlockConfig()
     {
@@ -286,31 +286,31 @@ class BlockConfigBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testSetTypeAfterGetBlockConfig()
     {
         /* @var ResolvedBlockTypeInterface $type */
-        $type = $this->getMockBuilder('Sonatra\Component\Block\ResolvedBlockTypeInterface')->getMock();
+        $type = $this->getMockBuilder('Fxp\Component\Block\ResolvedBlockTypeInterface')->getMock();
 
         $config = $this->getBlockConfig();
         $config->setType($type);
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testSetDataMapperAfterGetBlockConfig()
     {
         /* @var DataMapperInterface $dataMapper */
-        $dataMapper = $this->getMockBuilder('Sonatra\Component\Block\DataMapperInterface')->getMock();
+        $dataMapper = $this->getMockBuilder('Fxp\Component\Block\DataMapperInterface')->getMock();
 
         $config = $this->getBlockConfig();
         $config->setDataMapper($dataMapper);
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testSetEmptyDataAfterGetBlockConfig()
     {
@@ -319,7 +319,7 @@ class BlockConfigBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testSetEmptyMessageAfterGetBlockConfig()
     {
@@ -328,7 +328,7 @@ class BlockConfigBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testSetAttributeAfterGetBlockConfig()
     {
@@ -337,7 +337,7 @@ class BlockConfigBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testSetAttributesAfterGetBlockConfig()
     {
@@ -346,7 +346,7 @@ class BlockConfigBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testSetDataAfterGetBlockConfig()
     {
@@ -355,7 +355,7 @@ class BlockConfigBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testSetDataClassAfterGetBlockConfig()
     {
@@ -364,7 +364,7 @@ class BlockConfigBuilderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\BadMethodCallException
+     * @expectedException \Fxp\Component\Block\Exception\BadMethodCallException
      */
     public function testSetFormAfterGetBlockConfig()
     {

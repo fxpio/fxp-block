@@ -1,19 +1,19 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block;
+namespace Fxp\Component\Block;
 
-use Sonatra\Component\Block\Exception\BadMethodCallException;
-use Sonatra\Component\Block\Exception\InvalidArgumentException;
-use Sonatra\Component\Block\Exception\UnexpectedTypeException;
+use Fxp\Component\Block\Exception\BadMethodCallException;
+use Fxp\Component\Block\Exception\InvalidArgumentException;
+use Fxp\Component\Block\Exception\UnexpectedTypeException;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\ImmutableEventDispatcher;
@@ -25,7 +25,7 @@ use Symfony\Component\PropertyAccess\PropertyPathInterface;
 /**
  * A basic block configuration.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class BlockConfigBuilder implements BlockConfigBuilderInterface
 {

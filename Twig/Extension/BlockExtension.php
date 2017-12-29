@@ -1,30 +1,30 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Twig\Extension;
+namespace Fxp\Component\Block\Twig\Extension;
 
-use Sonatra\Component\Block\BlockFactoryInterface;
-use Sonatra\Component\Block\BlockInterface;
-use Sonatra\Component\Block\BlockRegistryInterface;
-use Sonatra\Component\Block\BlockTypeInterface;
-use Sonatra\Component\Block\BlockView;
-use Sonatra\Component\Block\Twig\Block\TwigRendererInterface;
-use Sonatra\Component\Block\Twig\TokenParser\BlockThemeTokenParser;
-use Sonatra\Component\Block\Twig\TokenParser\SuperblockTokenParser;
-use Sonatra\Component\Block\Util\BlockUtil;
+use Fxp\Component\Block\BlockFactoryInterface;
+use Fxp\Component\Block\BlockInterface;
+use Fxp\Component\Block\BlockRegistryInterface;
+use Fxp\Component\Block\BlockTypeInterface;
+use Fxp\Component\Block\BlockView;
+use Fxp\Component\Block\Twig\Block\TwigRendererInterface;
+use Fxp\Component\Block\Twig\TokenParser\BlockThemeTokenParser;
+use Fxp\Component\Block\Twig\TokenParser\SuperblockTokenParser;
+use Fxp\Component\Block\Util\BlockUtil;
 
 /**
  * BlockExtension extends Twig with block capabilities.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class BlockExtension extends \Twig_Extension
 {
@@ -32,7 +32,7 @@ class BlockExtension extends \Twig_Extension
      * This property is public so that it can be accessed directly from compiled
      * templates without having to call a getter, which slightly decreases performance.
      *
-     * @var \Sonatra\Component\Block\BlockRendererInterface
+     * @var \Fxp\Component\Block\BlockRendererInterface
      */
     public $renderer;
 
@@ -102,10 +102,10 @@ class BlockExtension extends \Twig_Extension
     public function getFunctions()
     {
         $functions = array(
-            new \Twig_Function('block_widget', null, array('node_class' => 'Sonatra\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
-            new \Twig_Function('block_component', null, array('node_class' => 'Sonatra\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
-            new \Twig_Function('block_label', null, array('node_class' => 'Sonatra\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
-            new \Twig_Function('block_row', null, array('node_class' => 'Sonatra\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
+            new \Twig_Function('block_widget', null, array('node_class' => 'Fxp\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
+            new \Twig_Function('block_component', null, array('node_class' => 'Fxp\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
+            new \Twig_Function('block_label', null, array('node_class' => 'Fxp\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
+            new \Twig_Function('block_row', null, array('node_class' => 'Fxp\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
             new \Twig_Function('block_twig_render', array($this, 'renderTwigBlock'), array('is_safe' => array('html'))),
         );
 
@@ -140,7 +140,7 @@ class BlockExtension extends \Twig_Extension
      * @param string|BlockTypeInterface|BlockInterface $type
      * @param array                                    $options
      *
-     * @return \Sonatra\Component\Block\BlockInterface
+     * @return \Fxp\Component\Block\BlockInterface
      */
     public function createNamed($type, array $options = array())
     {

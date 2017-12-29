@@ -1,26 +1,26 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Extension\DataCollector\Type;
+namespace Fxp\Component\Block\Extension\DataCollector\Type;
 
-use Sonatra\Component\Block\AbstractTypeExtension;
-use Sonatra\Component\Block\BlockBuilderInterface;
-use Sonatra\Component\Block\Extension\Core\Type\BlockType;
-use Sonatra\Component\Block\Extension\DataCollector\BlockDataCollectorInterface;
-use Sonatra\Component\Block\Extension\DataCollector\EventListener\DataCollectorListener;
+use Fxp\Component\Block\AbstractTypeExtension;
+use Fxp\Component\Block\BlockBuilderInterface;
+use Fxp\Component\Block\Extension\Core\Type\BlockType;
+use Fxp\Component\Block\Extension\DataCollector\BlockDataCollectorInterface;
+use Fxp\Component\Block\Extension\DataCollector\EventListener\DataCollectorListener;
 
 /**
  * Type extension for collecting data of a block with this type.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class DataCollectorTypeExtension extends AbstractTypeExtension
 {

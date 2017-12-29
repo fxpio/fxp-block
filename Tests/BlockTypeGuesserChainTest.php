@@ -1,27 +1,27 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Tests;
+namespace Fxp\Component\Block\Tests;
 
+use Fxp\Component\Block\BlockTypeGuesserChain;
+use Fxp\Component\Block\Guess\Guess;
 use PHPUnit\Framework\TestCase;
-use Sonatra\Component\Block\BlockTypeGuesserChain;
-use Sonatra\Component\Block\Guess\Guess;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class BlockTypeGuesserChainTest extends TestCase
 {
     /**
-     * @expectedException \Sonatra\Component\Block\Exception\UnexpectedTypeException
+     * @expectedException \Fxp\Component\Block\Exception\UnexpectedTypeException
      */
     public function testInvalidGuessers()
     {
@@ -31,9 +31,9 @@ class BlockTypeGuesserChainTest extends TestCase
     public function testGuessers()
     {
         $guessers = new BlockTypeGuesserChain(array(
-            $this->getMockBuilder('Sonatra\Component\Block\BlockTypeGuesserInterface')->getMock(),
+            $this->getMockBuilder('Fxp\Component\Block\BlockTypeGuesserInterface')->getMock(),
             new BlockTypeGuesserChain(array(
-                $this->getMockBuilder('Sonatra\Component\Block\BlockTypeGuesserInterface')->getMock(),
+                $this->getMockBuilder('Fxp\Component\Block\BlockTypeGuesserInterface')->getMock(),
             )),
         ));
 
@@ -43,15 +43,15 @@ class BlockTypeGuesserChainTest extends TestCase
         $value = $ref->getValue($guessers);
 
         $this->assertEquals(array(
-            $this->getMockBuilder('Sonatra\Component\Block\BlockTypeGuesserInterface')->getMock(),
-            $this->getMockBuilder('Sonatra\Component\Block\BlockTypeGuesserInterface')->getMock(),
+            $this->getMockBuilder('Fxp\Component\Block\BlockTypeGuesserInterface')->getMock(),
+            $this->getMockBuilder('Fxp\Component\Block\BlockTypeGuesserInterface')->getMock(),
         ), $value);
     }
 
     public function testGuessType()
     {
-        $guess = $this->getMockForAbstractClass('Sonatra\Component\Block\Guess\Guess', array(Guess::MEDIUM_CONFIDENCE));
-        $guesser = $this->getMockBuilder('Sonatra\Component\Block\BlockTypeGuesserInterface')->getMock();
+        $guess = $this->getMockForAbstractClass('Fxp\Component\Block\Guess\Guess', array(Guess::MEDIUM_CONFIDENCE));
+        $guesser = $this->getMockBuilder('Fxp\Component\Block\BlockTypeGuesserInterface')->getMock();
         $guessers = new BlockTypeGuesserChain(array($guesser));
 
         $guesser->expects($this->any())

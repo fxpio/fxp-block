@@ -1,18 +1,18 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Twig\Node;
+namespace Fxp\Component\Block\Twig\Node;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class SearchAndRenderBlockNode extends \Twig_Node_Expression_Function
 {
@@ -22,7 +22,7 @@ class SearchAndRenderBlockNode extends \Twig_Node_Expression_Function
     public function compile(\Twig_Compiler $compiler)
     {
         $compiler->addDebugInfo($this);
-        $compiler->raw('$this->env->getExtension(\'Sonatra\Component\Block\Twig\Extension\BlockExtension\')->renderer->searchAndRenderBlock(');
+        $compiler->raw('$this->env->getExtension(\'Fxp\Component\Block\Twig\Extension\BlockExtension\')->renderer->searchAndRenderBlock(');
 
         preg_match('/_([^_]+)$/', $this->getAttribute('name'), $matches);
 

@@ -1,19 +1,19 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Tests\Extension\Validator;
+namespace Fxp\Component\Block\Tests\Extension\Validator;
 
+use Fxp\Component\Block\Extension\Validator\ValidatorTypeGuesser;
+use Fxp\Component\Block\Guess\Guess;
 use PHPUnit\Framework\TestCase;
-use Sonatra\Component\Block\Extension\Validator\ValidatorTypeGuesser;
-use Sonatra\Component\Block\Guess\Guess;
 use Symfony\Component\Validator\Constraints\Count;
 use Symfony\Component\Validator\Constraints\Country;
 use Symfony\Component\Validator\Constraints\Date;
@@ -37,7 +37,7 @@ use Symfony\Component\Validator\Mapping\Factory\LazyLoadingMetadataFactory;
 use Symfony\Component\Validator\Mapping\Factory\MetadataFactoryInterface;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class ValidatorTypeGuesserTest extends TestCase
 {
@@ -73,7 +73,7 @@ class ValidatorTypeGuesserTest extends TestCase
         $constraint = new Type($type);
         $result = $this->typeGuesser->guessTypeForConstraint($constraint);
 
-        $this->assertInstanceOf('Sonatra\Component\Block\Guess\TypeGuess', $result);
+        $this->assertInstanceOf('Fxp\Component\Block\Guess\TypeGuess', $result);
         $this->assertEquals($confidence, $result->getConfidence());
     }
 
@@ -92,14 +92,14 @@ class ValidatorTypeGuesserTest extends TestCase
     {
         $result = $this->typeGuesser->guessTypeForConstraint($constraint);
 
-        $this->assertInstanceOf('Sonatra\Component\Block\Guess\TypeGuess', $result);
+        $this->assertInstanceOf('Fxp\Component\Block\Guess\TypeGuess', $result);
         $this->assertEquals($confidence, $result->getConfidence());
     }
 
     public function testGetGuessType()
     {
         $metadataFactory = new LazyLoadingMetadataFactory();
-        $class = 'Sonatra\Component\Block\Tests\Fixtures\Object\Foo';
+        $class = 'Fxp\Component\Block\Tests\Fixtures\Object\Foo';
         /* @var ClassMetadata $classMetadata */
         $classMetadata = $metadataFactory->getMetadataFor($class);
         $classMetadata->addPropertyConstraint('bar', new Type(array('type' => 'string')));
@@ -107,7 +107,7 @@ class ValidatorTypeGuesserTest extends TestCase
         $typeGuesser = new ValidatorTypeGuesser($metadataFactory);
         $result = $typeGuesser->guessType($class, 'bar');
 
-        $this->assertInstanceOf('Sonatra\Component\Block\Guess\TypeGuess', $result);
+        $this->assertInstanceOf('Fxp\Component\Block\Guess\TypeGuess', $result);
         $this->assertEquals(Guess::LOW_CONFIDENCE, $result->getConfidence());
     }
 

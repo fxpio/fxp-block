@@ -1,25 +1,25 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Extension\DataCollector\EventListener;
+namespace Fxp\Component\Block\Extension\DataCollector\EventListener;
 
-use Sonatra\Component\Block\BlockEvent;
-use Sonatra\Component\Block\BlockEvents;
-use Sonatra\Component\Block\Extension\DataCollector\BlockDataCollectorInterface;
+use Fxp\Component\Block\BlockEvent;
+use Fxp\Component\Block\BlockEvents;
+use Fxp\Component\Block\Extension\DataCollector\BlockDataCollectorInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
  * Listener that invokes a data collector for the {@link BlockEvents::POST_SET_DATA}.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class DataCollectorListener implements EventSubscriberInterface
 {

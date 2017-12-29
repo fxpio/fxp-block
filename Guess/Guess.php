@@ -1,17 +1,17 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block\Guess;
+namespace Fxp\Component\Block\Guess;
 
-use Sonatra\Component\Block\Exception\InvalidArgumentException;
+use Fxp\Component\Block\Exception\InvalidArgumentException;
 
 /**
  * Base class for guesses made by TypeGuesserInterface implementation.
@@ -20,7 +20,7 @@ use Sonatra\Component\Block\Exception\InvalidArgumentException;
  * Thus an instance with confidence HIGH_CONFIDENCE is more likely to be
  * correct than an instance with confidence LOW_CONFIDENCE.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 abstract class Guess
 {

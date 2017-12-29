@@ -1,18 +1,18 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Block;
+namespace Fxp\Component\Block;
 
-use Sonatra\Component\Block\Exception\ClassNotInstantiableException;
-use Sonatra\Component\Block\Extension\Core\CoreExtension;
+use Fxp\Component\Block\Exception\ClassNotInstantiableException;
+use Fxp\Component\Block\Extension\Core\CoreExtension;
 
 /**
  * Entry point of the Block component.
@@ -20,10 +20,10 @@ use Sonatra\Component\Block\Extension\Core\CoreExtension;
  * Use this class to conveniently create new block factories:
  *
  * <code>
- * use Sonatra\Component\Block\Blocks;
- * use Sonatra\Component\Block\Extension\Core\Type\TextType;
- * use Sonatra\Component\Block\Extension\Core\Type\IntegerType;
- * use Sonatra\Component\Block\Extension\Core\Type\ChoiceType;
+ * use Fxp\Component\Block\Blocks;
+ * use Fxp\Component\Block\Extension\Core\Type\TextType;
+ * use Fxp\Component\Block\Extension\Core\Type\IntegerType;
+ * use Fxp\Component\Block\Extension\Core\Type\ChoiceType;
  *
  * $blockFactory = Blocks::createBlockFactory();
  *
@@ -63,16 +63,16 @@ use Sonatra\Component\Block\Extension\Core\CoreExtension;
  * example for using the default layout with "<div>" tags:
  *
  * <code>
- * use Sonatra\Component\Block\Extension\Templating\TemplatingExtension;
+ * use Fxp\Component\Block\Extension\Templating\TemplatingExtension;
  *
  * $blockFactory = Blocks::createBlockFactoryBuilder()
  *     ->addExtension(new TemplatingExtension($engine, array(
- *         'SonatraBlockBundle:Block',
+ *         'FxpBlockBundle:Block',
  *     )))
  *     ->getBlockFactory();
  * </code>
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 final class Blocks
 {
