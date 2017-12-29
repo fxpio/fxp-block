@@ -41,7 +41,7 @@ class PropertyPathMapper implements DataMapperInterface
      */
     public function mapDataToViews($data, $blocks)
     {
-        $empty = null === $data || array() === $data;
+        $empty = null === $data || [] === $data;
 
         if (!$empty && !is_array($data) && !is_object($data)) {
             return;

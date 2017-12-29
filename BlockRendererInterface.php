@@ -43,7 +43,7 @@ interface BlockRendererInterface
      *
      * @return string The HTML markup
      */
-    public function renderBlock(BlockView $view, $blockName, array $variables = array());
+    public function renderBlock(BlockView $view, $blockName, array $variables = []);
 
     /**
      * Searches and renders a block for a given name suffix.
@@ -61,7 +61,7 @@ interface BlockRendererInterface
      *
      * @return string The HTML markup
      */
-    public function searchAndRenderBlock(BlockView $view, $blockNameSuffix, array $variables = array());
+    public function searchAndRenderBlock(BlockView $view, $blockNameSuffix, array $variables = []);
 
     /**
      * Makes a technical name human readable.

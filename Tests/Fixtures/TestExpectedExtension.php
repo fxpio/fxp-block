@@ -23,16 +23,16 @@ class TestExpectedExtension extends AbstractExtension
 {
     protected function loadTypes()
     {
-        return array(
+        return [
             FooType::class,
-        );
+        ];
     }
 
     protected function loadTypeExtensions()
     {
-        return array(
+        return [
             'bar',
-        );
+        ];
     }
 
     protected function loadTypeGuesser()

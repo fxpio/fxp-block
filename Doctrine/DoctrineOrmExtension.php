@@ -36,9 +36,9 @@ class DoctrineOrmExtension extends AbstractExtension
      */
     protected function loadTypes()
     {
-        return array(
+        return [
             new Type\EntityType($this->registry),
-        );
+        ];
     }
 
     /**

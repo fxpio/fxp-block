@@ -29,7 +29,7 @@ interface BlockBuilderInterface extends \Traversable, \Countable, BlockConfigBui
      *
      * @return self The configuration object
      */
-    public function add($child, $type = null, array $options = array());
+    public function add($child, $type = null, array $options = []);
 
     /**
      * Creates a block builder.
@@ -40,7 +40,7 @@ interface BlockBuilderInterface extends \Traversable, \Countable, BlockConfigBui
      *
      * @return BlockBuilderInterface The created builder
      */
-    public function create($name, $type = null, array $options = array());
+    public function create($name, $type = null, array $options = []);
 
     /**
      * Returns a child by name.

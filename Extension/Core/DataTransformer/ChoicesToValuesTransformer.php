@@ -42,7 +42,7 @@ class ChoicesToValuesTransformer implements DataTransformerInterface
     public function transform($array)
     {
         if (null === $array) {
-            return array();
+            return [];
         }
 
         if (!is_array($array)) {

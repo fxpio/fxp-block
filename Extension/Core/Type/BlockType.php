@@ -96,7 +96,7 @@ class BlockType extends AbstractType
             $id = ltrim($id, '_0123456789');
         }
 
-        $blockPrefixes = array();
+        $blockPrefixes = [];
         for ($type = $block->getConfig()->getType(); null !== $type; $type = $type->getParent()) {
             array_unshift($blockPrefixes, $type->getBlockPrefix());
         }
@@ -106,7 +106,7 @@ class BlockType extends AbstractType
             $translationDomain = 'messages';
         }
 
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
                 'block' => $view,
                 'id' => $id,
                 'name' => $name,
@@ -131,7 +131,7 @@ class BlockType extends AbstractType
                 // collection block have different types (dynamically), they should
                 // be rendered differently.
                 'cache_key' => $uniqueBlockPrefix.'_'.$block->getConfig()->getType()->getBlockPrefix(),
-        ));
+        ]);
     }
 
     /**
@@ -181,7 +181,7 @@ class BlockType extends AbstractType
         // (independent of its value)
         $resolver->setDefined('data');
 
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
                 'block_name' => null,
                 'id' => null,
                 'rendered' => true,
@@ -196,21 +196,21 @@ class BlockType extends AbstractType
                 'mapped' => false,
                 'label' => null,
                 'label_format' => null,
-                'attr' => array(),
-                'label_attr' => array(),
+                'attr' => [],
+                'label_attr' => [],
                 'inherit_data' => false,
                 'compound' => true,
                 'wrapped' => true,
                 'translation_domain' => null,
                 'auto_initialize' => true,
-        ));
+        ]);
 
         $resolver->setAllowedTypes('rendered', 'bool');
-        $resolver->setAllowedTypes('empty_message', array('null', 'string'));
+        $resolver->setAllowedTypes('empty_message', ['null', 'string']);
         $resolver->setAllowedTypes('attr', 'array');
         $resolver->setAllowedTypes('label_attr', 'array');
         $resolver->setAllowedTypes('auto_initialize', 'bool');
-        $resolver->setAllowedTypes('translation_domain', array('null', 'bool', 'string'));
+        $resolver->setAllowedTypes('translation_domain', ['null', 'bool', 'string']);
 
         $resolver->setNormalizer('block_name', function (Options $options, $value = null) {
             if (isset($options['id'])) {

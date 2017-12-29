@@ -55,12 +55,12 @@ class SuperblockTokenParser extends BaseSuperblockTokenParser
         }
 
         // body content
-        $sBlocks = new \Twig_Node(array(), array(), $lineno);
-        $body = $this->parser->subparse(array($this, 'decideBlockEnd'), true);
+        $sBlocks = new \Twig_Node([], [], $lineno);
+        $body = $this->parser->subparse([$this, 'decideBlockEnd'], true);
         $previousTwigNode = null;
 
         if (0 === count($body) || null !== $body->getNodeTag()) {
-            $body = new \Twig_Node(array($body), array(), $lineno);
+            $body = new \Twig_Node([$body], [], $lineno);
         }
 
         if (null === $body->getNodeTag()) {
@@ -84,7 +84,7 @@ class SuperblockTokenParser extends BaseSuperblockTokenParser
                     $sBlocks->setNode(count($sBlocks), $node);
                 } elseif (!$node instanceof \Twig_Node_Text || ($node instanceof \Twig_Node_Text && '' !== trim($node->getAttribute('data')))) {
                     if (null === $previousTwigNode) {
-                        $previousTwigNode = new SuperblockClosure(new \Twig_Node(array(), array(), $lineno), $node->getTemplateLine());
+                        $previousTwigNode = new SuperblockClosure(new \Twig_Node([], [], $lineno), $node->getTemplateLine());
                     }
 
                     $previousTwigNode->getNode('body')->setNode(count($previousTwigNode->getNode('body')), $node);

@@ -146,5 +146,5 @@ interface BlockRendererEngineInterface
      *
      * @return string The HTML markup
      */
-    public function renderBlock(BlockView $view, $resource, $blockName, array $variables = array());
+    public function renderBlock(BlockView $view, $resource, $blockName, array $variables = []);
 }

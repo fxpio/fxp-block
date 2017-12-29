@@ -28,7 +28,7 @@ class ResolvedBlockTypeFactoryTest extends TestCase
         $parentType = $this->getMockBuilder('Fxp\Component\Block\ResolvedBlockTypeInterface')->getMock();
 
         $factory = new ResolvedBlockTypeFactory();
-        $rType = $factory->createResolvedType($type, array(), $parentType);
+        $rType = $factory->createResolvedType($type, [], $parentType);
 
         $this->assertInstanceOf('Fxp\Component\Block\ResolvedBlockTypeInterface', $rType);
     }

@@ -59,23 +59,23 @@ class DateTimeToLocalizedStringTransformerTest extends TestCase
 
     public function dataProvider()
     {
-        return array(
-            array(\IntlDateFormatter::SHORT, null, array('11/10/2013 05:05', '11/10/13 05:05'), '2013-10-11 05:05:00 UTC'),
-            array(\IntlDateFormatter::MEDIUM, null, array('11 oct. 2013 à 05:05', '11 oct. 2013 05:05'), '2013-10-11 05:05:00 UTC'),
-            array(\IntlDateFormatter::LONG, null, array('11 octobre 2013 à 05:05', '11 octobre 2013 05:05'), '2013-10-11 05:05:00 UTC'),
-            array(\IntlDateFormatter::FULL, null, array('vendredi 11 octobre 2013 à 05:05', 'vendredi 11 octobre 2013 05:05'), '2013-10-11 05:05:00 UTC'),
-            array(\IntlDateFormatter::SHORT, \IntlDateFormatter::NONE, array('23/05/2012', '23/05/12'), '2012-05-23 00:00:00 UTC'),
-            array(\IntlDateFormatter::MEDIUM, \IntlDateFormatter::NONE, '23 mai 2012', '2012-05-23 00:00:00 UTC'),
-            array(\IntlDateFormatter::LONG, \IntlDateFormatter::NONE, '23 mai 2012', '2012-05-23 00:00:00 UTC'),
-            array(\IntlDateFormatter::FULL, \IntlDateFormatter::NONE, 'mercredi 23 mai 2012', '2012-05-23 00:00:00 UTC'),
-            array(null, \IntlDateFormatter::SHORT, array('11/10/2013 05:05', '11/10/13 05:05'), '2013-10-11 05:05:00 UTC'),
-            array(null, \IntlDateFormatter::MEDIUM, array('23/05/2012 05:05:23', '23/05/12 05:05:23'), '2012-05-23 05:05:23 UTC'),
-            array(null, \IntlDateFormatter::LONG, array('23/05/2012 05:05:23 UTC', '23/05/12 05:05:23 UTC'), '2012-05-23 05:05:23 UTC'),
-            array(\IntlDateFormatter::NONE, \IntlDateFormatter::SHORT, '04:05', '1970-01-01 04:05:00 UTC'),
-            array(\IntlDateFormatter::NONE, \IntlDateFormatter::MEDIUM, '04:05:06', '1970-01-01 04:05:06 UTC'),
-            array(\IntlDateFormatter::NONE, \IntlDateFormatter::LONG, '04:05:06 UTC', '1970-01-01 04:05:06 UTC'),
-            array(null, null, array('11/10/2013 05:05', '11/10/13 05:05'), '2013-10-11 05:05:00 UTC'),
-        );
+        return [
+            [\IntlDateFormatter::SHORT, null, ['11/10/2013 05:05', '11/10/13 05:05'], '2013-10-11 05:05:00 UTC'],
+            [\IntlDateFormatter::MEDIUM, null, ['11 oct. 2013 à 05:05', '11 oct. 2013 05:05'], '2013-10-11 05:05:00 UTC'],
+            [\IntlDateFormatter::LONG, null, ['11 octobre 2013 à 05:05', '11 octobre 2013 05:05'], '2013-10-11 05:05:00 UTC'],
+            [\IntlDateFormatter::FULL, null, ['vendredi 11 octobre 2013 à 05:05', 'vendredi 11 octobre 2013 05:05'], '2013-10-11 05:05:00 UTC'],
+            [\IntlDateFormatter::SHORT, \IntlDateFormatter::NONE, ['23/05/2012', '23/05/12'], '2012-05-23 00:00:00 UTC'],
+            [\IntlDateFormatter::MEDIUM, \IntlDateFormatter::NONE, '23 mai 2012', '2012-05-23 00:00:00 UTC'],
+            [\IntlDateFormatter::LONG, \IntlDateFormatter::NONE, '23 mai 2012', '2012-05-23 00:00:00 UTC'],
+            [\IntlDateFormatter::FULL, \IntlDateFormatter::NONE, 'mercredi 23 mai 2012', '2012-05-23 00:00:00 UTC'],
+            [null, \IntlDateFormatter::SHORT, ['11/10/2013 05:05', '11/10/13 05:05'], '2013-10-11 05:05:00 UTC'],
+            [null, \IntlDateFormatter::MEDIUM, ['23/05/2012 05:05:23', '23/05/12 05:05:23'], '2012-05-23 05:05:23 UTC'],
+            [null, \IntlDateFormatter::LONG, ['23/05/2012 05:05:23 UTC', '23/05/12 05:05:23 UTC'], '2012-05-23 05:05:23 UTC'],
+            [\IntlDateFormatter::NONE, \IntlDateFormatter::SHORT, '04:05', '1970-01-01 04:05:00 UTC'],
+            [\IntlDateFormatter::NONE, \IntlDateFormatter::MEDIUM, '04:05:06', '1970-01-01 04:05:06 UTC'],
+            [\IntlDateFormatter::NONE, \IntlDateFormatter::LONG, '04:05:06 UTC', '1970-01-01 04:05:06 UTC'],
+            [null, null, ['11/10/2013 05:05', '11/10/13 05:05'], '2013-10-11 05:05:00 UTC'],
+        ];
     }
 
     /**
@@ -104,11 +104,11 @@ class DateTimeToLocalizedStringTransformerTest extends TestCase
     {
         $transformer = new DateTimeToLocalizedStringTransformer(null, null, \IntlDateFormatter::FULL, 'Europe/Paris');
 
-        $this->assertContains($transformer->transform($this->dateTime), array(
+        $this->assertContains($transformer->transform($this->dateTime), [
             '11/10/2013 07:05:05 heure d’été d’Europe centrale',
             '11/10/2013 07:05:05 heure avancée d’Europe centrale',
             '11/10/13 07:05:05 heure avancée d’Europe centrale',
-        ));
+        ]);
     }
 
     public function testTransformToDifferentLocale()
@@ -117,10 +117,10 @@ class DateTimeToLocalizedStringTransformerTest extends TestCase
 
         $transformer = new DateTimeToLocalizedStringTransformer(null, null, null, 'UTC');
 
-        $this->assertContains($transformer->transform($this->dateTime), array(
+        $this->assertContains($transformer->transform($this->dateTime), [
             '10/11/13, 5:05 AM',
             '10/11/13 5:05 AM',
-        ));
+        ]);
     }
 
     public function testTransformEmpty()
@@ -139,20 +139,20 @@ class DateTimeToLocalizedStringTransformerTest extends TestCase
         $dateTime = clone $input;
         $dateTime->setTimezone(new \DateTimeZone('Asia/Hong_Kong'));
 
-        $this->assertContains($transformer->transform($input), array(
+        $this->assertContains($transformer->transform($input), [
             $dateTime->format('d/m/Y H:i'),
             $dateTime->format('d/m/y H:i'),
-        ));
+        ]);
     }
 
     public function testTransformWithDifferentPatterns()
     {
         $transformer = new DateTimeToLocalizedStringTransformer(\IntlDateFormatter::GREGORIAN, \IntlDateFormatter::FULL, \IntlDateFormatter::FULL, 'UTC');
 
-        $this->assertContains($transformer->transform($this->dateTime), array(
+        $this->assertContains($transformer->transform($this->dateTime), [
             'vendredi 11 octobre 2013 à 05:05:05 UTC',
             'vendredi 11 octobre 2013 05:05:05 UTC',
-        ));
+        ]);
     }
 
     /**

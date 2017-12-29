@@ -24,9 +24,9 @@ class TimeType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
                 'date_format' => \IntlDateFormatter::NONE,
-        ));
+        ]);
     }
 
     /**

@@ -25,10 +25,10 @@ class CountryType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'choices' => array_flip(Intl::getRegionBundle()->getCountryNames(\Locale::getDefault())),
             'choice_translation_domain' => false,
-        ));
+        ]);
     }
 
     /**

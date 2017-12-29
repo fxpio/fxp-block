@@ -95,9 +95,9 @@ class FormType extends AbstractType
      */
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'block_form' => BlockFormUtil::createFormView($view, $block),
-        ));
+        ]);
     }
 
     /**
@@ -105,13 +105,13 @@ class FormType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'type' => FormFormType::class,
-            'options' => array(),
+            'options' => [],
             'form_path' => null,
-        ));
+        ]);
 
-        $resolver->addAllowedTypes('type', array('string', 'Symfony\Component\Form\FormInterface'));
+        $resolver->addAllowedTypes('type', ['string', 'Symfony\Component\Form\FormInterface']);
         $resolver->addAllowedTypes('options', 'array');
     }
 

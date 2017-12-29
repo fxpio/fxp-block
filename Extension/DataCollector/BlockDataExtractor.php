@@ -45,16 +45,16 @@ class BlockDataExtractor implements BlockDataExtractorInterface
     {
         $typeClass = get_class($block->getConfig()->getType()->getInnerType());
 
-        $data = array(
+        $data = [
             'id' => $this->buildId($block),
             'name' => $block->getName(),
             'type' => StringUtil::fqcnToBlockPrefix($typeClass, true),
             'type_class' => $typeClass,
-            'passed_options' => array(),
-            'resolved_options' => array(),
-        );
+            'passed_options' => [],
+            'resolved_options' => [],
+        ];
 
-        foreach ($block->getConfig()->getAttribute('data_collector/passed_options', array()) as $option => $value) {
+        foreach ($block->getConfig()->getAttribute('data_collector/passed_options', []) as $option => $value) {
             $data['passed_options'][$option] = $this->valueExporter->exportValue($value);
         }
 
@@ -73,11 +73,11 @@ class BlockDataExtractor implements BlockDataExtractorInterface
      */
     public function extractDefaultData(BlockInterface $block)
     {
-        $data = array(
-            'default_data' => array(
+        $data = [
+            'default_data' => [
                 'norm' => $this->valueExporter->exportValue($block->getNormData()),
-            ),
-        );
+            ],
+        ];
 
         if ($block->getData() !== $block->getNormData()) {
             $data['default_data']['model'] = $this->valueExporter->exportValue($block->getData());
@@ -95,7 +95,7 @@ class BlockDataExtractor implements BlockDataExtractorInterface
      */
     public function extractViewVariables(BlockView $view)
     {
-        $data = array();
+        $data = [];
 
         foreach ($view->vars as $varName => $value) {
             $data['view_vars'][$varName] = $this->valueExporter->exportValue($value);

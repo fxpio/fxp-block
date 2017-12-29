@@ -34,7 +34,7 @@ class ValueToDuplicatesTransformer implements DataTransformerInterface
      */
     public function transform($value)
     {
-        $result = array();
+        $result = [];
 
         foreach ($this->keys as $key) {
             $result[$key] = $value;

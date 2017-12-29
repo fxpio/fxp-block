@@ -28,9 +28,9 @@ class EntityToArrayTransformer implements DataTransformerInterface
     public function transform($entity)
     {
         if (null === $entity) {
-            return array();
+            return [];
         }
 
-        return array($entity);
+        return [$entity];
     }
 }

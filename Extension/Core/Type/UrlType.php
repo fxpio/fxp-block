@@ -51,10 +51,10 @@ class UrlType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'title' => null,
-            'url_attr' => array(),
-        ));
+            'url_attr' => [],
+        ]);
     }
 
     /**

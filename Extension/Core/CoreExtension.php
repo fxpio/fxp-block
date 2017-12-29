@@ -42,7 +42,7 @@ class CoreExtension extends AbstractExtension
      */
     protected function loadTypes()
     {
-        return array(
+        return [
             new Type\BlockType($this->propertyAccessor),
             new Type\BirthdayType(),
             new Type\CheckboxType(),
@@ -72,6 +72,6 @@ class CoreExtension extends AbstractExtension
             new Type\TimeType(),
             new Type\TimezoneType(),
             new Type\UrlType(),
-        );
+        ];
     }
 }

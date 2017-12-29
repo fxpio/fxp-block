@@ -27,12 +27,12 @@ class BlockRegistry implements BlockRegistryInterface
      *
      * @var BlockExtensionInterface[] An array of BlockExtensionInterface
      */
-    protected $extensions = array();
+    protected $extensions = [];
 
     /**
      * @var array
      */
-    protected $types = array();
+    protected $types = [];
 
     /**
      * @var BlockTypeGuesserInterface|false|null
@@ -123,7 +123,7 @@ class BlockRegistry implements BlockRegistryInterface
     public function getTypeGuesser()
     {
         if (false === $this->guesser) {
-            $guessers = array();
+            $guessers = [];
 
             foreach ($this->extensions as $extension) {
                 $guesser = $extension->getTypeGuesser();
@@ -157,7 +157,7 @@ class BlockRegistry implements BlockRegistryInterface
      */
     private function resolveType(BlockTypeInterface $type)
     {
-        $typeExtensions = array();
+        $typeExtensions = [];
         $parentType = $type->getParent();
         $fqcn = get_class($type);
 

@@ -53,7 +53,7 @@ class ResolvedBlockType implements ResolvedBlockTypeInterface
      * @throws InvalidArgumentException
      * @throws UnexpectedTypeException
      */
-    public function __construct(BlockTypeInterface $innerType, array $typeExtensions = array(), ResolvedBlockTypeInterface $parent = null)
+    public function __construct(BlockTypeInterface $innerType, array $typeExtensions = [], ResolvedBlockTypeInterface $parent = null)
     {
         foreach ($typeExtensions as $extension) {
             if (!$extension instanceof BlockTypeExtensionInterface) {
@@ -101,7 +101,7 @@ class ResolvedBlockType implements ResolvedBlockTypeInterface
     /**
      * {@inheritdoc}
      */
-    public function createBuilder(BlockFactoryInterface $factory, $name, array $options = array())
+    public function createBuilder(BlockFactoryInterface $factory, $name, array $options = [])
     {
         $options = $this->getOptionsResolver()->resolve($options);
 

@@ -40,9 +40,9 @@ class BlockTranslatorExtension extends \Twig_Extension
      */
     public function getFilters()
     {
-        return array(
-            new \Twig_Filter('block_trans', array($this, 'trans')),
-        );
+        return [
+            new \Twig_Filter('block_trans', [$this, 'trans']),
+        ];
     }
 
     /**
@@ -55,7 +55,7 @@ class BlockTranslatorExtension extends \Twig_Extension
      *
      * @return string
      */
-    public function trans($value, array $parameters = array(), $domain = null, $locale = null)
+    public function trans($value, array $parameters = [], $domain = null, $locale = null)
     {
         $domain = true === $domain ? 'messages' : $domain;
 

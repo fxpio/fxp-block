@@ -40,7 +40,7 @@ class NumberType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             // default precision is locale specific (usually around 3)
             'precision' => null,
             'grouping' => false,
@@ -48,9 +48,9 @@ class NumberType extends AbstractType
             // Integer cast rounds towards 0, so do the same when displaying fractions
             'rounding_mode' => NumberToLocalizedStringTransformer::ROUND_HALF_EVEN,
             'compound' => false,
-        ));
+        ]);
 
-        $resolver->setAllowedValues('rounding_mode', array(
+        $resolver->setAllowedValues('rounding_mode', [
             NumberToLocalizedStringTransformer::ROUND_CEILING,
             NumberToLocalizedStringTransformer::ROUND_DOWN,
             NumberToLocalizedStringTransformer::ROUND_FLOOR,
@@ -58,7 +58,7 @@ class NumberType extends AbstractType
             NumberToLocalizedStringTransformer::ROUND_HALF_EVEN,
             NumberToLocalizedStringTransformer::ROUND_HALF_UP,
             NumberToLocalizedStringTransformer::ROUND_UP,
-        ));
+        ]);
     }
 
     /**

@@ -55,7 +55,7 @@ interface ResolvedBlockTypeInterface extends BlockTypeCommonInterface
      *
      * @return BlockBuilderInterface The created block builder
      */
-    public function createBuilder(BlockFactoryInterface $factory, $name, array $options = array());
+    public function createBuilder(BlockFactoryInterface $factory, $name, array $options = []);
 
     /**
      * Creates a new block view for a block of this type.

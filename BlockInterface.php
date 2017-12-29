@@ -144,7 +144,7 @@ interface BlockInterface extends \ArrayAccess, \Traversable, \Countable
      *
      * @throws Exception\UnexpectedTypeException If $child or $type has an unexpected type
      */
-    public function add($child, $type = null, array $options = array());
+    public function add($child, $type = null, array $options = []);
 
     /**
      * Returns the child with the given name.

@@ -26,10 +26,10 @@ class RepeatedType extends AbstractType
      */
     public function buildBlock(BlockBuilderInterface $builder, array $options)
     {
-        $builder->addViewTransformer(new ValueToDuplicatesTransformer(array(
+        $builder->addViewTransformer(new ValueToDuplicatesTransformer([
             $options['first_name'],
             $options['second_name'],
-        )));
+        ]));
         $builder
             ->add($options['first_name'], $options['type'], array_merge($options['options'], $options['first_options']))
             ->add($options['second_name'], $options['type'], array_merge($options['options'], $options['second_options']))
@@ -41,14 +41,14 @@ class RepeatedType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'type' => TextType::class,
-            'options' => array(),
-            'first_options' => array(),
-            'second_options' => array(),
+            'options' => [],
+            'first_options' => [],
+            'second_options' => [],
             'first_name' => 'first',
             'second_name' => 'second',
-        ));
+        ]);
     }
 
     /**

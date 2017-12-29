@@ -35,7 +35,7 @@ class Superblock extends \Twig_Node_Block
                                 $lineno,
                                 $tag = null)
     {
-        parent::__construct(BlockUtil::createUniqueName(), new \Twig_Node(array()), $lineno, $tag);
+        parent::__construct(BlockUtil::createUniqueName(), new \Twig_Node([]), $lineno, $tag);
 
         $this->setAttribute('type', $type);
         $this->setAttribute('options', $options);
@@ -171,6 +171,6 @@ class Superblock extends \Twig_Node_Block
             }
         }
 
-        return array($loopKey, $loopId);
+        return [$loopKey, $loopId];
     }
 }

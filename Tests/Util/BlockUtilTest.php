@@ -92,9 +92,9 @@ class BlockUtilTest extends TestCase
         /* @var BlockInterface $block */
         $this->assertTrue(BlockUtil::isBlockType($block, FooType::class));
         $this->assertTrue(BlockUtil::isBlockType($block, get_class($blockInnerType)));
-        $this->assertTrue(BlockUtil::isBlockType($block, array(FooType::class, get_class($blockInnerType))));
-        $this->assertTrue(BlockUtil::isBlockType($block, array(FooType::class, 'Baz')));
+        $this->assertTrue(BlockUtil::isBlockType($block, [FooType::class, get_class($blockInnerType)]));
+        $this->assertTrue(BlockUtil::isBlockType($block, [FooType::class, 'Baz']));
         $this->assertFalse(BlockUtil::isBlockType($block, 'Baz'));
-        $this->assertFalse(BlockUtil::isBlockType($block, array('Baz', 'Boo!')));
+        $this->assertFalse(BlockUtil::isBlockType($block, ['Baz', 'Boo!']));
     }
 }

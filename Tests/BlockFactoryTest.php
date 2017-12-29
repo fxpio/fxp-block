@@ -74,10 +74,10 @@ class BlockFactoryTest extends TestCase
 
         $this->registry->expects($this->any())
             ->method('getTypeGuesser')
-            ->will($this->returnValue(new BlockTypeGuesserChain(array(
+            ->will($this->returnValue(new BlockTypeGuesserChain([
                 $this->guesser1,
                 $this->guesser2,
-            ))));
+            ])));
     }
 
     protected function tearDown()
@@ -87,9 +87,9 @@ class BlockFactoryTest extends TestCase
 
     public function testCreateNamedBuilderWithTypeName()
     {
-        $options = array('a' => '1', 'b' => '2');
-        $expectedOptions = array_merge($options, array('id' => 'name'));
-        $resolvedOptions = array('a' => '2', 'b' => '3');
+        $options = ['a' => '1', 'b' => '2'];
+        $expectedOptions = array_merge($options, ['id' => 'name']);
+        $resolvedOptions = ['a' => '2', 'b' => '3'];
         $resolvedType = $this->getMockResolvedType();
 
         $this->registry->expects($this->once())
@@ -119,7 +119,7 @@ class BlockFactoryTest extends TestCase
      */
     public function testCreateNamedBuilderWithResolvedTypeInstance()
     {
-        $options = array('a' => '1', 'b' => '2');
+        $options = ['a' => '1', 'b' => '2'];
         $resolvedType = $this->getMockResolvedType();
 
         $this->factory->createNamedBuilder('name', $resolvedType, null, $options);
@@ -127,9 +127,9 @@ class BlockFactoryTest extends TestCase
 
     public function testCreateNamedBuilderFillsDataOption()
     {
-        $givenOptions = array('a' => '1', 'b' => '2');
-        $expectedOptions = array_merge($givenOptions, array('data' => 'DATA', 'id' => 'name'));
-        $resolvedOptions = array('a' => '2', 'b' => '3', 'data' => 'DATA');
+        $givenOptions = ['a' => '1', 'b' => '2'];
+        $expectedOptions = array_merge($givenOptions, ['data' => 'DATA', 'id' => 'name']);
+        $resolvedOptions = ['a' => '2', 'b' => '3', 'data' => 'DATA'];
         $resolvedType = $this->getMockResolvedType();
 
         $this->registry->expects($this->once())
@@ -155,9 +155,9 @@ class BlockFactoryTest extends TestCase
 
     public function testCreateNamedBuilderDoesNotOverrideExistingDataOption()
     {
-        $options = array('a' => '1', 'b' => '2', 'data' => 'CUSTOM');
-        $expectedOptions = array_merge($options, array('id' => 'name'));
-        $resolvedOptions = array('a' => '2', 'b' => '3', 'data' => 'CUSTOM');
+        $options = ['a' => '1', 'b' => '2', 'data' => 'CUSTOM'];
+        $expectedOptions = array_merge($options, ['id' => 'name']);
+        $resolvedOptions = ['a' => '2', 'b' => '3', 'data' => 'CUSTOM'];
         $resolvedType = $this->getMockResolvedType();
 
         $this->registry->expects($this->once())
@@ -192,8 +192,8 @@ class BlockFactoryTest extends TestCase
 
     public function testCreateUsesTypeNameIfTypeGivenAsString()
     {
-        $options = array('a' => '1', 'b' => '2');
-        $resolvedOptions = array('a' => '2', 'b' => '3');
+        $options = ['a' => '1', 'b' => '2'];
+        $resolvedOptions = ['a' => '2', 'b' => '3'];
         $resolvedType = $this->getMockResolvedType();
 
         $this->registry->expects($this->once())
@@ -226,7 +226,7 @@ class BlockFactoryTest extends TestCase
      */
     public function testCreateUsesTypeNameIfTypeGivenAsObject()
     {
-        $options = array('a' => '1', 'b' => '2');
+        $options = ['a' => '1', 'b' => '2'];
         $resolvedType = $this->getMockResolvedType();
 
         $this->assertSame('BLOCK', $this->factory->create($resolvedType, null, $options));
@@ -234,9 +234,9 @@ class BlockFactoryTest extends TestCase
 
     public function testCreateNamed()
     {
-        $options = array('a' => '1', 'b' => '2');
-        $expectedOptions = array_merge($options, array('id' => 'name'));
-        $resolvedOptions = array('a' => '2', 'b' => '3');
+        $options = ['a' => '1', 'b' => '2'];
+        $expectedOptions = array_merge($options, ['id' => 'name']);
+        $resolvedOptions = ['a' => '2', 'b' => '3'];
         $resolvedType = $this->getMockResolvedType();
 
         $this->registry->expects($this->once())
@@ -268,13 +268,13 @@ class BlockFactoryTest extends TestCase
     {
         $registry = $this->getMockBuilder('Fxp\Component\Block\BlockRegistryInterface')->getMock();
         $factory = $this->getMockBuilder('Fxp\Component\Block\BlockFactory')
-            ->setMethods(array('createNamedBuilder'))
-            ->setConstructorArgs(array($registry, $this->resolvedTypeFactory))
+            ->setMethods(['createNamedBuilder'])
+            ->setConstructorArgs([$registry, $this->resolvedTypeFactory])
             ->getMock();
 
         $factory->expects($this->once())
             ->method('createNamedBuilder')
-            ->with('firstName', TextType::class, null, array())
+            ->with('firstName', TextType::class, null, [])
             ->will($this->returnValue('builderInstance'));
 
         /* @var BlockFactoryInterface $factory */
@@ -290,7 +290,7 @@ class BlockFactoryTest extends TestCase
             ->with('Application\Author', 'firstName')
             ->will($this->returnValue(new TypeGuess(
                         TextType::class,
-                        array('attr' => array('data-maxlength' => 10)),
+                        ['attr' => ['data-maxlength' => 10]],
                         Guess::MEDIUM_CONFIDENCE
                     )));
 
@@ -299,15 +299,15 @@ class BlockFactoryTest extends TestCase
             ->with('Application\Author', 'firstName')
             ->will($this->returnValue(new TypeGuess(
                         PasswordType::class,
-                        array('attr' => array('data-maxlength' => 7)),
+                        ['attr' => ['data-maxlength' => 7]],
                         Guess::HIGH_CONFIDENCE
                     )));
 
-        $factory = $this->getMockFactory(array('createNamedBuilder'));
+        $factory = $this->getMockFactory(['createNamedBuilder']);
 
         $factory->expects($this->once())
             ->method('createNamedBuilder')
-            ->with('firstName', PasswordType::class, null, array('attr' => array('data-maxlength' => 7)))
+            ->with('firstName', PasswordType::class, null, ['attr' => ['data-maxlength' => 7]])
             ->will($this->returnValue('builderInstance'));
 
         /* @var BlockFactoryInterface $factory */
@@ -323,7 +323,7 @@ class BlockFactoryTest extends TestCase
             ->with('Application\Author', 'firstName')
             ->will($this->returnValue(null));
 
-        $factory = $this->getMockFactory(array('createNamedBuilder'));
+        $factory = $this->getMockFactory(['createNamedBuilder']);
 
         $factory->expects($this->once())
             ->method('createNamedBuilder')
@@ -343,15 +343,15 @@ class BlockFactoryTest extends TestCase
             ->with('Application\Author', 'firstName')
             ->will($this->returnValue(new TypeGuess(
                 'Fxp\Component\Block\Extension\Core\Type\TextType',
-                array('attr' => array('data-maxlength' => 10)),
+                ['attr' => ['data-maxlength' => 10]],
                 Guess::MEDIUM_CONFIDENCE
             )));
 
-        $factory = $this->getMockFactory(array('createNamedBuilder'));
+        $factory = $this->getMockFactory(['createNamedBuilder']);
 
         $factory->expects($this->once())
             ->method('createNamedBuilder')
-            ->with('firstName', TextType::class, null, array('attr' => array('data-maxlength' => 11)))
+            ->with('firstName', TextType::class, null, ['attr' => ['data-maxlength' => 11]])
             ->will($this->returnValue('builderInstance'));
 
         /* @var BlockFactoryInterface $factory */
@@ -359,7 +359,7 @@ class BlockFactoryTest extends TestCase
             'Application\Author',
             'firstName',
             null,
-            array('attr' => array('data-maxlength' => 11))
+            ['attr' => ['data-maxlength' => 11]]
         );
 
         $this->assertEquals('builderInstance', $this->builder);
@@ -367,8 +367,8 @@ class BlockFactoryTest extends TestCase
 
     public function testCreateForPropertyWithoutTypeGuesser()
     {
-        $expectedOptions = array('id' => 'firstName');
-        $resolvedOptions = array('a' => '2', 'b' => '3');
+        $expectedOptions = ['id' => 'firstName'];
+        $resolvedOptions = ['a' => '2', 'b' => '3'];
         $resolvedType = $this->getMockResolvedType();
 
         $this->registry->expects($this->once())
@@ -401,11 +401,11 @@ class BlockFactoryTest extends TestCase
         return $this->getMockBuilder('Fxp\Component\Block\ResolvedBlockTypeInterface')->getMock();
     }
 
-    private function getMockFactory(array $methods = array())
+    private function getMockFactory(array $methods = [])
     {
         return $this->getMockBuilder('Fxp\Component\Block\BlockFactory')
             ->setMethods($methods)
-            ->setConstructorArgs(array($this->registry, $this->resolvedTypeFactory))
+            ->setConstructorArgs([$this->registry, $this->resolvedTypeFactory])
             ->getMock();
     }
 }

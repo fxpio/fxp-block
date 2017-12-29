@@ -65,7 +65,7 @@ abstract class AbstractBlockTest extends TestCase
      *
      * @return BlockBuilder
      */
-    protected function getBuilder($name = 'name', EventDispatcherInterface $dispatcher = null, $dataClass = null, array $options = array())
+    protected function getBuilder($name = 'name', EventDispatcherInterface $dispatcher = null, $dataClass = null, array $options = [])
     {
         return new BlockBuilder($name, $dataClass, $dispatcher ?: $this->dispatcher, $this->factory, $options);
     }

@@ -65,8 +65,8 @@ class PropertyPathMapperTest extends TestCase
     private function getPropertyPath($path)
     {
         return $this->getMockBuilder('Symfony\Component\PropertyAccess\PropertyPath')
-            ->setConstructorArgs(array($path))
-            ->setMethods(array('getValue', 'setValue'))
+            ->setConstructorArgs([$path])
+            ->setMethods(['getValue', 'setValue'])
             ->getMock();
     }
 
@@ -78,7 +78,7 @@ class PropertyPathMapperTest extends TestCase
     private function getBlock(BlockConfigInterface $config)
     {
         $block = $this->getMockBuilder('Fxp\Component\Block\Block')
-            ->setConstructorArgs(array($config))
+            ->setConstructorArgs([$config])
             ->setMethods(null)
             ->getMock();
 
@@ -102,7 +102,7 @@ class PropertyPathMapperTest extends TestCase
         $config->setPropertyPath($propertyPath);
         $block = $this->getBlock($config);
 
-        $this->mapper->mapDataToViews($car, array($block));
+        $this->mapper->mapDataToViews($car, [$block]);
 
         /* @var Block $block */
         $this->assertSame($engine, $block->getData());
@@ -120,7 +120,7 @@ class PropertyPathMapperTest extends TestCase
         /* @var Block $block */
         $this->assertNull($block->getPropertyPath());
 
-        $this->mapper->mapDataToViews($car, array($block));
+        $this->mapper->mapDataToViews($car, [$block]);
 
         $this->assertNull($block->getData());
     }
@@ -140,7 +140,7 @@ class PropertyPathMapperTest extends TestCase
         $config->setPropertyPath($propertyPath);
         $block = $this->getBlock($config);
 
-        $this->mapper->mapDataToViews($car, array($block));
+        $this->mapper->mapDataToViews($car, [$block]);
 
         /* @var Block $block */
         $this->assertNull($block->getData());
@@ -161,15 +161,15 @@ class PropertyPathMapperTest extends TestCase
         $config->setData($default);
 
         $block = $this->getMockBuilder('Fxp\Component\Block\Block')
-            ->setConstructorArgs(array($config))
-            ->setMethods(array('setData'))
+            ->setConstructorArgs([$config])
+            ->setMethods(['setData'])
             ->getMock();
 
         $block->expects($this->once())
             ->method('setData')
             ->with($default);
 
-        $this->mapper->mapDataToViews(null, array($block));
+        $this->mapper->mapDataToViews(null, [$block]);
     }
 
     public function testMapDataToViewsSetsDefaultDataIfPassedDataIsEmptyArray()
@@ -187,15 +187,15 @@ class PropertyPathMapperTest extends TestCase
         $config->setData($default);
 
         $block = $this->getMockBuilder('Fxp\Component\Block\Block')
-            ->setConstructorArgs(array($config))
-            ->setMethods(array('setData'))
+            ->setConstructorArgs([$config])
+            ->setMethods(['setData'])
             ->getMock();
 
         $block->expects($this->once())
             ->method('setData')
             ->with($default);
 
-        $this->mapper->mapDataToViews(array(), array($block));
+        $this->mapper->mapDataToViews([], [$block]);
     }
 
     public function testMapDataToViewsSetsDefaultDataIfPassedDataIsString()
@@ -213,10 +213,10 @@ class PropertyPathMapperTest extends TestCase
         $config->setData($default);
 
         $block = $this->getMockBuilder('Fxp\Component\Block\Block')
-            ->setConstructorArgs(array($config))
+            ->setConstructorArgs([$config])
             ->setMethods(null)
             ->getMock();
 
-        $this->mapper->mapDataToViews('DATA', array($block));
+        $this->mapper->mapDataToViews('DATA', [$block]);
     }
 }

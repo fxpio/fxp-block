@@ -53,7 +53,7 @@ class SearchAndRenderBlockNode extends \Twig_Node_Expression_Function
                         if (!twig_test_empty($label->getAttribute('value'))) {
                             /* @var \Twig_Node_Expression_Array $originalVariables */
                             $originalVariables = $variables;
-                            $variables = new \Twig_Node_Expression_Array(array(), $lineno);
+                            $variables = new \Twig_Node_Expression_Array([], $lineno);
                             $labelKey = new \Twig_Node_Expression_Constant('label', $lineno);
 
                             if (null !== $originalVariables) {

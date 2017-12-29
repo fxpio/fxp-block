@@ -34,6 +34,6 @@ abstract class BlockIntegrationTestCase extends TestCase
 
     protected function getExtensions()
     {
-        return array();
+        return [];
     }
 }

@@ -26,7 +26,7 @@ class ValueToDuplicatesTransformerTest extends TestCase
 
     protected function setUp()
     {
-        $this->transformer = new ValueToDuplicatesTransformer(array('a', 'b', 'c'));
+        $this->transformer = new ValueToDuplicatesTransformer(['a', 'b', 'c']);
     }
 
     protected function tearDown()
@@ -36,22 +36,22 @@ class ValueToDuplicatesTransformerTest extends TestCase
 
     public function testTransform()
     {
-        $output = array(
+        $output = [
             'a' => 'Foo',
             'b' => 'Foo',
             'c' => 'Foo',
-        );
+        ];
 
         $this->assertSame($output, $this->transformer->transform('Foo'));
     }
 
     public function testTransformEmpty()
     {
-        $output = array(
+        $output = [
             'a' => null,
             'b' => null,
             'c' => null,
-        );
+        ];
 
         $this->assertSame($output, $this->transformer->transform(null));
     }

@@ -27,7 +27,7 @@ class ChoiceToValueTransformerTest extends TestCase
 
     protected function setUp()
     {
-        $list = new ArrayChoiceList(array('A' => 0, 'B' => 1, 'C' => 2));
+        $list = new ArrayChoiceList(['A' => 0, 'B' => 1, 'C' => 2]);
         $this->transformer = new ChoiceToValueTransformer($list);
     }
 
@@ -38,12 +38,12 @@ class ChoiceToValueTransformerTest extends TestCase
 
     public function transformProvider()
     {
-        return array(
+        return [
             // more extensive test set can be found in FormUtilTest
-            array(0, '0'),
-            array(false, '0'),
-            array('', ''),
-        );
+            [0, '0'],
+            [false, '0'],
+            ['', ''],
+        ];
     }
 
     /**

@@ -31,10 +31,10 @@ class TimezoneType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'choices' => static::getFlippedTimezones(),
             'choice_translation_domain' => false,
-        ));
+        ]);
     }
 
     /**
@@ -66,7 +66,7 @@ class TimezoneType extends AbstractType
     private static function getFlippedTimezones()
     {
         if (null === static::$timezones) {
-            static::$timezones = array();
+            static::$timezones = [];
 
             foreach (\DateTimeZone::listIdentifiers() as $timezone) {
                 $parts = explode('/', $timezone);

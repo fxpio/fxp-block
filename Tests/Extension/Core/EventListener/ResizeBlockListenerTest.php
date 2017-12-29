@@ -99,9 +99,9 @@ class ResizeBlockListenerTest extends TestCase
 
     public function testGetSubscriber()
     {
-        $listener = new ResizeBlockListener(TextType::class, array());
+        $listener = new ResizeBlockListener(TextType::class, []);
 
-        $this->assertEquals(array(BlockEvents::PRE_SET_DATA => 'preSetData'), $listener->getSubscribedEvents());
+        $this->assertEquals([BlockEvents::PRE_SET_DATA => 'preSetData'], $listener->getSubscribedEvents());
     }
 
     public function testPreSetDataResizesBlock()
@@ -111,16 +111,16 @@ class ResizeBlockListenerTest extends TestCase
 
         $this->factory->expects($this->at(0))
             ->method('createNamed')
-            ->with(1, TextType::class, null, array('property_path' => '[1]', 'auto_initialize' => false))
+            ->with(1, TextType::class, null, ['property_path' => '[1]', 'auto_initialize' => false])
             ->will($this->returnValue($this->getBlock('1')));
         $this->factory->expects($this->at(1))
             ->method('createNamed')
-            ->with(2, TextType::class, null, array('property_path' => '[2]', 'auto_initialize' => false))
+            ->with(2, TextType::class, null, ['property_path' => '[2]', 'auto_initialize' => false])
             ->will($this->returnValue($this->getBlock('2')));
 
-        $data = array(1 => 'string', 2 => 'string');
+        $data = [1 => 'string', 2 => 'string'];
         $event = new BlockEvent($this->block, $data);
-        $listener = new ResizeBlockListener(TextType::class, array());
+        $listener = new ResizeBlockListener(TextType::class, []);
         $listener->preSetData($event);
 
         $this->assertFalse($this->block->has('0'));
@@ -135,7 +135,7 @@ class ResizeBlockListenerTest extends TestCase
     {
         $data = 'no array or traversable';
         $event = new BlockEvent($this->block, $data);
-        $listener = new ResizeBlockListener(TextType::class, array());
+        $listener = new ResizeBlockListener(TextType::class, []);
         $listener->preSetData($event);
     }
 
@@ -145,7 +145,7 @@ class ResizeBlockListenerTest extends TestCase
 
         $data = null;
         $event = new BlockEvent($this->block, $data);
-        $listener = new ResizeBlockListener(TextType::class, array());
+        $listener = new ResizeBlockListener(TextType::class, []);
         $listener->preSetData($event);
     }
 }

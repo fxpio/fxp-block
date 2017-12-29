@@ -32,7 +32,7 @@ class TwigTemplateTransformerTest extends TestCase
     protected function setUp()
     {
         $twig = $this->getMockBuilder('Twig_Environment')->disableOriginalConstructor()->getMock();
-        $this->template = $this->getMockForAbstractClass('\Twig_Template', array($twig), '', true, true, true, array('render', 'renderBlock'));
+        $this->template = $this->getMockForAbstractClass('\Twig_Template', [$twig], '', true, true, true, ['render', 'renderBlock']);
 
         $twig->expects($this->any())
             ->method('loadTemplate')

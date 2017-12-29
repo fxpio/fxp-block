@@ -72,12 +72,12 @@ class BlockConfigBuilder implements BlockConfigBuilderInterface
     /**
      * @var array
      */
-    private $viewTransformers = array();
+    private $viewTransformers = [];
 
     /**
      * @var array
      */
-    private $modelTransformers = array();
+    private $modelTransformers = [];
 
     /**
      * @var DataMapperInterface
@@ -97,7 +97,7 @@ class BlockConfigBuilder implements BlockConfigBuilderInterface
     /**
      * @var array
      */
-    private $attributes = array();
+    private $attributes = [];
 
     /**
      * @var mixed
@@ -136,7 +136,7 @@ class BlockConfigBuilder implements BlockConfigBuilderInterface
      * @throws InvalidArgumentException If the data class is not a valid class or if
      *                                  the name contains invalid characters
      */
-    public function __construct($name, $dataClass, EventDispatcherInterface $dispatcher, array $options = array())
+    public function __construct($name, $dataClass, EventDispatcherInterface $dispatcher, array $options = [])
     {
         self::validateName($name);
 
@@ -205,7 +205,7 @@ class BlockConfigBuilder implements BlockConfigBuilderInterface
             throw new BadMethodCallException('BlockConfigBuilder methods cannot be accessed anymore once the builder is turned into a BlockConfigInterface instance.');
         }
 
-        $this->viewTransformers = array();
+        $this->viewTransformers = [];
 
         return $this;
     }
@@ -237,7 +237,7 @@ class BlockConfigBuilder implements BlockConfigBuilderInterface
             throw new BadMethodCallException('BlockConfigBuilder methods cannot be accessed anymore once the builder is turned into a BlockConfigInterface instance.');
         }
 
-        $this->modelTransformers = array();
+        $this->modelTransformers = [];
 
         return $this;
     }

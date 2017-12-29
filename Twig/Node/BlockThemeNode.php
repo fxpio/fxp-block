@@ -26,7 +26,7 @@ class BlockThemeNode extends \Twig_Node
      */
     public function __construct(\Twig_Node $block, \Twig_Node $resources, $lineno, $tag = null)
     {
-        parent::__construct(array('block' => $block, 'resources' => $resources), array(), $lineno, $tag);
+        parent::__construct(['block' => $block, 'resources' => $resources], [], $lineno, $tag);
     }
 
     /**

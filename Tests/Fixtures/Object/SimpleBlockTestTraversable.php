@@ -28,7 +28,7 @@ class SimpleBlockTestTraversable implements \IteratorAggregate
      */
     public function __construct($count)
     {
-        $this->iterator = new \ArrayIterator($count > 0 ? array_fill(0, $count, 'Foo') : array());
+        $this->iterator = new \ArrayIterator($count > 0 ? array_fill(0, $count, 'Foo') : []);
     }
 
     /**

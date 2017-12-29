@@ -60,10 +60,10 @@ class CollectionType extends AbstractType
             return $value;
         };
 
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'entry_type' => TextType::class,
-            'entry_options' => array(),
-        ));
+            'entry_options' => [],
+        ]);
 
         $resolver->setNormalizer('entry_options', $optionsNormalizer);
     }

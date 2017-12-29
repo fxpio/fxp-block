@@ -37,14 +37,14 @@ class BlockBuilder extends BlockConfigBuilder implements \IteratorAggregate, Blo
      *
      * @var array
      */
-    private $children = array();
+    private $children = [];
 
     /**
      * The data of children who haven't been converted to block builders yet.
      *
      * @var array
      */
-    private $unresolvedChildren = array();
+    private $unresolvedChildren = [];
 
     /**
      * Creates a new block builder.
@@ -55,7 +55,7 @@ class BlockBuilder extends BlockConfigBuilder implements \IteratorAggregate, Blo
      * @param BlockFactoryInterface    $factory
      * @param array                    $options
      */
-    public function __construct($name, $dataClass, EventDispatcherInterface $dispatcher, BlockFactoryInterface $factory, array $options = array())
+    public function __construct($name, $dataClass, EventDispatcherInterface $dispatcher, BlockFactoryInterface $factory, array $options = [])
     {
         parent::__construct($name, $dataClass, $dispatcher, $options);
 
@@ -73,7 +73,7 @@ class BlockBuilder extends BlockConfigBuilder implements \IteratorAggregate, Blo
     /**
      * {@inheritdoc}
      */
-    public function add($child, $type = null, array $options = array())
+    public function add($child, $type = null, array $options = [])
     {
         if ($this->locked) {
             throw new BadMethodCallException('BlockBuilder methods cannot be accessed anymore once the builder is turned into a BlockConfigInterface instance.');
@@ -102,10 +102,10 @@ class BlockBuilder extends BlockConfigBuilder implements \IteratorAggregate, Blo
 
         // Add to "children" to maintain order
         $this->children[$child] = null;
-        $this->unresolvedChildren[$child] = array(
+        $this->unresolvedChildren[$child] = [
             'type' => $type,
             'options' => $options,
-        );
+        ];
 
         return $this;
     }
@@ -113,7 +113,7 @@ class BlockBuilder extends BlockConfigBuilder implements \IteratorAggregate, Blo
     /**
      * {@inheritdoc}
      */
-    public function create($name, $type = null, array $options = array())
+    public function create($name, $type = null, array $options = [])
     {
         if ($this->locked) {
             throw new BadMethodCallException('BlockBuilder methods cannot be accessed anymore once the builder is turned into a BlockConfigInterface instance.');
@@ -219,8 +219,8 @@ class BlockBuilder extends BlockConfigBuilder implements \IteratorAggregate, Blo
         /* @var BlockBuilder $config */
         $config = parent::getBlockConfig();
 
-        $config->children = array();
-        $config->unresolvedChildren = array();
+        $config->children = [];
+        $config->unresolvedChildren = [];
 
         return $config;
     }
@@ -290,6 +290,6 @@ class BlockBuilder extends BlockConfigBuilder implements \IteratorAggregate, Blo
             $this->children[$name] = $this->create($name, $info['type'], $info['options']);
         }
 
-        $this->unresolvedChildren = array();
+        $this->unresolvedChildren = [];
     }
 }

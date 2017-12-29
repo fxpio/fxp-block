@@ -23,9 +23,9 @@ use Fxp\Component\Block\BlockTypeInterface;
  */
 class TestCustomExtension implements BlockExtensionInterface
 {
-    private $types = array();
+    private $types = [];
 
-    private $extensions = array();
+    private $extensions = [];
 
     private $guesser;
 
@@ -54,7 +54,7 @@ class TestCustomExtension implements BlockExtensionInterface
         $type = $extension->getExtendedType();
 
         if (!isset($this->extensions[$type])) {
-            $this->extensions[$type] = array();
+            $this->extensions[$type] = [];
         }
 
         $this->extensions[$type][] = $extension;
@@ -62,7 +62,7 @@ class TestCustomExtension implements BlockExtensionInterface
 
     public function getTypeExtensions($name)
     {
-        return isset($this->extensions[$name]) ? $this->extensions[$name] : array();
+        return isset($this->extensions[$name]) ? $this->extensions[$name] : [];
     }
 
     public function hasTypeExtensions($name)

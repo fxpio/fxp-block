@@ -44,10 +44,10 @@ class MoneyType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'currency' => 'EUR',
             'divisor' => 1,
-        ));
+        ]);
     }
 
     /**

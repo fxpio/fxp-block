@@ -36,7 +36,7 @@ class TwigRendererEngine extends AbstractRendererEngine implements TwigRendererE
      * @param array             $defaultThemes The default themes. The type of these
      *                                         themes is open to the implementation
      */
-    public function __construct(\Twig_Environment $environment, array $defaultThemes = array())
+    public function __construct(\Twig_Environment $environment, array $defaultThemes = [])
     {
         parent::__construct($defaultThemes);
 
@@ -46,7 +46,7 @@ class TwigRendererEngine extends AbstractRendererEngine implements TwigRendererE
     /**
      * {@inheritdoc}
      */
-    public function renderBlock(BlockView $view, $resource, $blockName, array $variables = array())
+    public function renderBlock(BlockView $view, $resource, $blockName, array $variables = [])
     {
         $cacheKey = $view->vars[self::CACHE_KEY_VAR];
 
@@ -173,7 +173,7 @@ class TwigRendererEngine extends AbstractRendererEngine implements TwigRendererE
         // theme is a reference and we don't want to change it.
         $currentTheme = $theme;
 
-        $context = $this->environment->mergeGlobals(array());
+        $context = $this->environment->mergeGlobals([]);
 
         // The do loop takes care of template inheritance.
         // Add blocks from all templates in the inheritance tree, but avoid

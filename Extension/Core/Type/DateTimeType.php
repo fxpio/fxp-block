@@ -25,13 +25,13 @@ class DateTimeType extends AbstractType
     const DEFAULT_DATE_FORMAT = \IntlDateFormatter::MEDIUM;
     const DEFAULT_TIME_FORMAT = \IntlDateFormatter::SHORT;
 
-    protected static $acceptedFormats = array(
+    protected static $acceptedFormats = [
             \IntlDateFormatter::FULL,
             \IntlDateFormatter::LONG,
             \IntlDateFormatter::MEDIUM,
             \IntlDateFormatter::SHORT,
             \IntlDateFormatter::NONE,
-    );
+    ];
 
     /**
      * {@inheritdoc}
@@ -78,7 +78,7 @@ class DateTimeType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
                 'locale' => null,
                 'timezone' => null,
                 'date_format' => null,
@@ -86,7 +86,7 @@ class DateTimeType extends AbstractType
                 'calendar' => null,
                 'data_class' => null,
                 'compound' => false,
-        ));
+        ]);
     }
 
     /**

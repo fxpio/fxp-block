@@ -30,17 +30,17 @@ class BlockRenderer implements BlockRendererInterface
     /**
      * @var array
      */
-    private $blockNameHierarchyMap = array();
+    private $blockNameHierarchyMap = [];
 
     /**
      * @var array
      */
-    private $hierarchyLevelMap = array();
+    private $hierarchyLevelMap = [];
 
     /**
      * @var array
      */
-    private $variableStack = array();
+    private $variableStack = [];
 
     /**
      * Constructor.
@@ -71,7 +71,7 @@ class BlockRenderer implements BlockRendererInterface
     /**
      * {@inheritdoc}
      */
-    public function renderBlock(BlockView $view, $blockName, array $variables = array())
+    public function renderBlock(BlockView $view, $blockName, array $variables = [])
     {
         $resource = $this->engine->getResourceForBlockName($view, $blockName);
 
@@ -84,7 +84,7 @@ class BlockRenderer implements BlockRendererInterface
         // The variables are cached globally for a view (instead of for the
         // current suffix)
         if (!isset($this->variableStack[$viewCacheKey])) {
-            $this->variableStack[$viewCacheKey] = array();
+            $this->variableStack[$viewCacheKey] = [];
 
             // The default variable scope contains all view variables, merged with
             // the variables passed explicitly to the helper
@@ -130,7 +130,7 @@ class BlockRenderer implements BlockRendererInterface
     /**
      * {@inheritdoc}
      */
-    public function searchAndRenderBlock(BlockView $view, $blockNameSuffix, array $variables = array())
+    public function searchAndRenderBlock(BlockView $view, $blockNameSuffix, array $variables = [])
     {
         $renderOnlyOnce = 'row' === $blockNameSuffix || 'widget' === $blockNameSuffix;
 
@@ -173,7 +173,7 @@ class BlockRenderer implements BlockRendererInterface
             // INITIAL CALL
             // Calculate the hierarchy of template blocks and start on
             // the bottom level of the hierarchy (= "_<id>_<section>" block)
-            $blockNameHierarchy = array();
+            $blockNameHierarchy = [];
             foreach ($view->vars['block_prefixes'] as $blockNamePrefix) {
                 $blockNameHierarchy[] = $blockNamePrefix.'_'.$blockNameSuffix;
             }
@@ -282,6 +282,6 @@ class BlockRenderer implements BlockRendererInterface
      */
     public function humanize($text)
     {
-        return ucfirst(trim(strtolower(preg_replace(array('/([A-Z])/', '/[_\s]+/'), array('_$1', ' '), $text))));
+        return ucfirst(trim(strtolower(preg_replace(['/([A-Z])/', '/[_\s]+/'], ['_$1', ' '], $text))));
     }
 }

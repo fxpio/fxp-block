@@ -42,7 +42,7 @@ class EntityType extends DoctrineType
         };
 
         $resolver->setNormalizer('query_builder', $queryBuilderNormalizer);
-        $resolver->setAllowedTypes('query_builder', array('null', 'callable', 'Doctrine\ORM\QueryBuilder'));
+        $resolver->setAllowedTypes('query_builder', ['null', 'callable', 'Doctrine\ORM\QueryBuilder']);
     }
 
     /**
@@ -80,9 +80,9 @@ class EntityType extends DoctrineType
      */
     public function getQueryBuilderPartsForCachingHash($queryBuilder)
     {
-        return array(
+        return [
             $queryBuilder->getQuery()->getSQL(),
             $queryBuilder->getParameters()->toArray(),
-        );
+        ];
     }
 }

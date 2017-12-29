@@ -25,34 +25,34 @@ class BlockTypeGuesserChainTest extends TestCase
      */
     public function testInvalidGuessers()
     {
-        new BlockTypeGuesserChain(array(42));
+        new BlockTypeGuesserChain([42]);
     }
 
     public function testGuessers()
     {
-        $guessers = new BlockTypeGuesserChain(array(
+        $guessers = new BlockTypeGuesserChain([
             $this->getMockBuilder('Fxp\Component\Block\BlockTypeGuesserInterface')->getMock(),
-            new BlockTypeGuesserChain(array(
+            new BlockTypeGuesserChain([
                 $this->getMockBuilder('Fxp\Component\Block\BlockTypeGuesserInterface')->getMock(),
-            )),
-        ));
+            ]),
+        ]);
 
         $ref = new \ReflectionClass($guessers);
         $ref = $ref->getProperty('guessers');
         $ref->setAccessible(true);
         $value = $ref->getValue($guessers);
 
-        $this->assertEquals(array(
+        $this->assertEquals([
             $this->getMockBuilder('Fxp\Component\Block\BlockTypeGuesserInterface')->getMock(),
             $this->getMockBuilder('Fxp\Component\Block\BlockTypeGuesserInterface')->getMock(),
-        ), $value);
+        ], $value);
     }
 
     public function testGuessType()
     {
-        $guess = $this->getMockForAbstractClass('Fxp\Component\Block\Guess\Guess', array(Guess::MEDIUM_CONFIDENCE));
+        $guess = $this->getMockForAbstractClass('Fxp\Component\Block\Guess\Guess', [Guess::MEDIUM_CONFIDENCE]);
         $guesser = $this->getMockBuilder('Fxp\Component\Block\BlockTypeGuesserInterface')->getMock();
-        $guessers = new BlockTypeGuesserChain(array($guesser));
+        $guessers = new BlockTypeGuesserChain([$guesser]);
 
         $guesser->expects($this->any())
             ->method('guessType')

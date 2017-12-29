@@ -62,9 +62,9 @@ class BlockFactoryBuilderTest extends TestCase
 
     public function testAddExtensions()
     {
-        $exts = array(
+        $exts = [
             $this->getMockBuilder('Fxp\Component\Block\BlockExtensionInterface')->getMock(),
-        );
+        ];
 
         $builder = $this->builder->addExtensions($exts);
 
@@ -83,9 +83,9 @@ class BlockFactoryBuilderTest extends TestCase
 
     public function testAddTypes()
     {
-        $types = array(
+        $types = [
             $this->getMockBuilder('Fxp\Component\Block\BlockTypeInterface')->getMock(),
-        );
+        ];
 
         $builder = $this->builder->addTypes($types);
 
@@ -104,9 +104,9 @@ class BlockFactoryBuilderTest extends TestCase
 
     public function testAddTypeExtensions()
     {
-        $exts = array(
+        $exts = [
             $this->getMockBuilder('Fxp\Component\Block\BlockTypeExtensionInterface')->getMock(),
-        );
+        ];
 
         $builder = $this->builder->addTypeExtensions($exts);
 
@@ -125,9 +125,9 @@ class BlockFactoryBuilderTest extends TestCase
 
     public function testAddTypeGuessers()
     {
-        $guessers = array(
+        $guessers = [
             $this->getMockBuilder('Fxp\Component\Block\BlockTypeGuesserInterface')->getMock(),
-        );
+        ];
 
         $builder = $this->builder->addTypeGuessers($guessers);
 

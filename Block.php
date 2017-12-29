@@ -46,14 +46,14 @@ class Block implements \IteratorAggregate, BlockInterface
      *
      * @var array
      */
-    protected $options = array();
+    protected $options = [];
 
     /**
      * The attributes of this block.
      *
      * @var array
      */
-    protected $attributes = array();
+    protected $attributes = [];
 
     /**
      * The children of this block.
@@ -244,7 +244,7 @@ class Block implements \IteratorAggregate, BlockInterface
      */
     public function setOption($name, $value)
     {
-        $this->setOptions(array($name => $value));
+        $this->setOptions([$name => $value]);
 
         return $this;
     }
@@ -608,7 +608,7 @@ class Block implements \IteratorAggregate, BlockInterface
      * setData() is called since the block is not initialized yet
      * ... endless recursion ...
      */
-    public function add($child, $type = null, array $options = array())
+    public function add($child, $type = null, array $options = [])
     {
         if (!$this->config->getCompound()) {
             throw new LogicException('You cannot add children to a simple block. Maybe you should set the option "compound" to true?');
@@ -656,7 +656,7 @@ class Block implements \IteratorAggregate, BlockInterface
         }
 
         if (!$this->lockSetData && $this->defaultDataSet && !$this->config->getInheritData()) {
-            $childrenIterator = new InheritDataAwareIterator(new \ArrayIterator(array($child)));
+            $childrenIterator = new InheritDataAwareIterator(new \ArrayIterator([$child]));
             $childrenIterator = new \RecursiveIteratorIterator($childrenIterator);
             $this->config->getDataMapper()->mapDataToViews($viewData, $childrenIterator);
         }

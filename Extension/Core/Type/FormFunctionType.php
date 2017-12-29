@@ -45,9 +45,9 @@ class FormFunctionType extends AbstractType
         $parentForm = BlockFormUtil::getParentFormView($view);
 
         if ($parentForm instanceof FormView) {
-            $view->vars = array_replace($view->vars, array(
+            $view->vars = array_replace($view->vars, [
                 'block_form' => $parentForm,
-            ));
+            ]);
 
             $parentForm->vars['skip_'.$this->functionName] = true;
         }

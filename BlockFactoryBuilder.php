@@ -26,22 +26,22 @@ class BlockFactoryBuilder implements BlockFactoryBuilderInterface
     /**
      * @var BlockExtensionInterface[]
      */
-    private $extensions = array();
+    private $extensions = [];
 
     /**
      * @var BlockTypeInterface[]
      */
-    private $types = array();
+    private $types = [];
 
     /**
      * @var BlockTypeExtensionInterface[]
      */
-    private $typeExtensions = array();
+    private $typeExtensions = [];
 
     /**
      * @var BlockTypeGuesserInterface[]
      */
-    private $typeGuessers = array();
+    private $typeGuessers = [];
 
     /**
      * {@inheritdoc}

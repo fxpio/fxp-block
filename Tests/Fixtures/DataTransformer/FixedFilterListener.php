@@ -30,9 +30,9 @@ class FixedFilterListener implements EventSubscriberInterface
      */
     public function __construct(array $mapping)
     {
-        $this->mapping = array_merge(array(
-            'preSetData' => array(),
-        ), $mapping);
+        $this->mapping = array_merge([
+            'preSetData' => [],
+        ], $mapping);
     }
 
     /**
@@ -52,8 +52,8 @@ class FixedFilterListener implements EventSubscriberInterface
      */
     public static function getSubscribedEvents()
     {
-        return array(
+        return [
             BlockEvents::PRE_SET_DATA => 'preSetData',
-        );
+        ];
     }
 }

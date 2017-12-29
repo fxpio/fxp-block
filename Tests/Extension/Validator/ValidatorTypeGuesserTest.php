@@ -102,7 +102,7 @@ class ValidatorTypeGuesserTest extends TestCase
         $class = 'Fxp\Component\Block\Tests\Fixtures\Object\Foo';
         /* @var ClassMetadata $classMetadata */
         $classMetadata = $metadataFactory->getMetadataFor($class);
-        $classMetadata->addPropertyConstraint('bar', new Type(array('type' => 'string')));
+        $classMetadata->addPropertyConstraint('bar', new Type(['type' => 'string']));
 
         $typeGuesser = new ValidatorTypeGuesser($metadataFactory);
         $result = $typeGuesser->guessType($class, 'bar');
@@ -113,40 +113,40 @@ class ValidatorTypeGuesserTest extends TestCase
 
     public static function dataProviderTestGetGuessTypeForConstraint()
     {
-        return array(
-            array('array', Guess::MEDIUM_CONFIDENCE),
-            array('bool', Guess::MEDIUM_CONFIDENCE),
-            array('double', Guess::MEDIUM_CONFIDENCE),
-            array('float', Guess::MEDIUM_CONFIDENCE),
-            array('numeric', Guess::MEDIUM_CONFIDENCE),
-            array('real', Guess::MEDIUM_CONFIDENCE),
-            array('integer', Guess::MEDIUM_CONFIDENCE),
-            array('long', Guess::MEDIUM_CONFIDENCE),
-            array('\DateTime', Guess::MEDIUM_CONFIDENCE),
-            array('string', Guess::LOW_CONFIDENCE),
-        );
+        return [
+            ['array', Guess::MEDIUM_CONFIDENCE],
+            ['bool', Guess::MEDIUM_CONFIDENCE],
+            ['double', Guess::MEDIUM_CONFIDENCE],
+            ['float', Guess::MEDIUM_CONFIDENCE],
+            ['numeric', Guess::MEDIUM_CONFIDENCE],
+            ['real', Guess::MEDIUM_CONFIDENCE],
+            ['integer', Guess::MEDIUM_CONFIDENCE],
+            ['long', Guess::MEDIUM_CONFIDENCE],
+            ['\DateTime', Guess::MEDIUM_CONFIDENCE],
+            ['string', Guess::LOW_CONFIDENCE],
+        ];
     }
 
     public static function dataProviderTestGetGuessTypeForSpecificConstraint()
     {
-        return array(
-            array(new Country(), Guess::HIGH_CONFIDENCE),
-            array(new Date(), Guess::HIGH_CONFIDENCE),
-            array(new DateTime(), Guess::HIGH_CONFIDENCE),
-            array(new Email(), Guess::HIGH_CONFIDENCE),
-            array(new File(), Guess::HIGH_CONFIDENCE),
-            array(new Image(), Guess::HIGH_CONFIDENCE),
-            array(new Language(), Guess::HIGH_CONFIDENCE),
-            array(new Locale(), Guess::HIGH_CONFIDENCE),
-            array(new Time(), Guess::HIGH_CONFIDENCE),
-            array(new Url(), Guess::HIGH_CONFIDENCE),
-            array(new Ip(), Guess::MEDIUM_CONFIDENCE),
-            array(new Length(array('min' => 0, 'max' => 255)), Guess::LOW_CONFIDENCE),
-            array(new Regex(array('pattern' => '*')), Guess::LOW_CONFIDENCE),
-            array(new Range(array('min' => 0, 'max' => 255)), Guess::LOW_CONFIDENCE),
-            array(new Count(array('min' => 0, 'max' => 255)), Guess::LOW_CONFIDENCE),
-            array(new IsTrue(), Guess::MEDIUM_CONFIDENCE),
-            array(new IsFalse(), Guess::MEDIUM_CONFIDENCE),
-        );
+        return [
+            [new Country(), Guess::HIGH_CONFIDENCE],
+            [new Date(), Guess::HIGH_CONFIDENCE],
+            [new DateTime(), Guess::HIGH_CONFIDENCE],
+            [new Email(), Guess::HIGH_CONFIDENCE],
+            [new File(), Guess::HIGH_CONFIDENCE],
+            [new Image(), Guess::HIGH_CONFIDENCE],
+            [new Language(), Guess::HIGH_CONFIDENCE],
+            [new Locale(), Guess::HIGH_CONFIDENCE],
+            [new Time(), Guess::HIGH_CONFIDENCE],
+            [new Url(), Guess::HIGH_CONFIDENCE],
+            [new Ip(), Guess::MEDIUM_CONFIDENCE],
+            [new Length(['min' => 0, 'max' => 255]), Guess::LOW_CONFIDENCE],
+            [new Regex(['pattern' => '*']), Guess::LOW_CONFIDENCE],
+            [new Range(['min' => 0, 'max' => 255]), Guess::LOW_CONFIDENCE],
+            [new Count(['min' => 0, 'max' => 255]), Guess::LOW_CONFIDENCE],
+            [new IsTrue(), Guess::MEDIUM_CONFIDENCE],
+            [new IsFalse(), Guess::MEDIUM_CONFIDENCE],
+        ];
     }
 }

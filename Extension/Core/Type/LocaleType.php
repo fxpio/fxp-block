@@ -25,10 +25,10 @@ class LocaleType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'choices' => array_flip(Intl::getLocaleBundle()->getLocaleNames(\Locale::getDefault())),
             'choice_translation_domain' => false,
-        ));
+        ]);
     }
 
     /**

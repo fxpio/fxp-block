@@ -73,7 +73,7 @@ class DependencyInjectionExtension implements BlockExtensionInterface
      */
     public function getTypeExtensions($name)
     {
-        $extensions = array();
+        $extensions = [];
 
         if (isset($this->typeExtensionServiceIds[$name])) {
             foreach ($this->typeExtensionServiceIds[$name] as $serviceId) {
@@ -110,7 +110,7 @@ class DependencyInjectionExtension implements BlockExtensionInterface
     {
         if (!$this->guesserLoaded) {
             $this->guesserLoaded = true;
-            $guessers = array();
+            $guessers = [];
 
             foreach ($this->guesserServiceIds as $serviceId) {
                 $guessers[] = $this->container->get($serviceId);

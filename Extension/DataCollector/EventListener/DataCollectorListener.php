@@ -43,10 +43,10 @@ class DataCollectorListener implements EventSubscriberInterface
      */
     public static function getSubscribedEvents()
     {
-        return array(
+        return [
             // High priority in order to be called as soon as possible
-            BlockEvents::POST_SET_DATA => array('postSetData', 255),
-        );
+            BlockEvents::POST_SET_DATA => ['postSetData', 255],
+        ];
     }
 
     /**

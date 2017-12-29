@@ -28,14 +28,14 @@ class ResolvedBlockTypeTest extends TestCase
      */
     public function testWrongExtensions()
     {
-        new ResolvedBlockType(new FooType(), array('wrong_extension'));
+        new ResolvedBlockType(new FooType(), ['wrong_extension']);
     }
 
     public function testBasicOperations()
     {
         $parentType = new FooSubType();
         $type = new FooType();
-        $rType = new ResolvedBlockType($type, array(new FooExtension()), new ResolvedBlockType($parentType));
+        $rType = new ResolvedBlockType($type, [new FooExtension()], new ResolvedBlockType($parentType));
 
         $this->assertEquals($type->getBlockPrefix(), $rType->getBlockPrefix());
         $this->assertInstanceOf('Fxp\Component\Block\ResolvedBlockTypeInterface', $rType->getParent());
@@ -53,7 +53,7 @@ class ResolvedBlockTypeTest extends TestCase
     {
         $type = new FooType();
         $parentType = new FooSubType();
-        $rType = new ResolvedBlockType($type, array(new FooExtension()), new ResolvedBlockType($parentType));
+        $rType = new ResolvedBlockType($type, [new FooExtension()], new ResolvedBlockType($parentType));
 
         /* @var BlockFactoryInterface $factory */
         $factory = $this->getMockBuilder('Fxp\Component\Block\BlockFactoryInterface')->getMock();
@@ -77,7 +77,7 @@ class ResolvedBlockTypeTest extends TestCase
     {
         $type = new FooType();
         $parentType = new FooSubType();
-        $rType = new ResolvedBlockType($type, array(new FooExtension()), new ResolvedBlockType($parentType));
+        $rType = new ResolvedBlockType($type, [new FooExtension()], new ResolvedBlockType($parentType));
 
         /* @var BlockFactoryInterface $factory */
         $factory = $this->getMockBuilder('Fxp\Component\Block\BlockFactoryInterface')->getMock();

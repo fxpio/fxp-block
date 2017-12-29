@@ -48,7 +48,7 @@ class TwigTemplateTransformer implements DataTransformerInterface
      * @param string|null       blockname  The block name of twig file
      * @param array $variables The variables of twig file
      */
-    public function __construct(\Twig_Environment $twig, $resource, $blockname = null, array $variables = array())
+    public function __construct(\Twig_Environment $twig, $resource, $blockname = null, array $variables = [])
     {
         $this->twig = $twig;
         $this->resource = $resource;
@@ -67,7 +67,7 @@ class TwigTemplateTransformer implements DataTransformerInterface
     {
         /* @var \Twig_Template $template */
         $template = $this->twig->loadTemplate($this->resource);
-        $variables = array_replace($this->variables, array('data' => $value));
+        $variables = array_replace($this->variables, ['data' => $value]);
 
         if (null !== $this->blockname) {
             $value = $template->renderBlock($this->blockname, $variables);

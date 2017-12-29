@@ -30,7 +30,7 @@ abstract class BaseSuperblockTokenParser extends \Twig_TokenParser
      *
      * @param array $aliases The aliases of block type classes
      */
-    public function __construct(array $aliases = array())
+    public function __construct(array $aliases = [])
     {
         $this->aliases = $aliases;
     }
@@ -45,10 +45,10 @@ abstract class BaseSuperblockTokenParser extends \Twig_TokenParser
     protected function parseArguments()
     {
         $stream = $this->parser->getStream();
-        $options = new \Twig_Node_Expression_Array(array(), $stream->getCurrent()->getLine());
-        $variables = new \Twig_Node_Expression_Array(array(), $stream->getCurrent()->getLine());
+        $options = new \Twig_Node_Expression_Array([], $stream->getCurrent()->getLine());
+        $variables = new \Twig_Node_Expression_Array([], $stream->getCurrent()->getLine());
         $skip = false;
-        $loop = array();
+        $loop = [];
         $tagNotSupported = 'The "%s" tag does not supported. Constructs your "%s" directly in code, otherwise it is impossible to recover the form in your code.';
         $isNotSupported = null;
 
@@ -63,7 +63,7 @@ abstract class BaseSuperblockTokenParser extends \Twig_TokenParser
         if ($this->isNotSpecialToken($stream)
                 && \Twig_Token::OPERATOR_TYPE === $stream->look(1)->getType()
                 && '=' === $stream->look(1)->getValue()) {
-            $options = new \Twig_Node_Expression_Array(array(), $stream->getCurrent()->getLine());
+            $options = new \Twig_Node_Expression_Array([], $stream->getCurrent()->getLine());
 
             do {
                 $this->addKeyValues($stream, $options);
@@ -108,7 +108,7 @@ abstract class BaseSuperblockTokenParser extends \Twig_TokenParser
         if (null !== $isNotSupported) {
             foreach ($options->getIterator() as $test) {
                 if ($test instanceof \Twig_Node_Expression_Constant
-                    && in_array($test->getAttribute('value'), array('block_name', 'id'))) {
+                    && in_array($test->getAttribute('value'), ['block_name', 'id'])) {
                     $isNotSupported = null;
                 }
             }
@@ -118,7 +118,7 @@ abstract class BaseSuperblockTokenParser extends \Twig_TokenParser
             }
         }
 
-        return array($type, $options, $variables, $skip, $loop);
+        return [$type, $options, $variables, $skip, $loop];
     }
 
     /**
@@ -136,7 +136,7 @@ abstract class BaseSuperblockTokenParser extends \Twig_TokenParser
         }
 
         $name = $previous->getAttribute('name');
-        $reference = new SuperblockReference($name, $variables, array(), $previous->getTemplateLine(), $previous->getNodeTag());
+        $reference = new SuperblockReference($name, $variables, [], $previous->getTemplateLine(), $previous->getNodeTag());
         $reference->setAttribute('is_closure', true);
         $reference->setAttribute('parent_name', $parentName);
 
@@ -168,7 +168,7 @@ abstract class BaseSuperblockTokenParser extends \Twig_TokenParser
      */
     protected function getSforVariables(\Twig_TokenStream $stream)
     {
-        $forOptions = new \Twig_Node_Expression_Array(array(), $stream->getCurrent()->getLine());
+        $forOptions = new \Twig_Node_Expression_Array([], $stream->getCurrent()->getLine());
         $this->addKeyValues($stream, $forOptions);
         $sfor = $forOptions->getNode(1)->getAttribute('value');
 
@@ -178,7 +178,7 @@ abstract class BaseSuperblockTokenParser extends \Twig_TokenParser
             throw new \Twig_Error_Syntax("The sfor parameter must be the pattern: '<variable> in <variables>'", $stream->getCurrent()->getLine(), $stream->getSourceContext()->getName());
         }
 
-        return array($matches[1], $this->getSforInVariableNode($matches[2]));
+        return [$matches[1], $this->getSforInVariableNode($matches[2])];
     }
 
     /**

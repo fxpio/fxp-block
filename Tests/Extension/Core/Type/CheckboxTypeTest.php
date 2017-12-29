@@ -51,10 +51,10 @@ class CheckboxTypeTest extends TypeTestCase
 
     public function provideCustomModelTransformerData()
     {
-        return array(
-            array('checked', true),
-            array('unchecked', false),
-        );
+        return [
+            ['checked', true],
+            ['unchecked', false],
+        ];
     }
 
     /**

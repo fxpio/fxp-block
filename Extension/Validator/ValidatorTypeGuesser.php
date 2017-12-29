@@ -77,74 +77,74 @@ class ValidatorTypeGuesser implements BlockTypeGuesserInterface
                 /* @var \Symfony\Component\Validator\Constraints\Type $constraint */
                 switch ($constraint->type) {
                     case 'array':
-                        return new TypeGuess(CollectionType::class, array(), Guess::MEDIUM_CONFIDENCE);
+                        return new TypeGuess(CollectionType::class, [], Guess::MEDIUM_CONFIDENCE);
                     case 'boolean':
                     case 'bool':
-                        return new TypeGuess(CheckboxType::class, array(), Guess::MEDIUM_CONFIDENCE);
+                        return new TypeGuess(CheckboxType::class, [], Guess::MEDIUM_CONFIDENCE);
 
                     case 'double':
                     case 'float':
                     case 'numeric':
                     case 'real':
-                        return new TypeGuess(NumberType::class, array(), Guess::MEDIUM_CONFIDENCE);
+                        return new TypeGuess(NumberType::class, [], Guess::MEDIUM_CONFIDENCE);
 
                     case 'integer':
                     case 'int':
                     case 'long':
-                        return new TypeGuess(IntegerType::class, array(), Guess::MEDIUM_CONFIDENCE);
+                        return new TypeGuess(IntegerType::class, [], Guess::MEDIUM_CONFIDENCE);
 
                     case '\DateTime':
-                        return new TypeGuess(DateType::class, array(), Guess::MEDIUM_CONFIDENCE);
+                        return new TypeGuess(DateType::class, [], Guess::MEDIUM_CONFIDENCE);
 
                     case 'string':
-                        return new TypeGuess(TextType::class, array(), Guess::LOW_CONFIDENCE);
+                        return new TypeGuess(TextType::class, [], Guess::LOW_CONFIDENCE);
                 }
                 break;
 
             case 'Symfony\Component\Validator\Constraints\Country':
-                return new TypeGuess(CountryType::class, array(), Guess::HIGH_CONFIDENCE);
+                return new TypeGuess(CountryType::class, [], Guess::HIGH_CONFIDENCE);
 
             case 'Symfony\Component\Validator\Constraints\Date':
-                return new TypeGuess(DateType::class, array('input' => 'string'), Guess::HIGH_CONFIDENCE);
+                return new TypeGuess(DateType::class, ['input' => 'string'], Guess::HIGH_CONFIDENCE);
 
             case 'Symfony\Component\Validator\Constraints\DateTime':
-                return new TypeGuess(DateTimeType::class, array('input' => 'string'), Guess::HIGH_CONFIDENCE);
+                return new TypeGuess(DateTimeType::class, ['input' => 'string'], Guess::HIGH_CONFIDENCE);
 
             case 'Symfony\Component\Validator\Constraints\Email':
-                return new TypeGuess(EmailType::class, array(), Guess::HIGH_CONFIDENCE);
+                return new TypeGuess(EmailType::class, [], Guess::HIGH_CONFIDENCE);
 
             case 'Symfony\Component\Validator\Constraints\File':
             case 'Symfony\Component\Validator\Constraints\Image':
-                return new TypeGuess(TextType::class, array(), Guess::HIGH_CONFIDENCE);
+                return new TypeGuess(TextType::class, [], Guess::HIGH_CONFIDENCE);
 
             case 'Symfony\Component\Validator\Constraints\Language':
-                return new TypeGuess(LanguageType::class, array(), Guess::HIGH_CONFIDENCE);
+                return new TypeGuess(LanguageType::class, [], Guess::HIGH_CONFIDENCE);
 
             case 'Symfony\Component\Validator\Constraints\Locale':
-                return new TypeGuess(LocaleType::class, array(), Guess::HIGH_CONFIDENCE);
+                return new TypeGuess(LocaleType::class, [], Guess::HIGH_CONFIDENCE);
 
             case 'Symfony\Component\Validator\Constraints\Time':
-                return new TypeGuess(TimeType::class, array('input' => 'string'), Guess::HIGH_CONFIDENCE);
+                return new TypeGuess(TimeType::class, ['input' => 'string'], Guess::HIGH_CONFIDENCE);
 
             case 'Symfony\Component\Validator\Constraints\Url':
-                return new TypeGuess(UrlType::class, array(), Guess::HIGH_CONFIDENCE);
+                return new TypeGuess(UrlType::class, [], Guess::HIGH_CONFIDENCE);
 
             case 'Symfony\Component\Validator\Constraints\Ip':
-                return new TypeGuess(TextType::class, array(), Guess::MEDIUM_CONFIDENCE);
+                return new TypeGuess(TextType::class, [], Guess::MEDIUM_CONFIDENCE);
 
             case 'Symfony\Component\Validator\Constraints\Length':
             case 'Symfony\Component\Validator\Constraints\Regex':
-                return new TypeGuess(TextType::class, array(), Guess::LOW_CONFIDENCE);
+                return new TypeGuess(TextType::class, [], Guess::LOW_CONFIDENCE);
 
             case 'Symfony\Component\Validator\Constraints\Range':
-                return new TypeGuess(NumberType::class, array(), Guess::LOW_CONFIDENCE);
+                return new TypeGuess(NumberType::class, [], Guess::LOW_CONFIDENCE);
 
             case 'Symfony\Component\Validator\Constraints\Count':
-                return new TypeGuess(CollectionType::class, array(), Guess::LOW_CONFIDENCE);
+                return new TypeGuess(CollectionType::class, [], Guess::LOW_CONFIDENCE);
 
             case 'Symfony\Component\Validator\Constraints\IsTrue':
             case 'Symfony\Component\Validator\Constraints\IsFalse':
-                return new TypeGuess(CheckboxType::class, array(), Guess::MEDIUM_CONFIDENCE);
+                return new TypeGuess(CheckboxType::class, [], Guess::MEDIUM_CONFIDENCE);
         }
 
         return $empty;
@@ -162,7 +162,7 @@ class ValidatorTypeGuesser implements BlockTypeGuesserInterface
      */
     protected function guess($class, $property, \Closure $closure)
     {
-        $guesses = array();
+        $guesses = [];
         /* @var ClassMetadata $classMetadata */
         $classMetadata = $this->metadataFactory->getMetadataFor($class);
 

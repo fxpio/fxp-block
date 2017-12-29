@@ -31,17 +31,17 @@ abstract class AbstractRendererEngine implements BlockRendererEngineInterface
     /**
      * @var array
      */
-    protected $themes = array();
+    protected $themes = [];
 
     /**
      * @var array
      */
-    protected $resources = array();
+    protected $resources = [];
 
     /**
      * @var array
      */
-    private $resourceHierarchyLevels = array();
+    private $resourceHierarchyLevels = [];
 
     /**
      * Creates a new renderer engine.
@@ -49,7 +49,7 @@ abstract class AbstractRendererEngine implements BlockRendererEngineInterface
      * @param array $defaultThemes The default themes. The type of these
      *                             themes is open to the implementation
      */
-    public function __construct(array $defaultThemes = array())
+    public function __construct(array $defaultThemes = [])
     {
         $this->defaultThemes = $defaultThemes;
     }
@@ -62,7 +62,7 @@ abstract class AbstractRendererEngine implements BlockRendererEngineInterface
         $cacheKey = $view->vars[self::CACHE_KEY_VAR];
 
         // Do not cast, as casting turns objects into arrays of properties
-        $this->themes[$cacheKey] = is_array($themes) ? $themes : array($themes);
+        $this->themes[$cacheKey] = is_array($themes) ? $themes : [$themes];
 
         // Unset instead of resetting to an empty array, in order to allow
         // implementations (like TwigRendererEngine) to check whether $cacheKey

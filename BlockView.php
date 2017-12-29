@@ -23,10 +23,10 @@ class BlockView implements \ArrayAccess, \IteratorAggregate, \Countable
      *
      * @var array
      */
-    public $vars = array(
+    public $vars = [
         'value' => null,
-        'attr' => array(),
-    );
+        'attr' => [],
+    ];
 
     /**
      * The parent block.
@@ -40,7 +40,7 @@ class BlockView implements \ArrayAccess, \IteratorAggregate, \Countable
      *
      * @var array
      */
-    public $children = array();
+    public $children = [];
 
     /**
      * Is the view attached to this renderer rendered?

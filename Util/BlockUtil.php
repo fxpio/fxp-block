@@ -104,7 +104,7 @@ class BlockUtil
     public static function addAttribute($view, $name, $value, $key = 'attr')
     {
         if ($view instanceof BlockView || $view instanceof FormView) {
-            $attr = isset($view->vars[$key]) ? $view->vars[$key] : array();
+            $attr = isset($view->vars[$key]) ? $view->vars[$key] : [];
 
             if (static::isEmpty($value)) {
                 unset($attr[$name]);
@@ -127,7 +127,7 @@ class BlockUtil
     public static function addAttributeClass($view, $class, $prepend = false, $key = 'attr')
     {
         if ($view instanceof BlockView || $view instanceof FormView) {
-            $attr = isset($view->vars[$key]) ? $view->vars[$key] : array();
+            $attr = isset($view->vars[$key]) ? $view->vars[$key] : [];
             $attrClass = isset($attr['class']) ? $attr['class'] : '';
             $attrClass = $prepend ? trim($class.' '.$attrClass) : trim($attrClass.' '.$class);
 

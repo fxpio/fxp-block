@@ -19,7 +19,7 @@ use Fxp\Component\Block\Guess\Guess;
  */
 class BlockTypeGuesserChain implements BlockTypeGuesserInterface
 {
-    private $guessers = array();
+    private $guessers = [];
 
     /**
      * Constructor.
@@ -64,7 +64,7 @@ class BlockTypeGuesserChain implements BlockTypeGuesserInterface
      */
     protected function guess(\Closure $closure)
     {
-        $guesses = array();
+        $guesses = [];
 
         foreach ($this->guessers as $guesser) {
             if ($guess = $closure($guesser)) {

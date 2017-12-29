@@ -27,13 +27,13 @@ class DateTimeToLocalizedStringTransformer implements DataTransformerInterface
     protected $timeFormat;
     protected $timezone;
     protected $locale;
-    protected static $formats = array(
+    protected static $formats = [
         \IntlDateFormatter::NONE,
         \IntlDateFormatter::FULL,
         \IntlDateFormatter::LONG,
         \IntlDateFormatter::MEDIUM,
         \IntlDateFormatter::SHORT,
-    );
+    ];
 
     /**
      * Constructor.

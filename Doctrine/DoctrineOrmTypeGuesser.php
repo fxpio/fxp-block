@@ -43,7 +43,7 @@ class DoctrineOrmTypeGuesser implements BlockTypeGuesserInterface
     public function __construct(ManagerRegistry $registry)
     {
         $this->registry = $registry;
-        $this->cache = array();
+        $this->cache = [];
     }
 
     /**
@@ -52,7 +52,7 @@ class DoctrineOrmTypeGuesser implements BlockTypeGuesserInterface
     public function guessType($class, $property)
     {
         if (!$ret = $this->getMetadata($class)) {
-            return new TypeGuess(TextType::class, array(), Guess::LOW_CONFIDENCE);
+            return new TypeGuess(TextType::class, [], Guess::LOW_CONFIDENCE);
         }
 
         /* @var ClassMetadataInfo $metadata */
@@ -62,44 +62,44 @@ class DoctrineOrmTypeGuesser implements BlockTypeGuesserInterface
             $multiple = $metadata->isCollectionValuedAssociation($property);
             $mapping = $metadata->getAssociationMapping($property);
 
-            return new TypeGuess(EntityType::class, array('em' => $name, 'class' => $mapping['targetEntity'], 'multiple' => $multiple), Guess::HIGH_CONFIDENCE);
+            return new TypeGuess(EntityType::class, ['em' => $name, 'class' => $mapping['targetEntity'], 'multiple' => $multiple], Guess::HIGH_CONFIDENCE);
         }
 
         switch ($metadata->getTypeOfField($property)) {
             case 'array':
-                return new TypeGuess(CollectionType::class, array(), Guess::MEDIUM_CONFIDENCE);
+                return new TypeGuess(CollectionType::class, [], Guess::MEDIUM_CONFIDENCE);
 
             case 'boolean':
-                return new TypeGuess(CheckboxType::class, array(), Guess::HIGH_CONFIDENCE);
+                return new TypeGuess(CheckboxType::class, [], Guess::HIGH_CONFIDENCE);
 
             case 'datetime':
             case 'vardatetime':
             case 'datetimetz':
-                return new TypeGuess(DateTimeType::class, array(), Guess::HIGH_CONFIDENCE);
+                return new TypeGuess(DateTimeType::class, [], Guess::HIGH_CONFIDENCE);
 
             case 'date':
-                return new TypeGuess(DateType::class, array(), Guess::HIGH_CONFIDENCE);
+                return new TypeGuess(DateType::class, [], Guess::HIGH_CONFIDENCE);
 
             case 'time':
-                return new TypeGuess(TimeType::class, array(), Guess::HIGH_CONFIDENCE);
+                return new TypeGuess(TimeType::class, [], Guess::HIGH_CONFIDENCE);
 
             case 'decimal':
             case 'float':
-                return new TypeGuess(NumberType::class, array(), Guess::MEDIUM_CONFIDENCE);
+                return new TypeGuess(NumberType::class, [], Guess::MEDIUM_CONFIDENCE);
 
             case 'integer':
             case 'bigint':
             case 'smallint':
-                return new TypeGuess(IntegerType::class, array(), Guess::MEDIUM_CONFIDENCE);
+                return new TypeGuess(IntegerType::class, [], Guess::MEDIUM_CONFIDENCE);
 
             case 'string':
-                return new TypeGuess(TextType::class, array(), Guess::MEDIUM_CONFIDENCE);
+                return new TypeGuess(TextType::class, [], Guess::MEDIUM_CONFIDENCE);
 
             case 'text':
-                return new TypeGuess(TextareaType::class, array(), Guess::MEDIUM_CONFIDENCE);
+                return new TypeGuess(TextareaType::class, [], Guess::MEDIUM_CONFIDENCE);
 
             default:
-                return new TypeGuess(TextType::class, array(), Guess::LOW_CONFIDENCE);
+                return new TypeGuess(TextType::class, [], Guess::LOW_CONFIDENCE);
         }
     }
 
@@ -120,7 +120,7 @@ class DoctrineOrmTypeGuesser implements BlockTypeGuesserInterface
 
         foreach ($this->registry->getManagers() as $name => $em) {
             try {
-                return $this->cache[$class] = array($em->getClassMetadata($class), $name);
+                return $this->cache[$class] = [$em->getClassMetadata($class), $name];
             } catch (MappingException $e) {
                 // not an entity or mapped super class
             } catch (LegacyMappingException $e) {

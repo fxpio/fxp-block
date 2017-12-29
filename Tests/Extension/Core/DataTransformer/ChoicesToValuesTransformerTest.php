@@ -27,7 +27,7 @@ class ChoicesToValuesTransformerTest extends TestCase
 
     protected function setUp()
     {
-        $list = new ArrayChoiceList(array('A' => 0, 'B' => 1, 'C' => 2));
+        $list = new ArrayChoiceList(['A' => 0, 'B' => 1, 'C' => 2]);
         $this->transformer = new ChoicesToValuesTransformer($list);
     }
 
@@ -38,15 +38,15 @@ class ChoicesToValuesTransformerTest extends TestCase
 
     public function testTransform()
     {
-        $in = array(0, 1, 2);
-        $out = array('0', '1', '2');
+        $in = [0, 1, 2];
+        $out = ['0', '1', '2'];
 
         $this->assertSame($out, $this->transformer->transform($in));
     }
 
     public function testTransformNull()
     {
-        $this->assertSame(array(), $this->transformer->transform(null));
+        $this->assertSame([], $this->transformer->transform(null));
     }
 
     /**

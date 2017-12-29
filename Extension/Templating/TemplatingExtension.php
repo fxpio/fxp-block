@@ -29,10 +29,10 @@ class TemplatingExtension extends AbstractExtension
      * @param PhpEngine $engine
      * @param array     $defaultThemes
      */
-    public function __construct(PhpEngine $engine, array $defaultThemes = array())
+    public function __construct(PhpEngine $engine, array $defaultThemes = [])
     {
-        $engine->addHelpers(array(
+        $engine->addHelpers([
             new BlockHelper(new BlockRenderer(new TemplatingRendererEngine($engine, $defaultThemes))),
-        ));
+        ]);
     }
 }

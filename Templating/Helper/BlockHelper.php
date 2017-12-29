@@ -77,7 +77,7 @@ class BlockHelper extends Helper
      *
      * @return string The HTML markup
      */
-    public function widget(BlockView $view, array $variables = array())
+    public function widget(BlockView $view, array $variables = [])
     {
         return $this->renderer->searchAndRenderBlock($view, 'widget', $variables);
     }
@@ -90,7 +90,7 @@ class BlockHelper extends Helper
      *
      * @return string The HTML markup
      */
-    public function row(BlockView $view, array $variables = array())
+    public function row(BlockView $view, array $variables = [])
     {
         return $this->renderer->searchAndRenderBlock($view, 'row', $variables);
     }
@@ -104,10 +104,10 @@ class BlockHelper extends Helper
      *
      * @return string The HTML markup
      */
-    public function label(BlockView $view, $label = null, array $variables = array())
+    public function label(BlockView $view, $label = null, array $variables = [])
     {
         if (null !== $label) {
-            $variables += array('label' => $label);
+            $variables += ['label' => $label];
         }
 
         return $this->renderer->searchAndRenderBlock($view, 'label', $variables);
@@ -122,7 +122,7 @@ class BlockHelper extends Helper
      *
      * @return string The HTML markup
      */
-    public function block(BlockView $view, $blockName, array $variables = array())
+    public function block(BlockView $view, $blockName, array $variables = [])
     {
         return $this->renderer->renderBlock($view, $blockName, $variables);
     }

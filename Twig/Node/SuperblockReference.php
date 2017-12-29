@@ -29,9 +29,9 @@ class SuperblockReference extends \Twig_Node implements \Twig_NodeOutputInterfac
      */
     public function __construct($name, \Twig_Node_Expression $variables, array $loop, $lineno, $tag = null)
     {
-        $attr = array('name' => $name, 'variables' => $variables, 'loop' => $loop, 'is_root' => true, 'is_closure' => false);
+        $attr = ['name' => $name, 'variables' => $variables, 'loop' => $loop, 'is_root' => true, 'is_closure' => false];
 
-        parent::__construct(array(), $attr, $lineno, $tag);
+        parent::__construct([], $attr, $lineno, $tag);
     }
 
     /**

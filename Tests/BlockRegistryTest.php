@@ -72,10 +72,10 @@ class BlockRegistryTest extends TestCase
 
         $this->extension1 = new TestCustomExtension($guesser1);
         $this->extension2 = new TestCustomExtension($guesser2);
-        $this->registry = new BlockRegistry(array(
+        $this->registry = new BlockRegistry([
             $this->extension1,
             $this->extension2,
-        ), $rtf);
+        ], $rtf);
     }
 
     public function testGetTypeFromExtension()
@@ -108,7 +108,7 @@ class BlockRegistryTest extends TestCase
 
         $this->resolvedTypeFactory->expects($this->once())
             ->method('createResolvedType')
-            ->with($type, array($ext1, $ext2))
+            ->with($type, [$ext1, $ext2])
             ->will($this->returnValue($resolvedType));
 
         $this->assertSame($resolvedType, $this->registry->getType(FooType::class));
@@ -131,7 +131,7 @@ class BlockRegistryTest extends TestCase
 
         $this->resolvedTypeFactory->expects($this->at(1))
             ->method('createResolvedType')
-            ->with($type, array(), $parentResolvedType)
+            ->with($type, [], $parentResolvedType)
             ->will($this->returnValue($resolvedType));
 
         $this->assertSame($resolvedType, $this->registry->getType(FooSubType::class));
@@ -162,7 +162,7 @@ class BlockRegistryTest extends TestCase
      */
     public function testGetTypeThrowsExceptionIfNoString()
     {
-        $this->registry->getType(array());
+        $this->registry->getType([]);
     }
 
     public function testHasTypeAfterLoadingFromExtension()
@@ -185,7 +185,7 @@ class BlockRegistryTest extends TestCase
 
     public function testGetTypeGuesser()
     {
-        $expectedGuesser = new BlockTypeGuesserChain(array($this->guesser1, $this->guesser2));
+        $expectedGuesser = new BlockTypeGuesserChain([$this->guesser1, $this->guesser2]);
 
         $this->assertEquals($expectedGuesser, $this->registry->getTypeGuesser());
 
@@ -193,7 +193,7 @@ class BlockRegistryTest extends TestCase
         $rtf = $this->resolvedTypeFactory;
 
         $registry = new BlockRegistry(
-            array($this->getMockBuilder('Fxp\Component\Block\BlockExtensionInterface')->getMock()),
+            [$this->getMockBuilder('Fxp\Component\Block\BlockExtensionInterface')->getMock()],
             $rtf);
 
         $this->assertNull($registry->getTypeGuesser());
@@ -201,7 +201,7 @@ class BlockRegistryTest extends TestCase
 
     public function testGetExtensions()
     {
-        $expectedExtensions = array($this->extension1, $this->extension2);
+        $expectedExtensions = [$this->extension1, $this->extension2];
 
         $this->assertEquals($expectedExtensions, $this->registry->getExtensions());
     }
@@ -214,6 +214,6 @@ class BlockRegistryTest extends TestCase
         /* @var ResolvedBlockTypeFactoryInterface $rtf */
         $rtf = $this->resolvedTypeFactory;
 
-        new BlockRegistry(array(42), $rtf);
+        new BlockRegistry([42], $rtf);
     }
 }

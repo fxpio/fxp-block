@@ -93,7 +93,7 @@ class BlockBuilderTest extends TestCase
 
     public function testAddIsFluent()
     {
-        $builder = $this->builder->add('foo', TextType::class, array('bar' => 'baz'));
+        $builder = $this->builder->add('foo', TextType::class, ['bar' => 'baz']);
         $this->assertSame($builder, $this->builder);
     }
 
@@ -133,7 +133,7 @@ class BlockBuilderTest extends TestCase
 
         $children = $this->builder->all();
 
-        $this->assertSame(array('foo', 'bar', 'baz'), array_keys($children));
+        $this->assertSame(['foo', 'bar', 'baz'], array_keys($children));
     }
 
     public function testAddFormType()
@@ -171,7 +171,7 @@ class BlockBuilderTest extends TestCase
 
         $factory->expects($this->once())
             ->method('createNamedBuilder')
-            ->with('foo', TextType::class, null, array())
+            ->with('foo', TextType::class, null, [])
         ;
 
         $this->builder->create('foo');
@@ -192,7 +192,7 @@ class BlockBuilderTest extends TestCase
         $factory = $this->factory;
         $expectedType = TextType::class;
         $expectedName = 'foo';
-        $expectedOptions = array('bar' => 'baz');
+        $expectedOptions = ['bar' => 'baz'];
 
         $factory->expects($this->once())
             ->method('createNamedBuilder')
@@ -211,7 +211,7 @@ class BlockBuilderTest extends TestCase
         /* @var \PHPUnit_Framework_MockObject_MockObject $factory */
         $factory = $this->factory;
         $expectedName = 'foo';
-        $expectedOptions = array('bar' => 'baz');
+        $expectedOptions = ['bar' => 'baz'];
 
         $factory->expects($this->once())
             ->method('createBuilderForProperty')

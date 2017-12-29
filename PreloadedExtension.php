@@ -23,12 +23,12 @@ class PreloadedExtension implements BlockExtensionInterface
     /**
      * @var BlockTypeInterface[]
      */
-    private $types = array();
+    private $types = [];
 
     /**
      * @var array[BlockTypeExtensionInterface[]]
      */
-    private $typeExtensions = array();
+    private $typeExtensions = [];
 
     /**
      * @var BlockTypeGuesserInterface
@@ -79,7 +79,7 @@ class PreloadedExtension implements BlockExtensionInterface
     {
         return isset($this->typeExtensions[$name])
             ? $this->typeExtensions[$name]
-            : array();
+            : [];
     }
 
     /**

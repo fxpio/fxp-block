@@ -71,7 +71,7 @@ class CompoundBlockTest extends AbstractBlockTest
 
         $this->assertTrue($this->block->has('foo'));
         $this->assertSame($this->block, $child->getParent());
-        $this->assertSame(array('foo' => $child), $this->block->all());
+        $this->assertSame(['foo' => $child], $this->block->all());
     }
 
     public function testAddUsingType()
@@ -80,17 +80,17 @@ class CompoundBlockTest extends AbstractBlockTest
 
         $this->factory->expects($this->once())
             ->method('create')
-            ->with(TextType::class, null, array(
+            ->with(TextType::class, null, [
                 'bar' => 'baz',
                 'auto_initialize' => false,
-            ))
+            ])
             ->will($this->returnValue($child));
 
-        $this->block->add(null, TextType::class, array('bar' => 'baz'));
+        $this->block->add(null, TextType::class, ['bar' => 'baz']);
 
         $this->assertTrue($this->block->has('foo'));
         $this->assertSame($this->block, $child->getParent());
-        $this->assertSame(array('foo' => $child), $this->block->all());
+        $this->assertSame(['foo' => $child], $this->block->all());
     }
 
     public function testAddUsingNameAndType()
@@ -99,17 +99,17 @@ class CompoundBlockTest extends AbstractBlockTest
 
         $this->factory->expects($this->once())
             ->method('createNamed')
-            ->with('foo', TextType::class, null, array(
+            ->with('foo', TextType::class, null, [
                 'bar' => 'baz',
                 'auto_initialize' => false,
-            ))
+            ])
             ->will($this->returnValue($child));
 
-        $this->block->add('foo', TextType::class, array('bar' => 'baz'));
+        $this->block->add('foo', TextType::class, ['bar' => 'baz']);
 
         $this->assertTrue($this->block->has('foo'));
         $this->assertSame($this->block, $child->getParent());
-        $this->assertSame(array('foo' => $child), $this->block->all());
+        $this->assertSame(['foo' => $child], $this->block->all());
     }
 
     public function testAddUsingIntegerNameAndType()
@@ -118,21 +118,21 @@ class CompoundBlockTest extends AbstractBlockTest
 
         $this->factory->expects($this->once())
             ->method('createNamed')
-            ->with('0', TextType::class, null, array(
+            ->with('0', TextType::class, null, [
                 'bar' => 'baz',
                 'auto_initialize' => false,
-            ))
+            ])
             ->will($this->returnValue($child));
 
         // in order to make casting unnecessary
-        $this->block->add(0, TextType::class, array('bar' => 'baz'));
+        $this->block->add(0, TextType::class, ['bar' => 'baz']);
 
         $this->assertTrue($this->block->has(0));
         $this->assertTrue($child->hasParent());
         $this->assertSame($this->block, $child->getParent());
         $this->assertFalse($child->isRoot());
         $this->assertTrue($this->block->isRoot());
-        $this->assertSame(array(0 => $child), $this->block->all());
+        $this->assertSame([0 => $child], $this->block->all());
     }
 
     public function testAddUsingNameButNoType()
@@ -155,7 +155,7 @@ class CompoundBlockTest extends AbstractBlockTest
 
         $this->assertTrue($this->block->has('foo'));
         $this->assertSame($this->block, $child->getParent());
-        $this->assertSame(array('foo' => $child), $this->block->all());
+        $this->assertSame(['foo' => $child], $this->block->all());
     }
 
     public function testAddUsingNameButNoTypeAndOptions()
@@ -171,17 +171,17 @@ class CompoundBlockTest extends AbstractBlockTest
 
         $this->factory->expects($this->once())
             ->method('createForProperty')
-            ->with('\stdClass', 'foo', null, array(
+            ->with('\stdClass', 'foo', null, [
                 'bar' => 'baz',
                 'auto_initialize' => false,
-            ))
+            ])
             ->will($this->returnValue($child));
 
-        $this->block->add('foo', null, array('bar' => 'baz'));
+        $this->block->add('foo', null, ['bar' => 'baz']);
 
         $this->assertTrue($this->block->has('foo'));
         $this->assertSame($this->block, $child->getParent());
-        $this->assertSame(array('foo' => $child), $this->block->all());
+        $this->assertSame(['foo' => $child], $this->block->all());
     }
 
     /**
@@ -206,7 +206,7 @@ class CompoundBlockTest extends AbstractBlockTest
         $builder->setCompound(true);
         $builder->setDataMapper($dataMapper);
         $block = $builder->getBlock();
-        $block->add(array());
+        $block->add([]);
     }
 
     /**
@@ -220,7 +220,7 @@ class CompoundBlockTest extends AbstractBlockTest
         $builder->setCompound(true);
         $builder->setDataMapper($dataMapper);
         $block = $builder->getBlock();
-        $block->add('foo', array());
+        $block->add('foo', []);
     }
 
     public function testRemove()
@@ -288,10 +288,10 @@ class CompoundBlockTest extends AbstractBlockTest
         $block = $this->getBuilder()
             ->setCompound(true)
             ->setDataMapper($mapper)
-            ->addViewTransformer(new FixedDataTransformer(array(
+            ->addViewTransformer(new FixedDataTransformer([
                 '' => '',
                 'foo' => 'bar',
-            )))
+            ]))
             ->setData('foo')
             ->getBlock();
 
@@ -302,7 +302,7 @@ class CompoundBlockTest extends AbstractBlockTest
             ->with('bar', $this->isInstanceOf('\RecursiveIteratorIterator'))
             ->will($this->returnCallback(function ($data, \RecursiveIteratorIterator $iterator) use ($child, $test) {
                 $test->assertInstanceOf('Fxp\Component\Block\Util\InheritDataAwareIterator', $iterator->getInnerIterator());
-                $test->assertSame(array($child), iterator_to_array($iterator));
+                $test->assertSame([$child], iterator_to_array($iterator));
             }));
 
         $block->initialize();
@@ -387,7 +387,7 @@ class CompoundBlockTest extends AbstractBlockTest
             ->method('setData');
 
         // pass NULL to all children
-        $block->setData(array());
+        $block->setData([]);
     }
 
     public function testSetDataMapsViewDataToChildren()
@@ -397,10 +397,10 @@ class CompoundBlockTest extends AbstractBlockTest
         $block = $this->getBuilder()
             ->setCompound(true)
             ->setDataMapper($mapper)
-            ->addViewTransformer(new FixedDataTransformer(array(
+            ->addViewTransformer(new FixedDataTransformer([
                     '' => '',
                     'foo' => 'bar',
-                )))
+                ]))
             ->getBlock();
 
         $block->add($child1 = $this->getBuilder('firstName')->getBlock());
@@ -411,7 +411,7 @@ class CompoundBlockTest extends AbstractBlockTest
             ->with('bar', $this->isInstanceOf('\RecursiveIteratorIterator'))
             ->will($this->returnCallback(function ($data, \RecursiveIteratorIterator $iterator) use ($child1, $child2, $test) {
                 $test->assertInstanceOf('Fxp\Component\Block\Util\InheritDataAwareIterator', $iterator->getInnerIterator());
-                $test->assertSame(array('firstName' => $child1, 'lastName' => $child2), iterator_to_array($iterator));
+                $test->assertSame(['firstName' => $child1, 'lastName' => $child2], iterator_to_array($iterator));
             }));
 
         $block->setData('foo');
@@ -424,7 +424,7 @@ class CompoundBlockTest extends AbstractBlockTest
     {
         /* @var ResolvedBlockTypeInterface|\PHPUnit_Framework_MockObject_MockObject $type */
         $type = $this->getMockBuilder('Fxp\Component\Block\ResolvedBlockTypeInterface')->getMock();
-        $options = array('a' => 'Foo', 'b' => 'Bar');
+        $options = ['a' => 'Foo', 'b' => 'Bar'];
         $field1 = $this->getMockBlock('foo');
         $field2 = $this->getMockBlock('bar');
         $view = new BlockView();
@@ -463,7 +463,7 @@ class CompoundBlockTest extends AbstractBlockTest
         $type->expects($this->once())
             ->method('buildView')
             ->with($view, $this->block, $options)
-            ->will($this->returnCallback($assertChildViewsEqual(array())));
+            ->will($this->returnCallback($assertChildViewsEqual([])));
 
         // Then add the first child form
         $field1->expects($this->once())
@@ -480,7 +480,7 @@ class CompoundBlockTest extends AbstractBlockTest
         $type->expects($this->once())
             ->method('finishView')
             ->with($view, $this->block, $options)
-            ->will($this->returnCallback($assertChildViewsEqual(array('foo' => $field1View, 'bar' => $field2View))));
+            ->will($this->returnCallback($assertChildViewsEqual(['foo' => $field1View, 'bar' => $field2View])));
 
         $this->assertSame($view, $this->block->createView());
     }

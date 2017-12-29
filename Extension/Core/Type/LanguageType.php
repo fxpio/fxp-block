@@ -25,10 +25,10 @@ class LanguageType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'choices' => array_flip(Intl::getLanguageBundle()->getLanguageNames(\Locale::getDefault())),
             'choice_translation_domain' => false,
-        ));
+        ]);
     }
 
     /**

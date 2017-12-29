@@ -39,7 +39,7 @@ class ResizeBlockListener implements EventSubscriberInterface
      * @param mixed $type
      * @param array $options
      */
-    public function __construct($type, array $options = array())
+    public function __construct($type, array $options = [])
     {
         $this->type = $type;
         $this->options = $options;
@@ -50,9 +50,9 @@ class ResizeBlockListener implements EventSubscriberInterface
      */
     public static function getSubscribedEvents()
     {
-        return array(
+        return [
             BlockEvents::PRE_SET_DATA => 'preSetData',
-        );
+        ];
     }
 
     /**
@@ -68,7 +68,7 @@ class ResizeBlockListener implements EventSubscriberInterface
         $data = $event->getData();
 
         if (null === $data) {
-            $data = array();
+            $data = [];
         }
 
         if (!is_array($data) && !($data instanceof \Traversable && $data instanceof \ArrayAccess)) {
@@ -82,9 +82,9 @@ class ResizeBlockListener implements EventSubscriberInterface
 
         // Then add all rows again in the correct order
         foreach ($data as $name => $value) {
-            $block->add($name, $this->type, array_replace(array(
+            $block->add($name, $this->type, array_replace([
                     'property_path' => '['.$name.']',
-            ), $this->options));
+            ], $this->options));
         }
     }
 }

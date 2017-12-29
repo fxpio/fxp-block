@@ -23,12 +23,12 @@ class PreloadedExtensionTest extends AbstractBaseExtensionTest
 {
     protected function setUp()
     {
-        $types = array(
+        $types = [
             FooType::class => new FooType(),
-        );
-        $extensions = array(
-            FooType::class => array(new FooExtension()),
-        );
+        ];
+        $extensions = [
+            FooType::class => [new FooExtension()],
+        ];
         /* @var BlockTypeGuesserInterface $guesser */
         $guesser = $this->getMockBuilder('Fxp\Component\Block\BlockTypeGuesserInterface')->getMock();
 

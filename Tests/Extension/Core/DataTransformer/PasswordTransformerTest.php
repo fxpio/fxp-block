@@ -21,17 +21,17 @@ class PasswordTransformerTest extends TestCase
 {
     public function providerTestTransform()
     {
-        return array(
-            array(true, 6, '*', null, ''),
-            array(true, 6, '*', 'abcd', '******'),
-            array(true, 6, '*', 'abcdefghijkl', '******'),
-            array(true, 2, '§', null, ''),
-            array(true, 2, '§', 'abcd', '§§'),
-            array(true, 2, '§', 'abcdefghijkl', '§§'),
-            array(false, 20, '*', null, ''),
-            array(false, 20, '*', 'abcd', 'abcd'),
-            array(false, 20, '*', 'abcdefghijkl', 'abcdefghijkl'),
-        );
+        return [
+            [true, 6, '*', null, ''],
+            [true, 6, '*', 'abcd', '******'],
+            [true, 6, '*', 'abcdefghijkl', '******'],
+            [true, 2, '§', null, ''],
+            [true, 2, '§', 'abcd', '§§'],
+            [true, 2, '§', 'abcdefghijkl', '§§'],
+            [false, 20, '*', null, ''],
+            [false, 20, '*', 'abcd', 'abcd'],
+            [false, 20, '*', 'abcdefghijkl', 'abcdefghijkl'],
+        ];
     }
 
     /**

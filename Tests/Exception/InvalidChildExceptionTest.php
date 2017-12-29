@@ -85,6 +85,6 @@ class InvalidChildExceptionTest extends TestCase
      */
     public function testExceptionWithMultipleAllowedType()
     {
-        throw new InvalidChildException($this->builder, $this->builderChild, array('Baz', 'Boo'));
+        throw new InvalidChildException($this->builder, $this->builderChild, ['Baz', 'Boo']);
     }
 }

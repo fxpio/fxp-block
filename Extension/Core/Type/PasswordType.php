@@ -40,11 +40,11 @@ class PasswordType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'mask' => true,
             'mask_length' => 6,
             'mask_symbol' => '*',
-        ));
+        ]);
     }
 
     /**

@@ -39,12 +39,12 @@ class SimpleBlockTest extends AbstractBlockTest
 
     public function testDataIsInitializedToConfiguredValue()
     {
-        $model = new FixedDataTransformer(array(
+        $model = new FixedDataTransformer([
             'default' => 'foo',
-        ));
-        $view = new FixedDataTransformer(array(
+        ]);
+        $view = new FixedDataTransformer([
             'foo' => 'bar',
-        ));
+        ]);
 
         $config = new BlockConfigBuilder('name', null, $this->dispatcher);
         $config->addViewTransformer($view);
@@ -60,7 +60,7 @@ class SimpleBlockTest extends AbstractBlockTest
     public function testDataIsInitializedFromGetData()
     {
         $mock = $this->getMockBuilder('\stdClass')
-            ->setMethods(array('preSetData', 'postSetData'))
+            ->setMethods(['preSetData', 'postSetData'])
             ->getMock();
         $mock->expects($this->at(0))
             ->method('preSetData');
@@ -68,8 +68,8 @@ class SimpleBlockTest extends AbstractBlockTest
             ->method('postSetData');
 
         $config = new BlockConfigBuilder('name', null, $this->dispatcher);
-        $config->addEventListener(BlockEvents::PRE_SET_DATA, array($mock, 'preSetData'));
-        $config->addEventListener(BlockEvents::POST_SET_DATA, array($mock, 'postSetData'));
+        $config->addEventListener(BlockEvents::PRE_SET_DATA, [$mock, 'preSetData']);
+        $config->addEventListener(BlockEvents::POST_SET_DATA, [$mock, 'postSetData']);
         $block = new Block($config);
 
         // no call to setData() or similar where the object would be
@@ -100,7 +100,7 @@ class SimpleBlockTest extends AbstractBlockTest
 
     public function testEmptyIfEmptyArray()
     {
-        $this->block->setData(array());
+        $this->block->setData([]);
 
         $this->assertTrue($this->block->isEmpty());
     }
@@ -175,19 +175,19 @@ class SimpleBlockTest extends AbstractBlockTest
     {
         // use real event dispatcher now
         $block = $this->getBuilder('name', new EventDispatcher())
-            ->addEventSubscriber(new FixedFilterListener(array(
-                'preSetData' => array(
+            ->addEventSubscriber(new FixedFilterListener([
+                'preSetData' => [
                     'app' => 'filtered',
-                ),
-            )))
-            ->addModelTransformer(new FixedDataTransformer(array(
+                ],
+            ]))
+            ->addModelTransformer(new FixedDataTransformer([
                 '' => '',
                 'filtered' => 'norm',
-            )))
-            ->addViewTransformer(new FixedDataTransformer(array(
+            ]))
+            ->addViewTransformer(new FixedDataTransformer([
                 '' => '',
                 'norm' => 'client',
-            )))
+            ]))
             ->getBlock();
 
         $block->setData('app');
@@ -200,14 +200,14 @@ class SimpleBlockTest extends AbstractBlockTest
     public function testSetDataExecutesViewTransformersInOrder()
     {
         $block = $this->getBuilder()
-            ->addViewTransformer(new FixedDataTransformer(array(
+            ->addViewTransformer(new FixedDataTransformer([
                 '' => '',
                 'first' => 'second',
-            )))
-            ->addViewTransformer(new FixedDataTransformer(array(
+            ]))
+            ->addViewTransformer(new FixedDataTransformer([
                 '' => '',
                 'second' => 'third',
-            )))
+            ]))
             ->getBlock();
 
         $block->setData('first');
@@ -218,14 +218,14 @@ class SimpleBlockTest extends AbstractBlockTest
     public function testSetDataExecutesModelTransformersInReverseOrder()
     {
         $block = $this->getBuilder()
-            ->addModelTransformer(new FixedDataTransformer(array(
+            ->addModelTransformer(new FixedDataTransformer([
                 '' => '',
                 'second' => 'third',
-            )))
-            ->addModelTransformer(new FixedDataTransformer(array(
+            ]))
+            ->addModelTransformer(new FixedDataTransformer([
                 '' => '',
                 'first' => 'second',
-            )))
+            ]))
             ->getBlock();
 
         $block->setData('first');
@@ -247,10 +247,10 @@ class SimpleBlockTest extends AbstractBlockTest
     public function testSetDataConvertsScalarToStringIfOnlyModelTransformer()
     {
         $block = $this->getBuilder()
-            ->addModelTransformer(new FixedDataTransformer(array(
+            ->addModelTransformer(new FixedDataTransformer([
                 '' => '',
                 1 => 23,
-            )))
+            ]))
             ->getBlock();
 
         $block->setData(1);
@@ -282,10 +282,10 @@ class SimpleBlockTest extends AbstractBlockTest
 
                 return 'foo';
             })
-            ->addViewTransformer(new FixedDataTransformer(array(
+            ->addViewTransformer(new FixedDataTransformer([
                 '' => '',
                 'foo' => 'bar',
-            )))
+            ]))
             ->getBlock();
 
         $this->assertEquals('bar', $block->getViewData());
@@ -493,10 +493,10 @@ class SimpleBlockTest extends AbstractBlockTest
     public function testViewDataMustNotBeObjectIfDataClassIsNull()
     {
         $config = new BlockConfigBuilder('name', null, $this->dispatcher);
-        $config->addViewTransformer(new FixedDataTransformer(array(
+        $config->addViewTransformer(new FixedDataTransformer([
             '' => '',
             'foo' => new \stdClass(),
-        )));
+        ]));
         $block = new Block($config);
 
         $block->setData('foo');
@@ -506,10 +506,10 @@ class SimpleBlockTest extends AbstractBlockTest
     {
         $arrayAccess = $this->getMockBuilder('\ArrayAccess')->getMock();
         $config = new BlockConfigBuilder('name', null, $this->dispatcher);
-        $config->addViewTransformer(new FixedDataTransformer(array(
+        $config->addViewTransformer(new FixedDataTransformer([
             '' => '',
             'foo' => $arrayAccess,
-        )));
+        ]));
         $block = new Block($config);
 
         $block->setData('foo');
@@ -523,10 +523,10 @@ class SimpleBlockTest extends AbstractBlockTest
     public function testViewDataMustBeObjectIfDataClassIsSet()
     {
         $config = new BlockConfigBuilder('name', 'stdClass', $this->dispatcher);
-        $config->addViewTransformer(new FixedDataTransformer(array(
+        $config->addViewTransformer(new FixedDataTransformer([
             '' => '',
-            'foo' => array('bar' => 'baz'),
-        )));
+            'foo' => ['bar' => 'baz'],
+        ]));
         $block = new Block($config);
 
         $block->setData('foo');
@@ -559,12 +559,12 @@ class SimpleBlockTest extends AbstractBlockTest
             ->setCompound(true)
             ->setDataMapper($dataMapper)
             ->setData('foo')
-            ->addModelTransformer(new FixedDataTransformer(array(
+            ->addModelTransformer(new FixedDataTransformer([
                 'foo' => 'norm[foo]',
-            )))
-            ->addViewTransformer(new FixedDataTransformer(array(
+            ]))
+            ->addViewTransformer(new FixedDataTransformer([
                 'norm[foo]' => 'view[foo]',
-            )))
+            ]))
             ->add($child)
             ->getBlock();
 
@@ -638,11 +638,11 @@ class SimpleBlockTest extends AbstractBlockTest
         $this->assertFalse($block->hasAttribute('foo'));
         $this->assertSame($block, $block->setAttribute('foo', 'bar'));
         $this->assertTrue($block->hasAttribute('foo'));
-        $this->assertEquals(array('foo' => 'bar'), $block->getAttributes());
-        $this->assertSame($block, $block->setAttributes(array('bar' => 'foo')));
+        $this->assertEquals(['foo' => 'bar'], $block->getAttributes());
+        $this->assertSame($block, $block->setAttributes(['bar' => 'foo']));
         $this->assertTrue($block->hasAttribute('foo'));
         $this->assertTrue($block->hasAttribute('bar'));
-        $this->assertEquals(array('bar' => 'foo', 'foo' => 'bar'), $block->getAttributes());
+        $this->assertEquals(['bar' => 'foo', 'foo' => 'bar'], $block->getAttributes());
         $this->assertEquals('foo', $block->getAttribute('bar'));
         $this->assertEquals('bar', $block->getAttribute('foo', 'bar'));
     }
@@ -663,11 +663,11 @@ class SimpleBlockTest extends AbstractBlockTest
         $this->assertFalse($block->hasOption('foo'));
         $this->assertSame($block, $block->setOption('foo', 'bar'));
         $this->assertTrue($block->hasOption('foo'));
-        $this->assertEquals(array('foo' => 'bar'), $block->getOptions());
-        $this->assertSame($block, $block->setOptions(array('bar' => 'foo')));
+        $this->assertEquals(['foo' => 'bar'], $block->getOptions());
+        $this->assertSame($block, $block->setOptions(['bar' => 'foo']));
         $this->assertTrue($block->hasOption('foo'));
         $this->assertTrue($block->hasOption('bar'));
-        $this->assertEquals(array('bar' => 'foo', 'foo' => 'bar'), $block->getOptions());
+        $this->assertEquals(['bar' => 'foo', 'foo' => 'bar'], $block->getOptions());
         $this->assertEquals('foo', $block->getOption('bar'));
         $this->assertEquals('bar', $block->getOption('foo', 'baz'));
         $this->assertEquals('baz', $block->getOption('foobar', 'baz'));
@@ -680,9 +680,9 @@ class SimpleBlockTest extends AbstractBlockTest
             ->getMock();
         $resolver->expects($this->any())
             ->method('resolve')
-            ->will($this->returnValue(array(
+            ->will($this->returnValue([
                 'foo' => 'bar',
-            )));
+            ]));
 
         $type = $this->getMockBuilder('Fxp\Component\Block\ResolvedBlockTypeInterface')->getMock();
         $type->expects($this->any())
@@ -697,11 +697,11 @@ class SimpleBlockTest extends AbstractBlockTest
         $this->assertFalse($block->hasOption('foo'));
         $this->assertSame($block, $block->setOption('foo', 'baz'));
         $this->assertTrue($block->hasOption('foo'));
-        $this->assertEquals(array('foo' => 'baz'), $block->getOptions());
-        $this->assertSame($block, $block->setOptions(array('bar' => 'foo')));
+        $this->assertEquals(['foo' => 'baz'], $block->getOptions());
+        $this->assertSame($block, $block->setOptions(['bar' => 'foo']));
         $this->assertTrue($block->hasOption('foo'));
         $this->assertFalse($block->hasOption('bar'));
-        $this->assertEquals(array('foo' => 'baz'), $block->getOptions());
+        $this->assertEquals(['foo' => 'baz'], $block->getOptions());
         $this->assertNull($block->getOption('bar'));
         $this->assertEquals('foo', $block->getOption('bar', 'foo'));
         $this->assertEquals('baz', $block->getOption('foobar', 'baz'));

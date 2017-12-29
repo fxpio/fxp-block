@@ -46,7 +46,7 @@ class BlockFactory implements BlockFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function create($type = BlockType::class, $data = null, array $options = array())
+    public function create($type = BlockType::class, $data = null, array $options = [])
     {
         return $this->createBuilder($type, $data, $options)->getBlock();
     }
@@ -54,7 +54,7 @@ class BlockFactory implements BlockFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function createNamed($name, $type = BlockType::class, $data = null, array $options = array())
+    public function createNamed($name, $type = BlockType::class, $data = null, array $options = [])
     {
         return $this->createNamedBuilder($name, $type, $data, $options)->getBlock();
     }
@@ -62,7 +62,7 @@ class BlockFactory implements BlockFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function createForProperty($class, $property, $data = null, array $options = array())
+    public function createForProperty($class, $property, $data = null, array $options = [])
     {
         return $this->createBuilderForProperty($class, $property, $data, $options)->getBlock();
     }
@@ -70,7 +70,7 @@ class BlockFactory implements BlockFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function createBuilder($type = BlockType::class, $data = null, array $options = array())
+    public function createBuilder($type = BlockType::class, $data = null, array $options = [])
     {
         $name = array_key_exists('block_name', $options) ? $options['block_name'] : BlockUtil::createUniqueName();
         $name = array_key_exists('id', $options) ? $options['id'] : $name;
@@ -81,7 +81,7 @@ class BlockFactory implements BlockFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function createNamedBuilder($name, $type = BlockType::class, $data = null, array $options = array())
+    public function createNamedBuilder($name, $type = BlockType::class, $data = null, array $options = [])
     {
         if (null !== $data && !array_key_exists('data', $options)) {
             $options['data'] = $data;
@@ -110,7 +110,7 @@ class BlockFactory implements BlockFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function createBuilderForProperty($class, $property, $data = null, array $options = array())
+    public function createBuilderForProperty($class, $property, $data = null, array $options = [])
     {
         if (null === $guesser = $this->registry->getTypeGuesser()) {
             return $this->createNamedBuilder($property, TextType::class, $data, $options);

@@ -41,9 +41,9 @@ class BlockConfigBuilderTest extends TestCase
         $this->dispatcher = $this->getMockBuilder('Symfony\Component\EventDispatcher\EventDispatcherInterface')->getMock();
         /* @var EventDispatcherInterface $dispatcher */
         $dispatcher = $this->dispatcher;
-        $options = array(
+        $options = [
             'foo' => 'bar',
-        );
+        ];
 
         $this->config = new BlockConfigBuilder('name', null, $dispatcher, $options);
     }
@@ -59,7 +59,7 @@ class BlockConfigBuilderTest extends TestCase
      */
     public function testNotStringName()
     {
-        new BlockConfigBuilder(array(), null, $this->dispatcher);
+        new BlockConfigBuilder([], null, $this->dispatcher);
     }
 
     /**
@@ -135,7 +135,7 @@ class BlockConfigBuilderTest extends TestCase
 
         $this->assertEquals('name', $this->config->getName());
         $this->assertSame($this->dispatcher, $this->config->getEventDispatcher());
-        $this->assertEquals(array('foo' => 'bar'), $this->config->getOptions());
+        $this->assertEquals(['foo' => 'bar'], $this->config->getOptions());
         $this->assertTrue($this->config->hasOption('foo'));
         $this->assertFalse($this->config->hasOption('baz'));
         $this->assertEquals('bar', $this->config->getOption('foo'));
@@ -160,11 +160,11 @@ class BlockConfigBuilderTest extends TestCase
         $this->assertFalse($this->config->hasAttribute('foo'));
         $this->assertSame($this->config, $this->config->setAttribute('foo', 'bar'));
         $this->assertTrue($this->config->hasAttribute('foo'));
-        $this->assertEquals(array('foo' => 'bar'), $this->config->getAttributes());
-        $this->assertSame($this->config, $this->config->setAttributes(array('bar' => 'foo')));
+        $this->assertEquals(['foo' => 'bar'], $this->config->getAttributes());
+        $this->assertSame($this->config, $this->config->setAttributes(['bar' => 'foo']));
         $this->assertFalse($this->config->hasAttribute('foo'));
         $this->assertTrue($this->config->hasAttribute('bar'));
-        $this->assertEquals(array('bar' => 'foo'), $this->config->getAttributes());
+        $this->assertEquals(['bar' => 'foo'], $this->config->getAttributes());
         $this->assertEquals('foo', $this->config->getAttribute('bar'));
         $this->assertEquals('bar', $this->config->getAttribute('foo', 'bar'));
 
@@ -342,7 +342,7 @@ class BlockConfigBuilderTest extends TestCase
     public function testSetAttributesAfterGetBlockConfig()
     {
         $config = $this->getBlockConfig();
-        $config->setAttributes(array('foo' => 'bar'));
+        $config->setAttributes(['foo' => 'bar']);
     }
 
     /**

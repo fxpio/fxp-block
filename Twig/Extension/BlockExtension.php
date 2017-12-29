@@ -72,7 +72,7 @@ class BlockExtension extends \Twig_Extension
      */
     public function __construct(\Twig_Environment $environment, TwigRendererInterface $renderer,
                                 BlockFactoryInterface $factory, BlockRegistryInterface $registry,
-                                array $aliases = array())
+                                array $aliases = [])
     {
         $this->environment = $environment;
         $this->renderer = $renderer;
@@ -86,12 +86,12 @@ class BlockExtension extends \Twig_Extension
      */
     public function getTokenParsers()
     {
-        $tokens = array(
+        $tokens = [
             // {% block_theme form "SomeBundle::widgets.twig" %}
             new BlockThemeTokenParser(),
             // {% sblock 'checkbox', {data: true, label: "My checkbox" with {my_var: "the twig variable"} :%}
             new SuperblockTokenParser($this->aliases),
-        );
+        ];
 
         return $tokens;
     }
@@ -101,13 +101,13 @@ class BlockExtension extends \Twig_Extension
      */
     public function getFunctions()
     {
-        $functions = array(
-            new \Twig_Function('block_widget', null, array('node_class' => 'Fxp\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
-            new \Twig_Function('block_component', null, array('node_class' => 'Fxp\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
-            new \Twig_Function('block_label', null, array('node_class' => 'Fxp\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
-            new \Twig_Function('block_row', null, array('node_class' => 'Fxp\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => array('html'))),
-            new \Twig_Function('block_twig_render', array($this, 'renderTwigBlock'), array('is_safe' => array('html'))),
-        );
+        $functions = [
+            new \Twig_Function('block_widget', null, ['node_class' => 'Fxp\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => ['html']]),
+            new \Twig_Function('block_component', null, ['node_class' => 'Fxp\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => ['html']]),
+            new \Twig_Function('block_label', null, ['node_class' => 'Fxp\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => ['html']]),
+            new \Twig_Function('block_row', null, ['node_class' => 'Fxp\Component\Block\Twig\Node\SearchAndRenderBlockNode', 'is_safe' => ['html']]),
+            new \Twig_Function('block_twig_render', [$this, 'renderTwigBlock'], ['is_safe' => ['html']]),
+        ];
 
         return $functions;
     }
@@ -117,11 +117,11 @@ class BlockExtension extends \Twig_Extension
      */
     public function getFilters()
     {
-        return array(
-            new \Twig_Filter('block_humanize', array($this, 'humanize')),
-            new \Twig_Filter('raw_closure', array($this, 'rawClosure')),
-            new \Twig_Filter('block_formatter', array($this, 'formatter'), array('is_safe' => array('html'))),
-        );
+        return [
+            new \Twig_Filter('block_humanize', [$this, 'humanize']),
+            new \Twig_Filter('raw_closure', [$this, 'rawClosure']),
+            new \Twig_Filter('block_formatter', [$this, 'formatter'], ['is_safe' => ['html']]),
+        ];
     }
 
     /**
@@ -142,7 +142,7 @@ class BlockExtension extends \Twig_Extension
      *
      * @return \Fxp\Component\Block\BlockInterface
      */
-    public function createNamed($type, array $options = array())
+    public function createNamed($type, array $options = [])
     {
         if ($type instanceof BlockInterface) {
             return $type;
@@ -162,7 +162,7 @@ class BlockExtension extends \Twig_Extension
      *
      * @return string
      */
-    public function renderTwigBlock($resource, $blockName, array $options = array())
+    public function renderTwigBlock($resource, $blockName, array $options = [])
     {
         if (null !== $this->environment) {
             /* @var \Twig_Template $template */
@@ -201,9 +201,9 @@ class BlockExtension extends \Twig_Extension
      *
      * @return string
      */
-    public function formatter($value, $type, array $options = array(), array $variables = array())
+    public function formatter($value, $type, array $options = [], array $variables = [])
     {
-        $options = array_replace(array('wrapped' => false, 'inherit_data' => false), $options, array('data' => $value));
+        $options = array_replace(['wrapped' => false, 'inherit_data' => false], $options, ['data' => $value]);
         $type = isset($this->aliases[$type]) ? $this->aliases[$type] : $type;
 
         if (isset($options['entry_type']) && isset($this->aliases[$options['entry_type']])) {
@@ -235,7 +235,7 @@ class BlockExtension extends \Twig_Extension
      *
      * @return string|null
      */
-    protected function getBlockName(array $options = array())
+    protected function getBlockName(array $options = [])
     {
         return isset($options['block_name']) ? $options['block_name'] : (isset($options['id']) ? $options['id'] : BlockUtil::createUniqueName());
     }

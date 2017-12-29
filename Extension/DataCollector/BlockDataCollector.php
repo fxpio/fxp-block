@@ -85,11 +85,11 @@ class BlockDataCollector extends DataCollector implements BlockDataCollectorInte
      */
     public function reset()
     {
-        $this->data = array(
-            'blocks' => array(),
-            'duplicate_ids' => array(),
-        );
-        $this->viewIds = array();
+        $this->data = [
+            'blocks' => [],
+            'duplicate_ids' => [],
+        ];
+        $this->viewIds = [];
     }
 
     /**
@@ -117,7 +117,7 @@ class BlockDataCollector extends DataCollector implements BlockDataCollectorInte
         $hash = spl_object_hash($block);
 
         if (!isset($this->dataByBlock[$hash])) {
-            $this->dataByBlock[$hash] = array();
+            $this->dataByBlock[$hash] = [];
         }
 
         $this->dataByBlock[$hash] = array_replace(
@@ -138,7 +138,7 @@ class BlockDataCollector extends DataCollector implements BlockDataCollectorInte
         $hash = spl_object_hash($block);
 
         if (!isset($this->dataByBlock[$hash])) {
-            $this->dataByBlock[$hash] = array();
+            $this->dataByBlock[$hash] = [];
         }
 
         $this->dataByBlock[$hash] = array_replace(
@@ -159,7 +159,7 @@ class BlockDataCollector extends DataCollector implements BlockDataCollectorInte
         $hash = spl_object_hash($view);
 
         if (!isset($this->dataByView[$hash])) {
-            $this->dataByView[$hash] = array();
+            $this->dataByView[$hash] = [];
         }
 
         $this->dataByView[$hash] = array_replace(
@@ -178,7 +178,7 @@ class BlockDataCollector extends DataCollector implements BlockDataCollectorInte
     public function buildFinalBlockTree(BlockInterface $block, BlockView $view)
     {
         $hash = spl_object_hash($view);
-        $this->data['blocks'][$hash] = array();
+        $this->data['blocks'][$hash] = [];
 
         $this->recursiveBuildFinalBlockTree($block, $view, $this->data['blocks'][$hash]);
     }
@@ -219,20 +219,20 @@ class BlockDataCollector extends DataCollector implements BlockDataCollectorInte
 
         $output = isset($this->dataByView[$viewHash])
             ? $this->dataByView[$viewHash]
-            : array();
+            : [];
 
         if (null !== $blockHash) {
             $output = array_replace(
                 $output,
                 isset($this->dataByBlock[$blockHash])
                     ? $this->dataByBlock[$blockHash]
-                    : array()
+                    : []
             );
         }
 
         $this->validateViewIds($block, $view);
 
-        $output['children'] = array();
+        $output['children'] = [];
 
         foreach ($view->children as $name => $childView) {
             // The CSRF token, for example, is never added to the block tree.
@@ -242,7 +242,7 @@ class BlockDataCollector extends DataCollector implements BlockDataCollectorInte
                 : null;
 
             $childHash = spl_object_hash($childView);
-            $output['children'][$childHash] = array();
+            $output['children'][$childHash] = [];
 
             $this->recursiveBuildFinalBlockTree($childBlock, $childView, $output['children'][$childHash]);
         }
@@ -262,7 +262,7 @@ class BlockDataCollector extends DataCollector implements BlockDataCollectorInte
 
         $id = $view->vars['id'];
         $hash = spl_object_hash($block);
-        $newIds = array($hash);
+        $newIds = [$hash];
 
         if (isset($this->viewIds[$id]) && !in_array($hash, $this->viewIds[$id])) {
             $this->data['duplicate_ids'][] = $id;

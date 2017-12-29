@@ -34,30 +34,30 @@ class BlockTypeTest extends BaseTypeTest
 
     public function testDataClassMayBeNull()
     {
-        $this->assertInstanceOf(BlockBuilderInterface::class, $this->factory->createBuilder(BlockType::class, null, array(
+        $this->assertInstanceOf(BlockBuilderInterface::class, $this->factory->createBuilder(BlockType::class, null, [
             'data_class' => null,
-        )));
+        ]));
     }
 
     public function testDataClassMayBeAbstractClass()
     {
-        $this->assertInstanceOf(BlockBuilderInterface::class, $this->factory->createBuilder(BlockType::class, null, array(
+        $this->assertInstanceOf(BlockBuilderInterface::class, $this->factory->createBuilder(BlockType::class, null, [
             'data_class' => 'Fxp\Component\Block\Tests\Fixtures\Object\AbstractFoo',
-        )));
+        ]));
     }
 
     public function testDataClassMayBeInterface()
     {
-        $this->assertInstanceOf(BlockBuilderInterface::class, $this->factory->createBuilder(BlockType::class, null, array(
+        $this->assertInstanceOf(BlockBuilderInterface::class, $this->factory->createBuilder(BlockType::class, null, [
             'data_class' => 'Fxp\Component\Block\Tests\Fixtures\Object\FooInterface',
-        )));
+        ]));
     }
 
     public function testEmptyDataCreateNewInstanceWithoutConstructorArguments()
     {
-        $block = $this->factory->create(BlockType::class, null, array(
+        $block = $this->factory->create(BlockType::class, null, [
             'data_class' => 'Fxp\Component\Block\Tests\Fixtures\Object\Foo',
-        ));
+        ]);
 
         $this->assertEquals(new Foo(), $block->getData());
         $this->assertEquals(new Foo(), $block->getNormData());
@@ -69,18 +69,18 @@ class BlockTypeTest extends BaseTypeTest
      */
     public function testEmptyDataCreateNewInstanceWithConstructorArguments()
     {
-        $this->factory->create(BlockType::class, null, array(
+        $this->factory->create(BlockType::class, null, [
             'data_class' => 'Fxp\Component\Block\Tests\Fixtures\Object\SimpleBlockTestCountable',
-        ));
+        ]);
     }
 
     public function provideZeros()
     {
-        return array(
-            array(0, '0'),
-            array('0', '0'),
-            array('00000', '00000'),
-        );
+        return [
+            [0, '0'],
+            ['0', '0'],
+            ['00000', '00000'],
+        ];
     }
 
     /**
@@ -88,10 +88,10 @@ class BlockTypeTest extends BaseTypeTest
      */
     public function testSetDataThroughParamsWithZero($data, $dataAsString)
     {
-        $block = $this->factory->create(BlockType::class, null, array(
+        $block = $this->factory->create(BlockType::class, null, [
             'data' => $data,
             'compound' => false,
-        ));
+        ]);
         $view = $block->createView();
 
         $this->assertFalse($block->isEmpty());
@@ -105,7 +105,7 @@ class BlockTypeTest extends BaseTypeTest
      */
     public function testAttributesException()
     {
-        $this->factory->create(BlockType::class, null, array('attr' => ''));
+        $this->factory->create(BlockType::class, null, ['attr' => '']);
     }
 
     public function testNameCanBeEmptyString()
@@ -127,10 +127,10 @@ class BlockTypeTest extends BaseTypeTest
 
     public function testPropertyPath()
     {
-        $block = $this->factory->create(BlockType::class, null, array(
+        $block = $this->factory->create(BlockType::class, null, [
             'property_path' => 'foo',
             'mapped' => true,
-        ));
+        ]);
 
         $this->assertEquals(new PropertyPath('foo'), $block->getPropertyPath());
         $this->assertTrue($block->getConfig()->getMapped());
@@ -138,10 +138,10 @@ class BlockTypeTest extends BaseTypeTest
 
     public function testPropertyPathNullImpliesDefault()
     {
-        $block = $this->factory->createNamed('name', BlockType::class, null, array(
+        $block = $this->factory->createNamed('name', BlockType::class, null, [
             'property_path' => null,
             'mapped' => true,
-        ));
+        ]);
 
         $this->assertEquals(new PropertyPath('name'), $block->getPropertyPath());
         $this->assertTrue($block->getConfig()->getMapped());
@@ -149,10 +149,10 @@ class BlockTypeTest extends BaseTypeTest
 
     public function testNotMapped()
     {
-        $block = $this->factory->create(BlockType::class, null, array(
+        $block = $this->factory->create(BlockType::class, null, [
             'property_path' => 'foo',
             'mapped' => false,
-        ));
+        ]);
 
         $this->assertEquals(new PropertyPath('foo'), $block->getPropertyPath());
         $this->assertTrue($block->getConfig()->getMapped());
@@ -160,10 +160,10 @@ class BlockTypeTest extends BaseTypeTest
 
     public function testDataOptionSupersedesSetDataCalls()
     {
-        $block = $this->factory->create(BlockType::class, null, array(
+        $block = $this->factory->create(BlockType::class, null, [
             'data' => 'default',
             'compound' => false,
-        ));
+        ]);
 
         $block->setData('foobar');
 
@@ -172,10 +172,10 @@ class BlockTypeTest extends BaseTypeTest
 
     public function testDataOptionSupersedesSetDataCallsIfNull()
     {
-        $block = $this->factory->create(BlockType::class, null, array(
+        $block = $this->factory->create(BlockType::class, null, [
             'data' => null,
             'compound' => false,
-        ));
+        ]);
 
         $block->setData('foobar');
 
@@ -185,9 +185,9 @@ class BlockTypeTest extends BaseTypeTest
     public function testNormDataIsPassedToView()
     {
         $view = $this->factory->createBuilder(BlockType::class)
-            ->addViewTransformer(new FixedDataTransformer(array(
+            ->addViewTransformer(new FixedDataTransformer([
                 'foo' => 'bar',
-            )))
+            ]))
             ->setData('foo')
             ->getBlock()
             ->createView();
@@ -198,9 +198,9 @@ class BlockTypeTest extends BaseTypeTest
 
     public function testPassZeroLabelToView()
     {
-        $view = $this->factory->create(BlockType::class, null, array(
+        $view = $this->factory->create(BlockType::class, null, [
             'label' => '0',
-        ))
+        ])
         ->createView();
 
         $this->assertSame('0', $view->vars['label']);

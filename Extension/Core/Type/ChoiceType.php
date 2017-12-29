@@ -77,14 +77,14 @@ class ChoiceType extends AbstractType
             $emptyValue = $emptyValue($block);
         }
 
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'multiple' => $options['multiple'],
             'expanded' => $options['expanded'],
             'selected_choices' => $this->getSelectedChoices($choiceListView->choices, (array) $view->vars['value']),
             'empty_value' => $emptyValue,
             'choice_translation_domain' => $options['choice_translation_domain'],
             'inline' => $options['inline'],
-        ));
+        ]);
     }
 
     /**
@@ -108,34 +108,34 @@ class ChoiceType extends AbstractType
             return $choiceTranslationDomain;
         };
 
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
                 'inline' => true,
                 'multiple' => false,
                 'expanded' => false,
-                'choices' => array(),
+                'choices' => [],
                 'choice_loader' => null,
                 'choice_label' => null,
                 'choice_name' => null,
                 'choice_value' => null,
                 'choice_attr' => null,
-                'preferred_choices' => array(),
+                'preferred_choices' => [],
                 'group_by' => null,
                 'empty_value' => $emptyValue,
                 'compound' => $compound,
                 'data_class' => null,
                 'block_name' => 'entry',
                 'choice_translation_domain' => true,
-        ));
+        ]);
 
-        $resolver->setAllowedTypes('choices', array('null', 'array', '\Traversable'));
-        $resolver->setAllowedTypes('choice_translation_domain', array('null', 'bool', 'string'));
-        $resolver->setAllowedTypes('choice_loader', array('null', 'Symfony\Component\Form\ChoiceList\Loader\ChoiceLoaderInterface'));
-        $resolver->setAllowedTypes('choice_label', array('null', 'callable', 'string', 'Symfony\Component\PropertyAccess\PropertyPath'));
-        $resolver->setAllowedTypes('choice_name', array('null', 'callable', 'string', 'Symfony\Component\PropertyAccess\PropertyPath'));
-        $resolver->setAllowedTypes('choice_value', array('null', 'callable', 'string', 'Symfony\Component\PropertyAccess\PropertyPath'));
-        $resolver->setAllowedTypes('choice_attr', array('null', 'array', 'callable', 'string', 'Symfony\Component\PropertyAccess\PropertyPath'));
-        $resolver->setAllowedTypes('preferred_choices', array('array', '\Traversable', 'callable', 'string', 'Symfony\Component\PropertyAccess\PropertyPath'));
-        $resolver->setAllowedTypes('group_by', array('null', 'array', '\Traversable', 'string', 'callable', 'string', 'Symfony\Component\PropertyAccess\PropertyPath'));
+        $resolver->setAllowedTypes('choices', ['null', 'array', '\Traversable']);
+        $resolver->setAllowedTypes('choice_translation_domain', ['null', 'bool', 'string']);
+        $resolver->setAllowedTypes('choice_loader', ['null', 'Symfony\Component\Form\ChoiceList\Loader\ChoiceLoaderInterface']);
+        $resolver->setAllowedTypes('choice_label', ['null', 'callable', 'string', 'Symfony\Component\PropertyAccess\PropertyPath']);
+        $resolver->setAllowedTypes('choice_name', ['null', 'callable', 'string', 'Symfony\Component\PropertyAccess\PropertyPath']);
+        $resolver->setAllowedTypes('choice_value', ['null', 'callable', 'string', 'Symfony\Component\PropertyAccess\PropertyPath']);
+        $resolver->setAllowedTypes('choice_attr', ['null', 'array', 'callable', 'string', 'Symfony\Component\PropertyAccess\PropertyPath']);
+        $resolver->setAllowedTypes('preferred_choices', ['array', '\Traversable', 'callable', 'string', 'Symfony\Component\PropertyAccess\PropertyPath']);
+        $resolver->setAllowedTypes('group_by', ['null', 'array', '\Traversable', 'string', 'callable', 'string', 'Symfony\Component\PropertyAccess\PropertyPath']);
 
         $resolver->setNormalizer('choice_translation_domain', $choiceTranslationDomainNormalizer);
     }
@@ -173,7 +173,7 @@ class ChoiceType extends AbstractType
         }
 
         // Harden against NULL values (like in EntityType and ModelType)
-        $choices = null !== $options['choices'] ? $options['choices'] : array();
+        $choices = null !== $options['choices'] ? $options['choices'] : [];
 
         return $this->choiceListFactory->createListFromChoices($choices, $options['choice_value']);
     }
@@ -188,7 +188,7 @@ class ChoiceType extends AbstractType
      */
     protected function getSelectedChoices($choiceViews, array $values)
     {
-        $selectedChoices = array();
+        $selectedChoices = [];
 
         foreach ($choiceViews as $index => $choiceView) {
             if ($choiceView instanceof ChoiceGroupView) {
