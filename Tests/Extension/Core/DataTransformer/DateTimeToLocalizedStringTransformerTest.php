@@ -152,6 +152,8 @@ class DateTimeToLocalizedStringTransformerTest extends TestCase
         $this->assertContains($transformer->transform($this->dateTime), [
             'vendredi 11 octobre 2013 à 05:05:05 UTC',
             'vendredi 11 octobre 2013 05:05:05 UTC',
+            'vendredi 11 octobre 2013 à 05:05:05 Temps universel coordonné',
+            'vendredi 11 octobre 2013 05:05:05 Temps universel coordonné',
         ]);
     }
 

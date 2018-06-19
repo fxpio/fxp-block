@@ -15,17 +15,17 @@
     "prefer-stable": true,
     "require": {
         "php": "^7.1.0",
-        "symfony/options-resolver": "^3.4.0|^4.0.0",
-        "symfony/event-dispatcher": "^3.4.0|^4.0.0",
-        "symfony/form": "^3.4.0|^4.0.0"
+        "symfony/options-resolver": "^4.1.0",
+        "symfony/event-dispatcher": "^4.1.0",
+        "symfony/form": "^4.1.0"
     },
     "require-dev": {
-        "symfony/dependency-injection": "^3.4.0|^4.0.0",
-        "symfony/translation": "^3.4.0|^4.0.0",
-        "symfony/templating": "^3.4.0|^4.0.0",
-        "symfony/http-kernel": "^3.4.0|^4.0.0",
-        "symfony/validator": "^3.4.0|^4.0.0",
-        "symfony/doctrine-bridge": "^3.4.0|^4.0.0",
+        "symfony/dependency-injection": "^4.1.0",
+        "symfony/translation": "^4.1.0",
+        "symfony/templating": "^4.1.0",
+        "symfony/http-kernel": "^4.1.0",
+        "symfony/validator": "^4.1.0",
+        "symfony/doctrine-bridge": "^4.1.0",
         "doctrine/orm": "^2.6.0",
         "twig/twig": "^2.4.0"
     },
