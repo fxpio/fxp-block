@@ -69,7 +69,7 @@ class BlockRegistry implements BlockRegistryInterface
      */
     public function getType($name)
     {
-        if (!is_string($name)) {
+        if (!\is_string($name)) {
             throw new UnexpectedTypeException($name, 'string');
         }
 
@@ -86,7 +86,7 @@ class BlockRegistry implements BlockRegistryInterface
 
             if (!$type) {
                 // Support fully-qualified class names
-                if (class_exists($name) && in_array('Fxp\Component\Block\BlockTypeInterface', class_implements($name))) {
+                if (class_exists($name) && \in_array('Fxp\Component\Block\BlockTypeInterface', class_implements($name))) {
                     $type = new $name();
                 } else {
                     throw new InvalidArgumentException(sprintf('Could not load type "%s"', $name));
@@ -159,7 +159,7 @@ class BlockRegistry implements BlockRegistryInterface
     {
         $typeExtensions = [];
         $parentType = $type->getParent();
-        $fqcn = get_class($type);
+        $fqcn = \get_class($type);
 
         foreach ($this->extensions as $extension) {
             $typeExtensions = array_merge(

@@ -206,8 +206,9 @@ class NumberToLocalizedStringTransformerTest extends TestCase
      *
      * @return string
      */
-    private function cleanString($str) {
-        $str = preg_replace('/[^0-9\,\.\+\-]/',' ',$str);
+    private function cleanString($str)
+    {
+        $str = preg_replace('/[^0-9\,\.\+\-]/', ' ', $str);
 
         return trim(preg_replace('!\s+!', ' ', $str));
     }

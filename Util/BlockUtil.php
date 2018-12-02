@@ -57,7 +57,7 @@ class BlockUtil
      */
     public static function createUniqueName($prefix = 'block')
     {
-        return $prefix.(function_exists('openssl_random_pseudo_bytes')
+        return $prefix.(\function_exists('openssl_random_pseudo_bytes')
             ? bin2hex(openssl_random_pseudo_bytes(5))
             : uniqid());
     }
@@ -109,7 +109,7 @@ class BlockUtil
             if (static::isEmpty($value)) {
                 unset($attr[$name]);
             } else {
-                $attr[$name] = is_array($value) ? json_encode($value) : $value;
+                $attr[$name] = \is_array($value) ? json_encode($value) : $value;
             }
 
             $view->vars[$key] = $attr;
@@ -147,7 +147,7 @@ class BlockUtil
     {
         if (null === $rType) {
             return false;
-        } elseif (!in_array(get_class($rType->getInnerType()), $types)) {
+        } elseif (!\in_array(\get_class($rType->getInnerType()), $types)) {
             return static::isType($types, $rType->getParent());
         }
 

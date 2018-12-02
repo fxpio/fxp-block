@@ -71,9 +71,9 @@ class TimezoneType extends AbstractType
             foreach (\DateTimeZone::listIdentifiers() as $timezone) {
                 $parts = explode('/', $timezone);
 
-                if (count($parts) > 2) {
+                if (\count($parts) > 2) {
                     $region = $parts[0];
-                } elseif (count($parts) > 1) {
+                } elseif (\count($parts) > 1) {
                     $region = $parts[0];
                 } else {
                     $region = 'Other';

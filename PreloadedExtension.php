@@ -48,7 +48,7 @@ class PreloadedExtension implements BlockExtensionInterface
         $this->typeGuesser = $typeGuesser;
 
         foreach ($types as $type) {
-            $this->types[get_class($type)] = $type;
+            $this->types[\get_class($type)] = $type;
         }
     }
 

@@ -88,11 +88,11 @@ class BlockBuilder extends BlockConfigBuilder implements \IteratorAggregate, Blo
             return $this;
         }
 
-        if (null !== $child && !is_string($child)) {
+        if (null !== $child && !\is_string($child)) {
             throw new UnexpectedTypeException($child, 'string or Fxp\Component\Block\BlockBuilder');
         }
 
-        if (null !== $type && !is_string($type) && !$type instanceof BlockTypeInterface) {
+        if (null !== $type && !\is_string($type) && !$type instanceof BlockTypeInterface) {
             throw new UnexpectedTypeException($type, 'string or Fxp\Component\Block\BlockTypeInterface');
         }
 
@@ -208,7 +208,7 @@ class BlockBuilder extends BlockConfigBuilder implements \IteratorAggregate, Blo
             throw new BadMethodCallException('BlockBuilder methods cannot be accessed anymore once the builder is turned into a BlockConfigInterface instance.');
         }
 
-        return count($this->children);
+        return \count($this->children);
     }
 
     /**

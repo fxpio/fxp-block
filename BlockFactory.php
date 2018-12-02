@@ -91,7 +91,7 @@ class BlockFactory implements BlockFactoryInterface
             $options['id'] = array_key_exists('block_name', $options) ? $options['block_name'] : $name;
         }
 
-        if (!is_string($type)) {
+        if (!\is_string($type)) {
             throw new UnexpectedTypeException($type, 'string');
         }
 

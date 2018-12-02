@@ -54,11 +54,11 @@ class DateTimeType extends AbstractType
             $options['time_format'] = self::DEFAULT_TIME_FORMAT;
         }
 
-        if (!in_array($options['date_format'], self::$acceptedFormats, true)) {
+        if (!\in_array($options['date_format'], self::$acceptedFormats, true)) {
             throw new InvalidOptionsException('The "date_format" option must be one of the IntlDateFormatter constants (FULL, LONG, MEDIUM, SHORT, NONE).');
         }
 
-        if (!in_array($options['time_format'], self::$acceptedFormats, true)) {
+        if (!\in_array($options['time_format'], self::$acceptedFormats, true)) {
             throw new InvalidOptionsException('The "time_format" option must be one of the IntlDateFormatter constants (FULL, LONG, MEDIUM, SHORT, NONE).');
         }
 

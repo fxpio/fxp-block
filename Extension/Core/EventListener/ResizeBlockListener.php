@@ -71,7 +71,7 @@ class ResizeBlockListener implements EventSubscriberInterface
             $data = [];
         }
 
-        if (!is_array($data) && !($data instanceof \Traversable && $data instanceof \ArrayAccess)) {
+        if (!\is_array($data) && !($data instanceof \Traversable && $data instanceof \ArrayAccess)) {
             throw new UnexpectedTypeException($data, 'array or (\Traversable and \ArrayAccess)');
         }
 

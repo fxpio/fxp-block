@@ -45,6 +45,6 @@ class CallbackTransformer implements DataTransformerInterface
      */
     public function transform($data)
     {
-        return call_user_func($this->transform, $data);
+        return \call_user_func($this->transform, $data);
     }
 }

@@ -98,7 +98,7 @@ abstract class AbstractExtension implements BlockExtensionInterface
             $this->initTypeExtensions();
         }
 
-        return isset($this->typeExtensions[$name]) && count($this->typeExtensions[$name]) > 0;
+        return isset($this->typeExtensions[$name]) && \count($this->typeExtensions[$name]) > 0;
     }
 
     /**
@@ -157,7 +157,7 @@ abstract class AbstractExtension implements BlockExtensionInterface
                 throw new UnexpectedTypeException($type, 'Fxp\Component\Block\BlockTypeInterface');
             }
 
-            $this->types[get_class($type)] = $type;
+            $this->types[\get_class($type)] = $type;
         }
     }
 

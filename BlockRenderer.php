@@ -177,7 +177,7 @@ class BlockRenderer implements BlockRendererInterface
             foreach ($view->vars['block_prefixes'] as $blockNamePrefix) {
                 $blockNameHierarchy[] = $blockNamePrefix.'_'.$blockNameSuffix;
             }
-            $hierarchyLevel = count($blockNameHierarchy) - 1;
+            $hierarchyLevel = \count($blockNameHierarchy) - 1;
 
             $hierarchyInit = true;
         } else {

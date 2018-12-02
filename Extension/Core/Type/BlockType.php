@@ -53,8 +53,8 @@ class BlockType extends AbstractType
             ->setAutoInitialize($options['auto_initialize'])
             ->setEmptyData($options['empty_data'])
             ->setEmptyMessage($options['empty_message'])
-            ->setMapped(is_string($options['property_path']) ? true : $options['mapped'])
-            ->setPropertyPath(is_string($options['property_path']) ? $options['property_path'] : null)
+            ->setMapped(\is_string($options['property_path']) ? true : $options['mapped'])
+            ->setPropertyPath(\is_string($options['property_path']) ? $options['property_path'] : null)
             ->setInheritData($options['inherit_data'])
             ->setCompound($options['compound'])
             ->setData($isDataOptionSet ? $options['data'] : null)
@@ -153,7 +153,7 @@ class BlockType extends AbstractType
     {
         // Derive "data_class" option from passed "data" object
         $dataClass = function (Options $options) {
-            return isset($options['data']) && is_object($options['data']) ? get_class($options['data']) : null;
+            return isset($options['data']) && \is_object($options['data']) ? \get_class($options['data']) : null;
         };
 
         // Derive "empty_data" closure from "data_class" option

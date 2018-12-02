@@ -44,7 +44,7 @@ class CollectionType extends AbstractType
     {
         $value = $view->vars['value'];
 
-        if ((is_array($value) || $value instanceof \Countable) && 0 === count($value)) {
+        if ((\is_array($value) || $value instanceof \Countable) && 0 === \count($value)) {
             $view->vars['empty_message'] = (string) $block->getConfig()->getEmptyMessage();
         }
     }

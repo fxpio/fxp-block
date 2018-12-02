@@ -29,7 +29,7 @@ class InvalidChildException extends InvalidArgumentException
      */
     public function __construct(BlockBuilderInterface $builder, BlockBuilderInterface $builderChild, $allowed = null)
     {
-        $msg = sprintf('The child "%s" ("%s" type) is not allowed for "%s" block ("%s" type)', $builderChild->getName(), get_class($builderChild->getType()->getInnerType()), $builder->getName(), get_class($builder->getType()->getInnerType()));
+        $msg = sprintf('The child "%s" ("%s" type) is not allowed for "%s" block ("%s" type)', $builderChild->getName(), \get_class($builderChild->getType()->getInnerType()), $builder->getName(), \get_class($builder->getType()->getInnerType()));
 
         if (null !== $allowed && !empty($allowed)) {
             $msg .= sprintf(', only "%s" allowed', implode('", "', (array) $allowed));

@@ -400,7 +400,7 @@ class Block implements \IteratorAggregate, BlockInterface
         }
 
         // Treat data as strings unless a value transformer exists
-        if (!$this->config->getViewTransformers() && !$this->config->getModelTransformers() && is_scalar($modelData) && !is_bool($modelData)) {
+        if (!$this->config->getViewTransformers() && !$this->config->getModelTransformers() && is_scalar($modelData) && !\is_bool($modelData)) {
             $modelData = (string) $modelData;
         }
 
@@ -412,16 +412,16 @@ class Block implements \IteratorAggregate, BlockInterface
         if (!BlockUtil::isEmpty($viewData)) {
             $dataClass = $this->getDataClass();
 
-            $actualType = is_object($viewData) ? 'an instance of class '.get_class($viewData) : ' a(n) '.gettype($viewData);
+            $actualType = \is_object($viewData) ? 'an instance of class '.\get_class($viewData) : ' a(n) '.\gettype($viewData);
 
-            if (null === $dataClass && is_object($viewData) && !$viewData instanceof \ArrayAccess) {
+            if (null === $dataClass && \is_object($viewData) && !$viewData instanceof \ArrayAccess) {
                 $expectedType = 'scalar, array or an instance of \ArrayAccess';
 
                 throw new LogicException(
                         'The block\'s view data is expected to be of type '.$expectedType.', '.
                         'but is '.$actualType.'. You '.
                         'can avoid this error by setting the "data_class" option to '.
-                        '"'.get_class($viewData).'" or by adding a view transformer '.
+                        '"'.\get_class($viewData).'" or by adding a view transformer '.
                         'that transforms '.$actualType.' to '.$expectedType.'.'
                 );
             }
@@ -445,7 +445,7 @@ class Block implements \IteratorAggregate, BlockInterface
         $this->defaultDataSet = true;
         $this->lockSetData = false;
 
-        if (count($this->children) > 0) {
+        if (\count($this->children) > 0) {
             $childrenIterator = new InheritDataAwareIterator($this->children);
             $childrenIterator = new \RecursiveIteratorIterator($childrenIterator);
             $this->config->getDataMapper()->mapDataToViews($viewData, $childrenIterator);
@@ -579,8 +579,8 @@ class Block implements \IteratorAggregate, BlockInterface
         }
 
         return BlockUtil::isEmpty($this->modelData) ||
-            (($this->modelData instanceof \Countable || is_array($this->modelData))
-                && 0 === count($this->modelData)) ||
+            (($this->modelData instanceof \Countable || \is_array($this->modelData))
+                && 0 === \count($this->modelData)) ||
             ($this->modelData instanceof \Traversable && 0 === iterator_count($this->modelData));
     }
 
@@ -621,11 +621,11 @@ class Block implements \IteratorAggregate, BlockInterface
         }
 
         if (!$child instanceof BlockInterface) {
-            if (null !== $child && !is_string($child) && !is_int($child)) {
+            if (null !== $child && !\is_string($child) && !\is_int($child)) {
                 throw new UnexpectedTypeException($child, 'string, integer or Fxp\Component\Block\BlockInterface');
             }
 
-            if (null !== $type && !is_string($type) && !$type instanceof BlockTypeInterface) {
+            if (null !== $type && !\is_string($type) && !$type instanceof BlockTypeInterface) {
                 throw new UnexpectedTypeException($type, 'string or Fxp\Component\Block\BlockTypeInterface');
             }
 
@@ -750,7 +750,7 @@ class Block implements \IteratorAggregate, BlockInterface
      */
     public function count()
     {
-        return count($this->children);
+        return \count($this->children);
     }
 
     /**

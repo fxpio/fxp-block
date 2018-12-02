@@ -146,8 +146,8 @@ class BlockFactoryBuilder implements BlockFactoryBuilderInterface
     {
         $extensions = $this->extensions;
 
-        if (count($this->types) > 0 || count($this->typeExtensions) > 0 || count($this->typeGuessers) > 0) {
-            if (count($this->typeGuessers) > 1) {
+        if (\count($this->types) > 0 || \count($this->typeExtensions) > 0 || \count($this->typeGuessers) > 0) {
+            if (\count($this->typeGuessers) > 1) {
                 $typeGuesser = new BlockTypeGuesserChain($this->typeGuessers);
             } else {
                 $typeGuesser = isset($this->typeGuessers[0]) ? $this->typeGuessers[0] : null;

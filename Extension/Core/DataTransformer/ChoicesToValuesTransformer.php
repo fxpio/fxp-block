@@ -45,7 +45,7 @@ class ChoicesToValuesTransformer implements DataTransformerInterface
             return [];
         }
 
-        if (!is_array($array)) {
+        if (!\is_array($array)) {
             throw new TransformationFailedException('Expected an array.');
         }
 

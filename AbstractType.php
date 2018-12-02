@@ -26,7 +26,7 @@ abstract class AbstractType implements BlockTypeInterface
      */
     public function getBlockPrefix()
     {
-        return StringUtil::fqcnToBlockPrefix(get_class($this));
+        return StringUtil::fqcnToBlockPrefix(\get_class($this));
     }
 
     /**

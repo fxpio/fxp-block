@@ -43,7 +43,7 @@ class BlockDataExtractor implements BlockDataExtractorInterface
      */
     public function extractConfiguration(BlockInterface $block)
     {
-        $typeClass = get_class($block->getConfig()->getType()->getInnerType());
+        $typeClass = \get_class($block->getConfig()->getType()->getInnerType());
 
         $data = [
             'id' => $this->buildId($block),

@@ -75,6 +75,6 @@ class BlockTranslatorExtension extends \Twig_Extension
      */
     protected function isString($value)
     {
-        return is_string($value) && strlen($value) > 0;
+        return \is_string($value) && \strlen($value) > 0;
     }
 }

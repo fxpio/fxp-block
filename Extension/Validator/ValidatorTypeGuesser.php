@@ -72,7 +72,7 @@ class ValidatorTypeGuesser implements BlockTypeGuesserInterface
     {
         $empty = null;
 
-        switch (get_class($constraint)) {
+        switch (\get_class($constraint)) {
             case 'Symfony\Component\Validator\Constraints\Type':
                 /* @var \Symfony\Component\Validator\Constraints\Type $constraint */
                 switch ($constraint->type) {

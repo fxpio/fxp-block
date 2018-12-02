@@ -43,7 +43,7 @@ class PropertyPathMapper implements DataMapperInterface
     {
         $empty = null === $data || [] === $data;
 
-        if (!$empty && !is_array($data) && !is_object($data)) {
+        if (!$empty && !\is_array($data) && !\is_object($data)) {
             return;
         }
 

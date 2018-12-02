@@ -69,7 +69,7 @@ abstract class BaseSuperblockTokenParser extends \Twig_TokenParser
                 $this->addKeyValues($stream, $options);
             } while ($this->isNotSpecialToken($stream));
 
-            // {% sblock 'checkbox' {data:true} ... :%} or {% sblock 'checkbox' ... :%}
+        // {% sblock 'checkbox' {data:true} ... :%} or {% sblock 'checkbox' ... :%}
         } elseif ($this->isNotSpecialToken($stream)) {
             $options = $this->parser->getExpressionParser()->parseExpression();
         }
@@ -108,7 +108,7 @@ abstract class BaseSuperblockTokenParser extends \Twig_TokenParser
         if (null !== $isNotSupported) {
             foreach ($options->getIterator() as $test) {
                 if ($test instanceof \Twig_Node_Expression_Constant
-                    && in_array($test->getAttribute('value'), ['block_name', 'id'])) {
+                    && \in_array($test->getAttribute('value'), ['block_name', 'id'])) {
                     $isNotSupported = null;
                 }
             }
@@ -141,7 +141,7 @@ abstract class BaseSuperblockTokenParser extends \Twig_TokenParser
         $reference->setAttribute('parent_name', $parentName);
 
         $this->parser->setBlock($name, $previous);
-        $blocks->setNode(count($blocks), $reference);
+        $blocks->setNode(\count($blocks), $reference);
     }
 
     protected function getRealType(\Twig_Node $type)

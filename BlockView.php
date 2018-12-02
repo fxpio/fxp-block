@@ -70,7 +70,7 @@ class BlockView implements \ArrayAccess, \IteratorAggregate, \Countable
      */
     public function isRendered()
     {
-        $hasChildren = 0 < count($this->children);
+        $hasChildren = 0 < \count($this->children);
 
         if (true === $this->rendered || !$hasChildren) {
             return $this->rendered;
@@ -165,6 +165,6 @@ class BlockView implements \ArrayAccess, \IteratorAggregate, \Countable
      */
     public function count()
     {
-        return count($this->children);
+        return \count($this->children);
     }
 }

@@ -59,7 +59,7 @@ class SuperblockTokenParser extends BaseSuperblockTokenParser
         $body = $this->parser->subparse([$this, 'decideBlockEnd'], true);
         $previousTwigNode = null;
 
-        if (0 === count($body) || null !== $body->getNodeTag()) {
+        if (0 === \count($body) || null !== $body->getNodeTag()) {
             $body = new \Twig_Node([$body], [], $lineno);
         }
 
@@ -76,18 +76,18 @@ class SuperblockTokenParser extends BaseSuperblockTokenParser
 
                     $node->setAttribute('is_root', false);
                     $node->setAttribute('parent_name', $name);
-                    $sBlocks->setNode(count($sBlocks), $node);
+                    $sBlocks->setNode(\count($sBlocks), $node);
                 } elseif ($node instanceof \Twig_Node_Set) {
                     $this->pushClosureNode($sBlocks, $variables, $name, $previousTwigNode);
                     $previousTwigNode = null;
 
-                    $sBlocks->setNode(count($sBlocks), $node);
+                    $sBlocks->setNode(\count($sBlocks), $node);
                 } elseif (!$node instanceof \Twig_Node_Text || ($node instanceof \Twig_Node_Text && '' !== trim($node->getAttribute('data')))) {
                     if (null === $previousTwigNode) {
                         $previousTwigNode = new SuperblockClosure(new \Twig_Node([], [], $lineno), $node->getTemplateLine());
                     }
 
-                    $previousTwigNode->getNode('body')->setNode(count($previousTwigNode->getNode('body')), $node);
+                    $previousTwigNode->getNode('body')->setNode(\count($previousTwigNode->getNode('body')), $node);
                 }
             }
         }

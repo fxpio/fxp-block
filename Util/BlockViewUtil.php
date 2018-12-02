@@ -57,7 +57,7 @@ class BlockViewUtil
     public static function isType(BlockView $view, $type)
     {
         return isset($view->vars['block_prefixes'])
-            && is_array($view->vars['block_prefixes'])
-            && in_array($type, $view->vars['block_prefixes']);
+            && \is_array($view->vars['block_prefixes'])
+            && \in_array($type, $view->vars['block_prefixes']);
     }
 }

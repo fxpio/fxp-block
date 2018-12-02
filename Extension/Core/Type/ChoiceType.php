@@ -194,7 +194,7 @@ class ChoiceType extends AbstractType
             if ($choiceView instanceof ChoiceGroupView) {
                 $selectedChoices = array_merge($selectedChoices, $this->getSelectedChoices($choiceView->choices, $values));
             } elseif ($choiceView instanceof ChoiceView) {
-                if (in_array($choiceView->value, $values)) {
+                if (\in_array($choiceView->value, $values)) {
                     $selectedChoices[] = $choiceView;
                 }
             }

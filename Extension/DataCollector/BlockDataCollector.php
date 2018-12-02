@@ -264,7 +264,7 @@ class BlockDataCollector extends DataCollector implements BlockDataCollectorInte
         $hash = spl_object_hash($block);
         $newIds = [$hash];
 
-        if (isset($this->viewIds[$id]) && !in_array($hash, $this->viewIds[$id])) {
+        if (isset($this->viewIds[$id]) && !\in_array($hash, $this->viewIds[$id])) {
             $this->data['duplicate_ids'][] = $id;
             $this->data['duplicate_ids'] = array_unique($this->data['duplicate_ids']);
 

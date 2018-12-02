@@ -485,6 +485,6 @@ class OrderedHashMapTest extends TestCase
         unset($map[0]);
         $map[] = 3;
 
-        $this->assertSame(2, count($map));
+        $this->assertSame(2, \count($map));
     }
 }

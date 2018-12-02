@@ -116,7 +116,7 @@ class DependencyInjectionExtension implements BlockExtensionInterface
                 $guessers[] = $this->container->get($serviceId);
             }
 
-            if (count($guessers) > 0) {
+            if (\count($guessers) > 0) {
                 $this->guesser = new BlockTypeGuesserChain($guessers);
             }
         }

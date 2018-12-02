@@ -93,7 +93,7 @@ class DateTimeToLocalizedStringTransformerTest extends TestCase
 
         $input = new \DateTime($input);
 
-        if (is_array($output)) {
+        if (\is_array($output)) {
             $this->assertContains($transformer->transform($input), $output);
         } else {
             $this->assertEquals($output, $transformer->transform($input));
