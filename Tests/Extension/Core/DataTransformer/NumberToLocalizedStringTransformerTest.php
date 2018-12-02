@@ -75,7 +75,7 @@ class NumberToLocalizedStringTransformerTest extends TestCase
 
         $transformer = new NumberToLocalizedStringTransformer(null, true);
 
-        $this->assertSame($to, $transformer->transform($from));
+        $this->assertSame($this->cleanString($to), $this->cleanString($transformer->transform($from)));
     }
 
     public function testTransformWithPrecision()
@@ -199,5 +199,16 @@ class NumberToLocalizedStringTransformerTest extends TestCase
     {
         $transformer = new NumberToLocalizedStringTransformer();
         $transformer->transform('foo');
+    }
+
+    /**
+     * @param string $str
+     *
+     * @return string
+     */
+    private function cleanString($str) {
+        $str = preg_replace('/[^0-9\,\.\+\-]/',' ',$str);
+
+        return trim(preg_replace('!\s+!', ' ', $str));
     }
 }
