@@ -50,8 +50,8 @@ class DataCollectorTypeExtension extends AbstractTypeExtension
     /**
      * {@inheritdoc}
      */
-    public function getExtendedType()
+    public static function getExtendedTypes()
     {
-        return BlockType::class;
+        return [BlockType::class];
     }
 }

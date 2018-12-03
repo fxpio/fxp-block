@@ -74,7 +74,7 @@ abstract class AbstractBaseExtensionTest extends TestCase
         /* @var BlockTypeExtensionInterface $ext */
         $ext = $exts[0];
         $this->assertInstanceOf('Fxp\Component\Block\BlockTypeExtensionInterface', $ext);
-        $this->assertEquals(FooType::class, $ext->getExtendedType());
+        $this->assertEquals([FooType::class], $ext::getExtendedTypes());
     }
 
     public function testGetGuess()

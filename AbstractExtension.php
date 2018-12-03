@@ -140,7 +140,6 @@ abstract class AbstractExtension implements BlockExtensionInterface
      */
     protected function loadTypeGuesser()
     {
-        // return null
     }
 
     /**
@@ -176,9 +175,9 @@ abstract class AbstractExtension implements BlockExtensionInterface
                 throw new UnexpectedTypeException($extension, 'Fxp\Component\Block\BlockTypeExtensionInterface');
             }
 
-            $type = $extension->getExtendedType();
-
-            $this->typeExtensions[$type][] = $extension;
+            foreach ($extension::getExtendedTypes() as $extendedType) {
+                $this->typeExtensions[$extendedType][] = $extension;
+            }
         }
     }
 

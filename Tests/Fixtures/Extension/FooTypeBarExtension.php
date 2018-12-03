@@ -32,8 +32,8 @@ class FooTypeBarExtension extends AbstractTypeExtension
         ];
     }
 
-    public function getExtendedType()
+    public static function getExtendedTypes()
     {
-        return FooType::class;
+        return [FooType::class];
     }
 }

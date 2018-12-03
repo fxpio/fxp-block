@@ -78,14 +78,15 @@ class DependencyInjectionExtension implements BlockExtensionInterface
         if (isset($this->typeExtensionServiceIds[$name])) {
             foreach ($this->typeExtensionServiceIds[$name] as $serviceId) {
                 $extensions[] = $extension = $this->container->get($serviceId);
+                $extendedTypes = $extension::getExtendedTypes();
 
-                // validate result of getExtendedType() to ensure it is consistent with the service definition
-                if ($extension->getExtendedType() !== $name) {
+                // validate the result of getExtendedTypes() to ensure it is consistent with the service definition
+                if (!\in_array($name, $extendedTypes, true)) {
                     throw new InvalidArgumentException(
                         sprintf('The extended type specified for the service "%s" does not match the actual extended type. Expected "%s", given "%s".',
                             $serviceId,
                             $name,
-                            $extension->getExtendedType()
+                            implode(', ', $extendedTypes)
                         )
                     );
                 }

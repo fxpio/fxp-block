@@ -22,8 +22,8 @@ class FooExtension extends AbstractTypeExtension
     /**
      * {@inheritdoc}
      */
-    public function getExtendedType()
+    public static function getExtendedTypes()
     {
-        return FooType::class;
+        return [FooType::class];
     }
 }

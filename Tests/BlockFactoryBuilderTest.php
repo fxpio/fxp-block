@@ -14,10 +14,10 @@ namespace Fxp\Component\Block\Tests;
 use Fxp\Component\Block\BlockExtensionInterface;
 use Fxp\Component\Block\BlockFactoryBuilder;
 use Fxp\Component\Block\BlockFactoryBuilderInterface;
-use Fxp\Component\Block\BlockTypeExtensionInterface;
 use Fxp\Component\Block\BlockTypeGuesserInterface;
 use Fxp\Component\Block\BlockTypeInterface;
 use Fxp\Component\Block\ResolvedBlockTypeFactoryInterface;
+use Fxp\Component\Block\Tests\Fixtures\Extension\FooExtension;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -94,8 +94,7 @@ class BlockFactoryBuilderTest extends TestCase
 
     public function testAddTypeExtension()
     {
-        /* @var BlockTypeExtensionInterface $ext */
-        $ext = $this->getMockBuilder('Fxp\Component\Block\BlockTypeExtensionInterface')->getMock();
+        $ext = new FooExtension();
 
         $builder = $this->builder->addTypeExtension($ext);
 
@@ -105,7 +104,7 @@ class BlockFactoryBuilderTest extends TestCase
     public function testAddTypeExtensions()
     {
         $exts = [
-            $this->getMockBuilder('Fxp\Component\Block\BlockTypeExtensionInterface')->getMock(),
+            new FooExtension(),
         ];
 
         $builder = $this->builder->addTypeExtensions($exts);
